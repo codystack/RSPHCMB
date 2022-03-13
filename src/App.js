@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import About from "./presentation/pages/about";
 import Home from "./presentation/pages";
 import Blog from "./presentation/pages/blog";
+import Contact from "./presentation/pages/contact";
+import Services from "./presentation/pages/services";
+
 import Footer from "./presentation/layout/footer";
 
 function App() {
@@ -36,7 +39,16 @@ function App() {
               <Link to="/about">About</Link>
             </li>
             <li>
+              <Link to="/services">Services</Link>
+            </li>
+            <li>
+              <Link to="/resources">Resources</Link>
+            </li>
+            <li>
               <Link to="/blogs">Blog</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
           <div style={{ zIndex: 100 }}>
@@ -46,6 +58,12 @@ function App() {
               </Route>
               <Route path="/blogs">
                 <Blog />
+              </Route>
+              <Route path="/services">
+                <Services />
+              </Route>
+              <Route path="/contact">
+                <Contact />
               </Route>
               <Route path="/">
                 <Home />

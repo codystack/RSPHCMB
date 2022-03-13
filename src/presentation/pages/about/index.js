@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const About = () => {
   const classes = useStyles();
 
-  let fontSize, mt, deviceType;
+  let fontSize, mt;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   const sm = useMediaQuery(theme.breakpoints.only("sm"));
@@ -47,15 +47,14 @@ const About = () => {
   if (xs) {
     fontSize = 32;
     mt = 150;
-    deviceType = "phone";
+    // deviceType = "phone";
   } else if (sm) {
     fontSize = 42;
     mt = 400;
-    deviceType = "tablet";
+    // deviceType = "tablet";
   } else {
     mt = 165;
     fontSize = 48;
-    deviceType = "pc";
   }
 
   return (

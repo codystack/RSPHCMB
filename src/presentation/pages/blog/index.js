@@ -1,14 +1,14 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
 import image from "../../../assets/images/header_background.png";
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import WhoWeAre from "./components/who_we_are";
-import VisionMission from "./components/vision_mission";
-import ManagementTeam from "./components/team";
-import Careers from "./components/careers";
-import Partners from "./components/partners";
+
+import Header from "./components/header";
+import LatestNews from "./components/latest_news";
+import MorePosts from "./components/more_posts";
+import NewsUpdateCategory from "./components/news_update_category";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,21 +60,10 @@ const Blog = () => {
 
   return (
     <div>
-      <div className={classes.header}>
-        <div style={{ marginTop: -(fontSize + mt) }}>
-          <Typography fontSize={fontSize} textAlign="center" fontWeight={"700"}>
-            Blog Us
-          </Typography>
-          <Typography textAlign={"center"} maxWidth={286} gutterBottom={true}>
-            To bring positive change to the Rivers State healthcare value chain.
-          </Typography>
-        </div>
-      </div>
-      <WhoWeAre />
-      <VisionMission />
-      <ManagementTeam />
-      <Careers />
-      <Partners />
+      <Header />
+      <LatestNews />
+      <MorePosts />
+      <NewsUpdateCategory />
     </div>
   );
 };
