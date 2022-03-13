@@ -22,7 +22,6 @@ const ItemCard = (props) => {
     <div
       style={{
         backgroundColor: "#E8F1FF",
-        padding: 24,
         display: "flex",
         flexDirection: "column",
       }}
@@ -43,23 +42,31 @@ const ItemCard = (props) => {
           justifyContent: "space-between",
         }}
       >
-        <div>
-          <Typography color={"#2571E7"}>{position}</Typography>
-          <Typography color="#012F74" fontSize={18} fontWeight="800">
+        <Box paddingX={2}>
+          <Typography color={"#2571E7"} fontSize={11}>
+            {position}
+          </Typography>
+          <Typography
+            color="#012F74"
+            fontSize={16}
+            fontWeight="800"
+            gutterBottom
+          >
             {name}
           </Typography>
-        </div>
-        <div
+        </Box>
+        <Box
+          paddingX={2}
           style={{
             backgroundColor: "#1E5AFA",
-            // display: "flex",
-            // flexDirection: "column",
-            // justifyContent: "center",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <Add fontSize="36" style={{ color: "white" }} />
-        </div>
+          <Add style={{ color: "white", margin: "auto", fontSize: 24 }} />
+        </Box>
       </div>
     </div>
   );

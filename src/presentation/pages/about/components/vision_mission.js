@@ -5,6 +5,19 @@ import image from "../../../../assets/images/we_are_img.png";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+import image1 from "../../../../assets/images/im1.png";
+import image2 from "../../../../assets/images/im2.png";
+import image3 from "../../../../assets/images/im3.png";
+import image4 from "../../../../assets/images/im4.png";
+import ImageMasonry from "../../../components/misc/masonry";
+
+const tempList = [
+  { image: image1 },
+  { image: image2 },
+  { image: image3 },
+  { image: image4 },
+];
+
 const VisionMission = () => {
   let hideImage, align;
   const theme = useTheme();
@@ -25,8 +38,15 @@ const VisionMission = () => {
     >
       <Container>
         <Grid container>
-          <Grid item sm={6} xs={12}>
-            <div>
+          <Grid item sm={6} xs={12} md={6}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "start",
+              }}
+            >
               <Typography fontSize={46} fontWeight="700" textAlign={align}>
                 Our Vision
               </Typography>
@@ -48,23 +68,16 @@ const VisionMission = () => {
               </Typography>
             </div>
           </Grid>
-          <Grid>
+          <Grid item sm={6} xs={12} md={6}>
             <div
               style={{
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "end",
-                alignItems: "end",
-                marginTop: -48,
-                marginBottom: 24,
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              {/* <img
-                hidden={hideImage}
-                src={image}
-                alt="who_we-are_img"
-                width={"70%"}
-              /> */}
+              <ImageMasonry list={tempList} factor={""} width="100%" />
             </div>
           </Grid>
         </Grid>

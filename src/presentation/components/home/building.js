@@ -4,9 +4,19 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import imageSigma from "../../../assets/images/decorator.svg";
 import CustomFeaturedImage from "../misc/custom_featured";
+import ImageMasonry from "../misc/masonry";
 
-import bg from "../../../assets/images/blue_rect.svg";
-import image from "../../../assets/images/dg.png";
+import image1 from "../../../assets/images/home_masonry1.png";
+import image2 from "../../../assets/images/home_masonry2.png";
+import image3 from "../../../assets/images/home_masonry3.png";
+import image4 from "../../../assets/images/home_masonry4.png";
+
+const tempList = [
+  { image: image1 },
+  { image: image2 },
+  { image: image3 },
+  { image: image4 },
+];
 
 const BuildingSection = () => {
   let hideImage, align, deviceType;
@@ -40,11 +50,7 @@ const BuildingSection = () => {
       <Container sx={{ paddingTop: -16, paddingBottom: 2 }}>
         <Grid container>
           <Grid item sm={6} xs={12}>
-            <CustomFeaturedImage
-              image={image}
-              bg={bg}
-              deviceType={deviceType}
-            />
+            <ImageMasonry list={tempList} factor={"1.15x"} width="" />
           </Grid>
           <Grid item sm={6} xs={12}>
             <div>
