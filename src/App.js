@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import About from "./presentation/pages/about";
 import Home from "./presentation/pages";
@@ -8,25 +8,25 @@ import Contact from "./presentation/pages/contact";
 import Services from "./presentation/pages/services";
 
 import Footer from "./presentation/layout/footer";
+import ResponsiveAppBar from "./presentation/layout/navbar/index2";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <div
-          style={{
-            position: "relative",
-          }}
+        // style={{ display: "flex", flexDirection: "column" }}
         >
-          <ul
+          <ResponsiveAppBar />
+          {/* <ul
             style={{
-              position: "absolute",
-              width: "100%",
-              height: "6%",
-              top: 0,
-              left: 0,
-              opacity: 0.2,
-              background: "white",
+              //   position: "absolute",
+              //   width: "100%",
+              //   height: "6%",
+              //   top: 0,
+              //   left: 0,
+              //   opacity: 0.2,
+              //   background: "white",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-evenly",
@@ -50,13 +50,13 @@ function App() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
-          </ul>
+          </ul> */}
           <div style={{ zIndex: 100 }}>
             <Switch>
               <Route path="/about">
                 <About />
               </Route>
-              <Route path="/blogs">
+              <Route path="/blog">
                 <Blog />
               </Route>
               <Route path="/services">

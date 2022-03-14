@@ -149,13 +149,47 @@ const Footer = () => {
                         >
                           Service
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                          to="/"
+                        >
                           Control Diseases
                         </Link>
                         <Link to="/">Health Access</Link>
-                        <Link to="/">Quality Health</Link>
-                        <Link to="/">Health Workforce</Link>
-                        <Link to="/">Community Engagement</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Quality Health
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Health Workforce
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Community Engagement
+                        </Link>
                       </div>
                     </Grid>
 
@@ -168,13 +202,56 @@ const Footer = () => {
                         >
                           Useful Links
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                          to="/"
+                        >
                           Knowledge Base
                         </Link>
-                        <Link to="/">Terms of Service</Link>
-                        <Link to="/">Privacy Policy</Link>
-                        <Link to="/">About Us</Link>
-                        <Link to="/">Blog</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Terms of Service
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Privacy Policy
+                        </Link>
+                        <Link
+                          to="/about"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          About Us
+                        </Link>
+                        <Link
+                          to="/blog"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Blog
+                        </Link>
                       </div>
                     </Grid>
                   </Grid>
@@ -196,12 +273,46 @@ const Footer = () => {
                         >
                           Resources
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                          to="/"
+                        >
                           FAQ’s
                         </Link>
-                        <Link to="/">Gallery</Link>
-                        <Link to="/">Publications</Link>
-                        <Link to="/">COVID-19 FAQ's</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Gallery
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Publications
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          COVID-19 FAQ's
+                        </Link>
                       </div>
                     </Grid>
 
@@ -214,12 +325,46 @@ const Footer = () => {
                         >
                           Support
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                          to="/contact"
+                        >
                           Contact Us
                         </Link>
-                        <Link to="/">Sitemap</Link>
-                        <Link to="/">Chat Us</Link>
-                        <Link to="/">Consultation</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Sitemap
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Chat Us
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Consultation
+                        </Link>
                       </div>
                     </Grid>
                   </Grid>
@@ -243,13 +388,57 @@ const Footer = () => {
                         >
                           Service
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          color=""
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
                           Control Diseases
                         </Link>
-                        <Link to="/">Health Access</Link>
-                        <Link to="/">Quality Health</Link>
-                        <Link to="/">Health Workforce</Link>
-                        <Link to="/">Community Engagement</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Health Access
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Quality Health
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Health Workforce
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Community Engagement
+                        </Link>
                       </div>
                     </Grid>
 
@@ -269,13 +458,57 @@ const Footer = () => {
                         >
                           Useful Links
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          color=""
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
                           Knowledge Base
                         </Link>
-                        <Link to="/">Terms of Service</Link>
-                        <Link to="/">Privacy Policy</Link>
-                        <Link to="/">About Us</Link>
-                        <Link to="/">Blog</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Terms of Service
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Privacy Policy
+                        </Link>
+                        <Link
+                          to="/about"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          About Us
+                        </Link>
+                        <Link
+                          to="/blog"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Blog
+                        </Link>
                       </div>
                     </Grid>
                   </Grid>
@@ -304,12 +537,46 @@ const Footer = () => {
                         >
                           Resources
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                          to="/"
+                        >
                           FAQ’s
                         </Link>
-                        <Link to="/">Gallery</Link>
-                        <Link to="/">Publications</Link>
-                        <Link to="/">COVID-19 FAQ's</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Gallery
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Publications
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          COVID-19 FAQ's
+                        </Link>
                       </div>
                     </Grid>
 
@@ -329,12 +596,47 @@ const Footer = () => {
                         >
                           Support
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          color=""
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
                           Contact Us
                         </Link>
-                        <Link to="/">Sitemap</Link>
-                        <Link to="/">Chat Us</Link>
-                        <Link to="/">Consultation</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Sitemap
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Chat Us
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Consultation
+                        </Link>
                       </div>
                     </Grid>
                   </Grid>
@@ -356,13 +658,57 @@ const Footer = () => {
                         >
                           Service
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          color=""
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
                           Control Diseases
                         </Link>
-                        <Link to="/">Health Access</Link>
-                        <Link to="/">Quality Health</Link>
-                        <Link to="/">Health Workforce</Link>
-                        <Link to="/">Community Engagement</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Health Access
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Quality Health
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Health Workforce
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Community Engagement
+                        </Link>
                       </div>
                     </Grid>
 
@@ -380,13 +726,57 @@ const Footer = () => {
                         >
                           Useful Links
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          color=""
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
                           Knowledge Base
                         </Link>
-                        <Link to="/">Terms of Service</Link>
-                        <Link to="/">Privacy Policy</Link>
-                        <Link to="/">About Us</Link>
-                        <Link to="/">Blog</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Terms of Service
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Privacy Policy
+                        </Link>
+                        <Link
+                          to="/about"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          About Us
+                        </Link>
+                        <Link
+                          to="/blog"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Blog
+                        </Link>
                       </div>
                     </Grid>
 
@@ -404,12 +794,46 @@ const Footer = () => {
                         >
                           Resources
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
                           FAQ’s
                         </Link>
-                        <Link to="/">Gallery</Link>
-                        <Link to="/">Publications</Link>
-                        <Link to="/">COVID-19 FAQ's</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Gallery
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Publications
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          COVID-19 FAQ's
+                        </Link>
                       </div>
                     </Grid>
 
@@ -427,12 +851,47 @@ const Footer = () => {
                         >
                           Support
                         </Typography>
-                        <Link color="" to="/">
+                        <Link
+                          color=""
+                          to="/contact"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
                           Contact Us
                         </Link>
-                        <Link to="/">Sitemap</Link>
-                        <Link to="/">Chat Us</Link>
-                        <Link to="/">Consultation</Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Sitemap
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Chat Us
+                        </Link>
+                        <Link
+                          to="/"
+                          style={{
+                            color: "white",
+                            fontSize: 15,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Consultation
+                        </Link>
                       </div>
                     </Grid>
                   </Grid>

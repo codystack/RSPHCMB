@@ -1,16 +1,16 @@
 import React from "react";
 import imageSigma from "../../../assets/images/coro_sketch.svg";
-import image1 from "../../../assets/images/coro1.svg";
-import image2 from "../../../assets/images/coro2.svg";
-import image3 from "../../../assets/images/coro3.svg";
+import image1 from "../../../assets/images/covid19_blue.svg";
+import image2 from "../../../assets/images/covid19_green.svg";
+import image3 from "../../../assets/images/covid19_red.svg";
 import imageArc from "../../../assets/images/decorator_home.svg";
 import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 const Covid19Section = () => {
   const covidData = [
-    { title: "Confirmed Cases", cases: "15,547" },
-    { title: "Discharged Cases", cases: "14,041" },
+    { title: "Confirmed Cases", cases: "16,592" },
+    { title: "Discharged Cases", cases: "16,394" },
     { title: "Deaths", cases: "154" },
   ];
 
@@ -131,13 +131,9 @@ const CasesItem = (props) => {
           width: 64,
           height: 64,
           borderRadius: 64,
-          borderColor: bgColor,
-          borderStyle: "solid",
-          borderWidth: 2,
-          backgroundColor: "white",
           padding: 10,
           zIndex: 10000,
-          marginBottom: -64,
+          marginBottom: -48,
           marginLeft: -24,
         }}
       >

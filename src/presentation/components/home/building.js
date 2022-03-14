@@ -3,7 +3,6 @@ import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import imageSigma from "../../../assets/images/decorator.svg";
-import CustomFeaturedImage from "../misc/custom_featured";
 import ImageMasonry from "../misc/masonry";
 
 import image1 from "../../../assets/images/home_masonry1.png";
@@ -19,7 +18,7 @@ const tempList = [
 ];
 
 const BuildingSection = () => {
-  let hideImage, align, deviceType;
+  let align, deviceType;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   const sm = useMediaQuery(theme.breakpoints.only("sm"));

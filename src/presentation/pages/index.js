@@ -12,20 +12,20 @@ import Subscription from "../components/home/subscription";
 import Covid19Section from "../components/home/covid_19";
 
 const Home = () => {
-  let wdt, align, hideImage;
+  let hideImage;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
 
   if (xs) {
     hideImage = true;
-    align = "center";
+    // align = "center";
     // width = "96%";
-    wdt = "25%";
+    // wdt = "25%";
   } else {
     hideImage = false;
-    align = "start";
+    // align = "start";
     // width = "70%";
-    wdt = "40%";
+    // wdt = "40%";
   }
 
   return (

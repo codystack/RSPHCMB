@@ -13,9 +13,9 @@ const Careers = () => {
   //   const sm = useMediaQuery(theme.breakpoints.only("sm"));
 
   if (xs) {
-    width = "75%";
+    width = "80%";
   } else {
-    width = "50%";
+    width = "64%";
   }
 
   return (
@@ -27,8 +27,8 @@ const Careers = () => {
         alignItems: "center",
       }}
     >
-      <Container sx={{ margin: "auto", paddingBottom: 4 }}>
-        <div
+      <Container sx={{ margin: "auto", padding: 6 }}>
+        <Box
           style={{
             margin: "auto",
             backgroundImage: "url(" + bgImage + ")",
@@ -37,6 +37,7 @@ const Careers = () => {
             width: width,
             padding: 21,
           }}
+          padding={4}
         >
           <Box padding={3} justifyContent="center" alignItems={"center"}>
             <Typography
@@ -85,7 +86,7 @@ const Careers = () => {
               </Button>
             </div>
           </Box>
-        </div>
+        </Box>
       </Container>
     </div>
   );

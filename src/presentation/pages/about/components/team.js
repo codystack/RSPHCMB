@@ -73,7 +73,7 @@ const ItemCard = (props) => {
 };
 
 const ManagementTeam = () => {
-  let hideImage, align, width, wdt;
+  let width, wdt;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
 
@@ -126,13 +126,11 @@ const ManagementTeam = () => {
   ];
 
   if (xs) {
-    hideImage = true;
-    align = "center";
+    // hideImage = true;
+    // align = "center";
     width = "96%";
     wdt = "25%";
   } else {
-    hideImage = false;
-    align = "left";
     width = "70%";
     wdt = "14%";
   }

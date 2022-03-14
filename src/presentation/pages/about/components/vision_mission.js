@@ -1,7 +1,6 @@
 import { Container, Typography } from "@mui/material";
 import React from "react";
 import { Grid } from "@mui/material";
-import image from "../../../../assets/images/we_are_img.png";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -19,16 +18,16 @@ const tempList = [
 ];
 
 const VisionMission = () => {
-  let hideImage, align;
+  let align;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   //   const sm = useMediaQuery(theme.breakpoints.only("sm"));
 
   if (xs) {
-    hideImage = true;
+    // hideImage = true;
     align = "center";
   } else {
-    hideImage = false;
+    // hideImage = false;
     align = "left";
   }
 
