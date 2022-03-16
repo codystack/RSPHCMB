@@ -20,7 +20,7 @@ const EverythingYouNeed = () => {
         </Typography>
         <Box paddingY={4}>
           <Grid container>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={3} spacing={2}>
               <Box
                 display="flex"
                 flexDirection={"column"}
@@ -52,7 +52,7 @@ const EverythingYouNeed = () => {
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={3} spacing={2}>
               <Box
                 display="flex"
                 flexDirection={"column"}
@@ -60,50 +60,63 @@ const EverythingYouNeed = () => {
                 paddingX={2}
                 paddingY={6}
                 marginX={2}
+                minHeight={200}
+                height={225}
                 sx={{
                   backgroundImage: "url(" + image1 + ")",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
+                  borderRadius: 2,
                 }}
               >
-                <Typography
-                  fontSize={16}
-                  fontWeight="700"
-                  color="white"
-                  textAlign={"center"}
+                <div
+                  style={{
+                    margin: "auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
                 >
-                  Vaccination Registration
-                </Typography>
-                <br />
-                <br />
-                <Typography
-                  color="white"
-                  fontSize={12}
-                  textAlign="center"
-                  fontWeight="400"
-                >
-                  Get your COVID-19 vaccine at an approved site near you.
-                </Typography>
-                <br />
-                <br />
-                <div style={{ margin: "auto" }}>
-                  <Button
-                    sx={{
-                      backgroundColor: "#00B0EF",
-                      color: "white",
-                      paddingX: 2,
-                      textTransform: "capitalize",
-                      fontSize: 12,
-                      fontWeight: "400",
-                    }}
-                    variant="contained"
+                  <Typography
+                    fontSize={16}
+                    fontWeight="700"
+                    color="white"
+                    textAlign={"center"}
                   >
-                    Register Here
-                  </Button>
+                    Vaccination Registration
+                  </Typography>
+                  <br />
+                  <br />
+                  <Typography
+                    color="white"
+                    fontSize={12}
+                    textAlign="center"
+                    fontWeight="400"
+                  >
+                    Get your COVID-19 vaccine at an approved site near you.
+                  </Typography>
+                  <br />
+                  <br />
+                  <div style={{ margin: "auto" }}>
+                    <Button
+                      sx={{
+                        backgroundColor: "#00B0EF",
+                        color: "white",
+                        paddingX: 2,
+                        textTransform: "capitalize",
+                        fontSize: 12,
+                        fontWeight: "400",
+                        borderRadius: 0,
+                      }}
+                      variant="contained"
+                    >
+                      Register Here
+                    </Button>
+                  </div>
                 </div>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={3} spacing={2}>
               <Box
                 display="flex"
                 flexDirection={"column"}
@@ -111,51 +124,64 @@ const EverythingYouNeed = () => {
                 paddingX={2}
                 paddingY={6}
                 marginX={2}
+                minHeight={200}
+                height={225}
                 sx={{
                   backgroundImage: "url(" + image2 + ")",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
+                  borderRadius: 2,
                 }}
               >
-                <Typography
-                  fontSize={16}
-                  fontWeight="700"
-                  color="white"
-                  textAlign={"center"}
+                <div
+                  style={{
+                    margin: "auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
                 >
-                  Vaccination Sites
-                </Typography>
-                <br />
-                <br />
-                <Typography
-                  color="white"
-                  fontSize={12}
-                  textAlign="center"
-                  fontWeight="400"
-                >
-                  Updated list of approved COVID-19 vaccination sites across the
-                  state.
-                </Typography>
-                <br />
-                <br />
-                <div style={{ margin: "auto" }}>
-                  <Button
-                    sx={{
-                      backgroundColor: "#00B0EF",
-                      color: "white",
-                      paddingX: 2,
-                      textTransform: "capitalize",
-                      fontSize: 12,
-                      fontWeight: "400",
-                    }}
-                    variant="contained"
+                  <Typography
+                    fontSize={16}
+                    fontWeight="700"
+                    color="white"
+                    textAlign={"center"}
                   >
-                    View Sites
-                  </Button>
+                    Vaccination Sites
+                  </Typography>
+                  <br />
+                  <br />
+                  <Typography
+                    color="white"
+                    fontSize={12}
+                    textAlign="center"
+                    fontWeight="400"
+                  >
+                    Updated list of approved COVID-19 vaccination sites across
+                    the state.
+                  </Typography>
+                  <br />
+                  <br />
+                  <div style={{ margin: "auto" }}>
+                    <Button
+                      sx={{
+                        backgroundColor: "#00B0EF",
+                        color: "white",
+                        paddingX: 2,
+                        textTransform: "capitalize",
+                        fontSize: 12,
+                        fontWeight: "400",
+                        borderRadius: 0,
+                      }}
+                      variant="contained"
+                    >
+                      View Sites
+                    </Button>
+                  </div>
                 </div>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={3} spacing={2}>
               <Box
                 display="flex"
                 flexDirection={"column"}
@@ -163,47 +189,60 @@ const EverythingYouNeed = () => {
                 paddingX={2}
                 paddingY={6}
                 marginX={2}
+                minHeight={200}
+                height={225}
                 sx={{
                   backgroundImage: "url(" + image3 + ")",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
+                  borderRadius: 2,
                 }}
               >
-                <Typography
-                  fontSize={16}
-                  fontWeight="700"
-                  color="white"
-                  textAlign={"center"}
+                <div
+                  style={{
+                    margin: "auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
                 >
-                  Corporate Vaccination
-                </Typography>
-                <br />
-                <br />
-                <Typography
-                  color="white"
-                  fontSize={12}
-                  textAlign="center"
-                  fontWeight="400"
-                >
-                  Learn about vaccination arrangements for eligible staff,
-                  retirees and dependents of select organizations.
-                </Typography>
-                <br />
-                <br />
-                <div style={{ margin: "auto" }}>
-                  <Button
-                    sx={{
-                      backgroundColor: "#00B0EF",
-                      color: "white",
-                      paddingX: 2,
-                      textTransform: "capitalize",
-                      fontSize: 12,
-                      fontWeight: "400",
-                    }}
-                    variant="contained"
+                  <Typography
+                    fontSize={16}
+                    fontWeight="700"
+                    color="white"
+                    textAlign={"center"}
                   >
-                    Register Here
-                  </Button>
+                    Corporate Vaccination
+                  </Typography>
+                  <br />
+                  <br />
+                  <Typography
+                    color="white"
+                    fontSize={12}
+                    textAlign="center"
+                    fontWeight="400"
+                  >
+                    Learn about vaccination arrangements for eligible staff,
+                    retirees and dependents of select organizations.
+                  </Typography>
+                  <br />
+                  <br />
+                  <div style={{ margin: "auto" }}>
+                    <Button
+                      sx={{
+                        backgroundColor: "#00B0EF",
+                        color: "white",
+                        paddingX: 2,
+                        textTransform: "capitalize",
+                        fontSize: 12,
+                        fontWeight: "400",
+                        borderRadius: 0,
+                      }}
+                      variant="contained"
+                    >
+                      Register Here
+                    </Button>
+                  </div>
                 </div>
               </Box>
             </Grid>

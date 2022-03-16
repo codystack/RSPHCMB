@@ -46,7 +46,7 @@ const Covid19Section = () => {
             width: "100%",
           }}
         >
-          <img src={imageArc} alt="" width={"7%"} style={{ marginLeft: -36 }} />
+          <img src={imageArc} alt="" width={"7%"} style={{ marginLeft: -1 }} />
           <Container
             sx={{
               marginTop: -21,

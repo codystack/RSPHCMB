@@ -16,6 +16,7 @@ const Subscription = () => {
             marginLeft: 24,
             marginTop: 24,
             marginBottom: 24,
+            borderRadius: 10,
           }}
         >
           <Grid container spacing={2}>

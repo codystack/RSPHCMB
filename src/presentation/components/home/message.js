@@ -9,7 +9,7 @@ import bg from "../../../assets/images/blue_rect.svg";
 import image from "../../../assets/images/dg.png";
 
 const MessageFromSec = () => {
-  let hideImage, align, deviceType;
+  let align, deviceType;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   const sm = useMediaQuery(theme.breakpoints.only("sm"));
@@ -67,6 +67,7 @@ const MessageFromSec = () => {
                   color: "#000F37",
                   borderColor: "#000F37",
                   textTransform: "capitalize",
+                  borderRadius: 0,
                 }}
               >
                 Learn More

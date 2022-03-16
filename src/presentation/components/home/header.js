@@ -256,7 +256,7 @@ const Header = () => {
                 justifyContent={"center"}
                 alignItems="start"
               >
-                <img src={headerImage} alt="" width="80%" />
+                <img src={headerImage} alt="" width="75%" />
               </Grid>
             </Grid>
           </Box>

@@ -16,7 +16,9 @@ const Map = () => {
           id="gmap_canvas"
           frameBorder="0"
           scrolling="no"
-          src={embedUrlLeft + "Olu Obasanjo Rd" + embedUrlRight}
+          src={
+            embedUrlLeft + "No 2 Olu-Obasanjo Road, Waterlines" + embedUrlRight
+          }
         />
       </div>
     </Container>

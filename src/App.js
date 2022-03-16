@@ -6,9 +6,10 @@ import Home from "./presentation/pages";
 import Blog from "./presentation/pages/blog";
 import Contact from "./presentation/pages/contact";
 import Services from "./presentation/pages/services";
+import LGAs from "./presentation/pages/lga";
 
 import Footer from "./presentation/layout/footer";
-import ResponsiveAppBar from "./presentation/layout/navbar/index2";
+import MyNavbar from "./presentation/layout/navbar"; // import ResponsiveAppBar from "./presentation/layout/navbar/index2";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <div
         // style={{ display: "flex", flexDirection: "column" }}
         >
-          <ResponsiveAppBar />
+          <MyNavbar />
           {/* <ul
             style={{
               //   position: "absolute",
@@ -53,6 +54,9 @@ function App() {
           </ul> */}
           <div style={{ zIndex: 100 }}>
             <Switch>
+              <Route path="/lga" exact>
+                <LGAs />
+              </Route>
               <Route path="/about">
                 <About />
               </Route>

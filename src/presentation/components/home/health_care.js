@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import image from "../../../assets/images/service_bg.png";
+import image from "../../../assets/images/health_care_access.png";
 import upperDots from "../../../assets/images/dots_upper.svg";
 import lowerDots from "../../../assets/images/dots_down.svg";
 

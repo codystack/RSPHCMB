@@ -1,269 +1,174 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import siteLogo from "../../../assets/images/logo.svg";
-import { makeStyles } from "@mui/styles";
-import { Link, useHistory } from "react-router-dom";
-import { ArrowDropDown } from "@mui/icons-material";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 
-const pages = [
-  {
-    title: "Home",
-    to: "/",
-  },
-  {
-    title: "About",
-    to: "/about",
-  },
-  {
-    title: "Services",
-    to: "/services",
-  },
-  {
-    title: "Resources",
-    to: "/resources",
-  },
-  {
-    title: "Blog",
-    to: "/blog",
-  },
-  {
-    title: "Contact",
-    to: "/contact",
-  },
-];
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
-  abRoot: {
-    background: "transparent",
-    boxShadow: "none",
-    color: "white",
-  },
-  abScroll: {
-    background: "primary",
-    color: "black",
-    boxShadow: "none",
-  },
-  appBarTransparent: {
-    backgroundColor: "rgba(255, 255, 255, 0.01)",
-    boxShadow: "none",
-  },
-  appBarSolid: {
-    backgroundColor: "rgba(255, 255, 255)",
-  },
-  solidAppBar: {
-    background: "white",
-    color: "black",
-  },
-}));
+function ResponsiveDrawer(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  //   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const classes = useStyles();
-  const history = useHistory();
-
-  //   const [isOpen, setIsOpen] = React.useState(false);
-  //   const [isSolidAppBar, setSolidAppBar] = React.useState(true);
-  const [navBackground, setNavBackground] = React.useState("appBarTransparent");
-  const [colorSwitch, setColorSwtch] = React.useState("white");
-
-  const navRef = React.useRef();
-  navRef.current = navBackground;
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  //   const handleOpenUserMenu = (event) => {
-  //     setAnchorElUser(event.currentTarget);
-  //   };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
-  //   const handleCloseUserMenu = () => {
-  //     setAnchorElUser(null);
-  //   };
+  const drawer = (
+    <div>
+      <Toolbar />
+      <Divider />
+      <List>
+        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {["All mail", "Trash", "Spam"].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const show = window.scrollY > 150;
-      if (show) {
-        setNavBackground("appBarSolid");
-        setColorSwtch("black");
-      } else {
-        setNavBackground("appBarTransparent");
-        setColorSwtch("white");
-      }
-    };
-    document.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  });
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <AppBar id="appbar-id" position="fixed" className={classes[navRef.current]}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-                marginLeft: 10,
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem
-                  key={page.title}
-                  divider={true}
-                  onClick={() => history.push(page.to)}
-                  focusVisibleClassName=""
-                  sx={{
-                    textTransform: "capitalize",
-                  }}
-                >
-                  <Typography
-                    textAlign="center"
-                    sx={{ textTransform: "capitaliza" }}
-                  >
-                    {page.title}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Link to={"/"}>
-            <img src={siteLogo} alt="" width="75%" />
-          </Link>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              marginLeft: 10,
-            }}
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
+        }}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: "none" } }}
           >
-            {pages.map((page) => (
-              <div>
-                <Button
-                  key={page.title}
-                  onClick={() => history.push(page.to)}
-                  sx={{
-                    my: 2,
-                    color: "black",
-                    display: "block",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  {page.title}
-                </Button>
-              </div>
-            ))}
-          </Box>
-
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-            }}
-          >
-            <Button
-              variant="outlined"
-              sx={{
-                backgroundColor: "transparent",
-                color: colorSwitch,
-                borderColor: colorSwitch,
-                textTransform: "capitalize",
-                marginX: 2,
-                fontSize: 12,
-              }}
-              onClick={() => {
-                window.location.href = "https://myhealth.ng";
-              }}
-            >
-              myhealth.ng
-            </Button>
-
-            <Button
-              variant="contained"
-              endIcon={<ArrowDropDown />}
-              sx={{
-                backgroundColor: "white",
-                color: "#0D2344",
-                textTransform: "capitalize",
-                fontSize: 12,
-              }}
-            >
-              Covid-19 Vaccination Info
-            </Button>
-          </Box>
-
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap component="div">
+            Responsive drawer
+          </Typography>
         </Toolbar>
-      </Container>
-    </AppBar>
+      </AppBar>
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        aria-label="mailbox folders"
+      >
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
+      >
+        <Toolbar />
+        <Typography paragraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
+          dolor purus non enim praesent elementum facilisis leo vel. Risus at
+          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
+          quisque non tellus. Convallis convallis tellus id interdum velit
+          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
+          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
+          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
+          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
+          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
+          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
+          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
+          faucibus et molestie ac.
+        </Typography>
+        <Typography paragraph>
+          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
+          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
+          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
+          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
+          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
+          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
+          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
+          morbi tristique senectus et. Adipiscing elit duis tristique
+          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
+          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
+          posuere sollicitudin aliquam ultrices sagittis orci a.
+        </Typography>
+      </Box>
+    </Box>
   );
+}
+
+ResponsiveDrawer.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window: PropTypes.func,
 };
-export default ResponsiveAppBar;
+
+export default ResponsiveDrawer;

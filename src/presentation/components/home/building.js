@@ -44,12 +44,12 @@ const BuildingSection = () => {
           marginTop: 48,
         }}
       >
-        <img src={imageSigma} alt="" width={"7%"} style={{ marginLeft: -5 }} />
+        <img src={imageSigma} alt="" width={"7%"} style={{ marginLeft: -2 }} />
       </div>
       <Container sx={{ paddingTop: -16, paddingBottom: 2 }}>
         <Grid container>
           <Grid item sm={6} xs={12}>
-            <ImageMasonry list={tempList} factor={"1.15x"} width="" />
+            <ImageMasonry list={tempList} factor={"1.45x"} width="" />
           </Grid>
           <Grid item sm={6} xs={12}>
             <div>
@@ -76,6 +76,7 @@ const BuildingSection = () => {
                   color: "#000F37",
                   borderColor: "#000F37",
                   textTransform: "capitalize",
+                  borderRadius: 0,
                 }}
               >
                 Learn More

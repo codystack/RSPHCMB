@@ -1,0 +1,7 @@
+.col-newspaper {
+  -webkit-columns: 40px 2;
+  /* Chrome, Safari, Opera */
+  -moz-columns: 60px 2;
+  /* Firefox */
+  columns: 60px 2;
+}
