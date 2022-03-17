@@ -25,16 +25,16 @@ const Section3 = () => {
 
   return (
     <div style={{ backgroundColor: "white" }}>
-      <Container sx={{ paddingY: 5 }}>
-        <Grid container>
-          <Grid item sm={6} xs={12}>
+      <Container sx={{ paddingY: 8 }}>
+        <Grid container spacing={2}>
+          <Grid item sm={6} xs={12} display="flex" justifyContent={"center"}>
             <CustomFeaturedImage
               image={image}
               bg={bg}
               deviceType={deviceType}
             />
           </Grid>
-          <Grid item sm={6} xs={12}>
+          <Grid item sm={6} xs={12} display="flex" justifyContent={"center"}>
             <div>
               <Typography
                 fontSize={deviceType === "phone" ? 26 : 46}

@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const classes = useStyles();
 
+  const [hover1, setHover1] = React.useState("outlined");
+  const [hover2, setHover2] = React.useState("contained");
+
   let alignment, alignLeft, deviceType;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
@@ -92,23 +95,41 @@ const Footer = () => {
               }}
             >
               <Button
-                variant="outlined"
+                variant={hover1}
+                onMouseEnter={() => {
+                  setHover1("contained");
+                }}
+                disableElevation={true}
+                onMouseLeave={() => {
+                  setHover1("outlined");
+                }}
                 size="large"
                 sx={{
                   color: "#FFF",
                   textTransform: "capitalize",
                   paddingY: 1,
                   paddingX: 4,
-                  backgroundColor: "transparent",
                   borderColor: "#fff",
                   borderRadius: 0,
+                  ":hover": {
+                    backgroundColor: "white",
+                    color: "#00B0EF",
+                    borderColor: "#fff",
+                  },
                 }}
               >
                 Register Here
               </Button>
               <div style={{ margin: 10 }} />
               <Button
-                variant="contained"
+                variant={hover2}
+                onMouseEnter={() => {
+                  setHover2("outlined");
+                }}
+                disableElevation={true}
+                onMouseLeave={() => {
+                  setHover2("contained");
+                }}
                 size="large"
                 sx={{
                   color: "#00B0EF",
@@ -116,7 +137,13 @@ const Footer = () => {
                   paddingY: 1,
                   paddingX: 4,
                   backgroundColor: "#fff",
+                  borderColor: "#fff",
                   borderRadius: 0,
+                  ":hover": {
+                    backgroundColor: "#white",
+                    color: "white",
+                    borderColor: "#fff",
+                  },
                 }}
               >
                 View Sites

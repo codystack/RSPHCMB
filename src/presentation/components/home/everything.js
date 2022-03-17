@@ -19,7 +19,12 @@ const EverythingYouNeed = () => {
           state
         </Typography>
         <Box paddingY={4}>
-          <Grid container>
+          <Grid
+            container
+            display={"flex"}
+            justifyContent="stretch"
+            alignItems={"stretch"}
+          >
             <Grid item xs={12} sm={6} md={3} spacing={2}>
               <Box
                 display="flex"

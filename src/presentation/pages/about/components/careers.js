@@ -27,7 +27,9 @@ const Careers = () => {
         alignItems: "center",
       }}
     >
-      <Container sx={{ margin: "auto", padding: 6 }}>
+      <Container
+        sx={{ margin: "auto", paddingY: 8, padding: 6, borderRadius: 16 }}
+      >
         <Box
           style={{
             margin: "auto",

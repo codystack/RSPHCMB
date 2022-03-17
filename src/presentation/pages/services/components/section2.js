@@ -35,19 +35,19 @@ const Section2 = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          paddingY: 8,
         }}
       >
         <Box
-          width={deviceType === "phone" ? "94%" : "56%"}
+          width={deviceType === "phone" ? "94%" : "60%"}
           justifyContent={"center"}
+          paddingY={5}
         >
           <Typography
             color="white"
             textAlign={"center"}
             fontSize={deviceType === "phone" ? 18 : 24}
             fontWeight="500"
-            marginTop={12}
-            marginBottom={21}
           >
             We aim ​to improve the effectiveness and efficiency of primary
             health care delivery in Nigeria and promote inclusive access to

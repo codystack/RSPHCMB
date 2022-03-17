@@ -27,7 +27,7 @@ const ItemCard = (props) => {
       }}
     >
       <img
-        style={{ margin: "auto" }}
+        style={{ margin: "auto", paddingTop: 24 }}
         src={image}
         alt="item-card-img"
         width={164}
@@ -42,7 +42,7 @@ const ItemCard = (props) => {
           justifyContent: "space-between",
         }}
       >
-        <Box paddingX={2}>
+        <Box paddingX={2} paddingBottom={1}>
           <Typography color={"#2571E7"} fontSize={11}>
             {position}
           </Typography>
@@ -55,18 +55,28 @@ const ItemCard = (props) => {
             {name}
           </Typography>
         </Box>
-        <Box
-          paddingX={2}
-          style={{
-            backgroundColor: "#1E5AFA",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Add style={{ color: "white", margin: "auto", fontSize: 24 }} />
-        </Box>
+        <div>
+          <br />
+          <Box
+            padding={1}
+            style={{
+              backgroundColor: "#1E5AFA",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Add
+              style={{
+                color: "white",
+                margin: "auto",
+                fontSize: 24,
+                fontWeight: "700",
+              }}
+            />
+          </Box>
+        </div>
       </div>
     </div>
   );
@@ -139,8 +149,7 @@ const ManagementTeam = () => {
     <div>
       <Container
         sx={{
-          paddingTop: 4,
-          paddingBottom: 4,
+          paddingY: 8,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",

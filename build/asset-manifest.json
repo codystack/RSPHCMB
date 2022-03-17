@@ -1,12 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.e6c13ad2.css",
-    "main.js": "/static/js/main.66adc4f9.js",
+    "main.css": "/static/css/main.fd5c48b9.css",
+    "main.js": "/static/js/main.8bebe2fd.js",
     "static/js/787.d39620db.chunk.js": "/static/js/787.d39620db.chunk.js",
     "static/media/who_logo.svg": "/static/media/who_logo.e0bb71389cf5423b822bbc53dd56db31.svg",
     "static/media/blog_image.png": "/static/media/blog_image.440ff154e400768b22bc.png",
+    "static/media/line_pattern.svg": "/static/media/line_pattern.1cea7cc23661eba6b879013aad96cd22.svg",
     "static/media/checked_blue_line.svg": "/static/media/checked_blue_line.045be5a6e5c908be0ac6b15cde32aef6.svg",
+    "static/media/health_care_access.png": "/static/media/health_care_access.4e859fc85e27b6b5e565.png",
     "static/media/service_bg.png": "/static/media/service_bg.d04d1d54438c00cec2f1.png",
+    "static/media/lga_image.png": "/static/media/lga_image.4514cae29f84e11cbcfd.png",
+    "static/media/lga_demo_img.png": "/static/media/lga_demo_img.a5e573bb33b89d3d3a5a.png",
     "static/media/home_header_img.png": "/static/media/home_header_img.82ba4fbcfc58bcf4a4fa.png",
     "static/media/we_are_img.png": "/static/media/we_are_img.f489023d707a1aa9e9ea.png",
     "static/media/service_img2.png": "/static/media/service_img2.5bbf7c74d4152578884f.png",
@@ -24,6 +28,7 @@
     "static/media/newscat3.png": "/static/media/newscat3.05e50c2b0d16dff03fa9.png",
     "static/media/im2.png": "/static/media/im2.2454c0f4eb99f07951e2.png",
     "static/media/newscat1.png": "/static/media/newscat1.a1129f1a47abe13bea78.png",
+    "static/media/curved_pattern_white.svg": "/static/media/curved_pattern_white.986f06ff1b8a55ff4709fad79f183e1b.svg",
     "static/media/news2.png": "/static/media/news2.dceb316cd5f90e4c2772.png",
     "static/media/bg_shape.png": "/static/media/bg_shape.d4cdf06bdbb76317999b.png",
     "static/media/news3.png": "/static/media/news3.fe87417670a2f9a2853b.png",
@@ -52,8 +57,10 @@
     "static/media/img7.png": "/static/media/img7.39685c412dbbc6fd3bb9.png",
     "static/media/clinton_health_logo.svg": "/static/media/clinton_health_logo.668519a4f95c8639a29aa4acced5262e.svg",
     "static/media/dots_upper.svg": "/static/media/dots_upper.e3421422193d029bde7851d55eb5c410.svg",
+    "static/media/lga_dots.svg": "/static/media/lga_dots.b687a1fcdf631cb9e45d52f59164edd7.svg",
     "static/media/dots_down.svg": "/static/media/dots_down.1feb0d92e73a47c84f1904a22b645700.svg",
     "static/media/logo.svg": "/static/media/logo.e404c2f01f2009123a86f077331091fe.svg",
+    "static/media/logo_white.svg": "/static/media/logo_white.1e0ff74d6aca67c7942623429e0756ba.svg",
     "static/media/logo_footer.svg": "/static/media/logo_footer.6f24901cb3bfbf351c7a8e33f2f2a995.svg",
     "static/media/nphcda_logo.svg": "/static/media/nphcda_logo.b7c5f3b06b829cf62f2b4a7588cb14cd.svg",
     "static/media/tci_logo.svg": "/static/media/tci_logo.bbdded9a6dc15354dd58b91872572569.svg",
@@ -65,12 +72,12 @@
     "index.html": "/index.html",
     "static/media/bg_blue.svg": "/static/media/bg_blue.6dc0219f82738395752a621cb3d40a9d.svg",
     "static/media/blue_rect.svg": "/static/media/blue_rect.7a5bb1fdc865c9091f63c81c82f9fdbb.svg",
-    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
-    "main.66adc4f9.js.map": "/static/js/main.66adc4f9.js.map",
+    "main.fd5c48b9.css.map": "/static/css/main.fd5c48b9.css.map",
+    "main.8bebe2fd.js.map": "/static/js/main.8bebe2fd.js.map",
     "787.d39620db.chunk.js.map": "/static/js/787.d39620db.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.66adc4f9.js"
+    "static/css/main.fd5c48b9.css",
+    "static/js/main.8bebe2fd.js"
   ]
 }

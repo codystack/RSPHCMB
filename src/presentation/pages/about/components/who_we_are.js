@@ -20,8 +20,12 @@ const WhoWeAre = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "white", marginTop: -96 }}>
-      <Container>
+    <div style={{ backgroundColor: "white", marginTop: -75 }}>
+      <Container
+        sx={{
+          paddingY: 8,
+        }}
+      >
         <Grid container>
           <Grid item sm={6} xs={12}>
             <div>

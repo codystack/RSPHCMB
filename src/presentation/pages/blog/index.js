@@ -9,6 +9,7 @@ import Header from "./components/header";
 import LatestNews from "./components/latest_news";
 import MorePosts from "./components/more_posts";
 import NewsUpdateCategory from "./components/news_update_category";
+import Header2 from "./components/header2";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,6 +62,7 @@ const Blog = () => {
   return (
     <div>
       <Header />
+      <Header2 />
       <LatestNews />
       <MorePosts />
       <NewsUpdateCategory />

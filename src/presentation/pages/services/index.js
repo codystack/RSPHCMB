@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#00B0EF",
   },
   header: {
-    height: "96vh",
+    height: "86vh",
     backgroundImage: "url(" + image + ")",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -56,7 +56,7 @@ const Services = () => {
     mt = 400;
     // deviceType = "tablet";
   } else {
-    mt = 165;
+    mt = 150;
     fontSize = 48;
   }
 
@@ -67,7 +67,7 @@ const Services = () => {
           <Typography fontSize={fontSize} textAlign="center" fontWeight={"700"}>
             What we do
           </Typography>
-          <Typography textAlign={"center"} maxWidth={286} gutterBottom={true}>
+          <Typography textAlign={"center"} maxWidth={365} gutterBottom={true}>
             In pursuance of our overall mission, the RSPHCMB strives to fulfil
             these seven corporate goals
           </Typography>

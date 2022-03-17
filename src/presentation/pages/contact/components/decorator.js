@@ -13,7 +13,7 @@ const Decorator = (props) => {
         alignItems: "end",
         width: "100%",
         marginTop:
-          deviceType === "phone" ? -100 : deviceType === "tablet" ? -186 : -250,
+          deviceType === "phone" ? -100 : deviceType === "tablet" ? -186 : -256,
       }}
     >
       <img
@@ -21,10 +21,10 @@ const Decorator = (props) => {
         alt=""
         width={
           deviceType === "phone"
-            ? "12%"
+            ? "15%"
             : deviceType === "tablet"
-            ? "10%"
-            : "8%"
+            ? "18%"
+            : "24%"
         }
       />
     </div>

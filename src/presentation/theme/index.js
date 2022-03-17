@@ -19,7 +19,7 @@ const theme = {
     MuiTypography: {
       styleOverrides: {
         root: {
-          lineHeight: 1.1,
+          lineHeight: 1.5,
         },
       },
     },

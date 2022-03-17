@@ -11,7 +11,19 @@ import whiteSiteLogo from "../../../assets/images/logo_white.svg";
 import { makeStyles } from "@mui/styles";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { ArrowDropDown } from "@mui/icons-material";
-import { Hidden } from "@mui/material";
+import {
+  Avatar,
+  Hidden,
+  List,
+  ListItem,
+  ListItemButton,
+  Popover,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/styles";
+import "./navbar.css";
+
+// import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 
 const pages = [
   {
@@ -38,6 +50,14 @@ const pages = [
     title: "Contact",
     to: "/contact",
   },
+];
+
+const resources = [
+  { title: "Publications", to: "/resources/publications" },
+  { title: "Fact Sheets", to: "/resources/fact_sheets" },
+  { title: "Downloads", to: "/resources/downloads" },
+  { title: "Reports", to: "/resources/reports" },
+  { title: "Gallery", to: "/resources/gallery" },
 ];
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -66,12 +86,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainNavbar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  // const [anchorElNav, setAnchorElNav] = React.useState(null);
   //   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
+  const theme = useTheme();
   //   const [isOpen, setIsOpen] = React.useState(false);
   //   const [isSolidAppBar, setSolidAppBar] = React.useState(true);
   const [navBackground, setNavBackground] = React.useState("appBarTransparent");
@@ -79,8 +100,28 @@ const MainNavbar = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [logo, setLogo] = React.useState(siteLogo);
   const [navColor, setNavColor] = React.useState("black");
-
   const [blue, setBlue] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handlePopoverOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  //   setOpen((previousOpen) => !previousOpen);
+  // };
+
+  // const canBeOpen = open && Boolean(anchorEl);
+  // const id = canBeOpen ? "transition-popper" : undefined;
 
   const navRef = React.useRef();
   navRef.current = navBackground;
@@ -133,17 +174,22 @@ const MainNavbar = () => {
         }
       } else {
         if (show) {
+          if (location.pathname === "/") {
+            setBlue(true);
+          }
           setNavBackground("appBarSolid");
           setColorSwtch(blue ? "#00B0EF" : "black");
           setLogo(siteLogo);
           setNavColor("black");
         } else {
+          if (location.pathname === "/") {
+            setBlue(false);
+          }
           setNavBackground("appBarTransparent");
           setColorSwtch(blue ? "#00B0EF" : "white");
           setLogo(siteLogo);
           setNavColor("black");
         }
-        // setLogo(siteLogo);
       }
     };
     document.addEventListener("scroll", handleScroll);
@@ -172,44 +218,6 @@ const MainNavbar = () => {
             >
               <MenuIcon />
             </IconButton>
-            {/* <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-                marginLeft: 10,
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem
-                  key={page.title}
-                  divider={true}
-                  onClick={() => history.push(page.to)}
-                  focusVisibleClassName=""
-                  sx={{
-                    textTransform: "capitalize",
-                  }}
-                >
-                  <Typography
-                    textAlign="center"
-                    sx={{ textTransform: "capitaliza" }}
-                  >
-                    {page.title}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
           </Box>
           <nav className={classes.drawer} aria-label="mailbox folders">
             {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -237,18 +245,175 @@ const MainNavbar = () => {
           >
             {pages.map((page) => (
               <div>
-                <Button
-                  key={page.title}
-                  onClick={() => history.push(page.to)}
+                {page.title === "Resources" ? (
+                  <>
+                    <div>
+                      <Button
+                        className="nav__menu-item"
+                        endIcon={
+                          page.title === "About" ||
+                          page.title === "Resources" ? (
+                            <ArrowDropDown />
+                          ) : null
+                        }
+                        sx={{
+                          my: 2,
+                          color: navColor,
+                          // display: "block",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {page.title}
+                      </Button>
+                      <ul className="nav__submenu">
+                        <li className="nav__submenu-item ">
+                          <a>Our Company</a>
+                        </li>
+                        <li className="nav__submenu-item ">
+                          <a>Our Team</a>
+                        </li>
+                        <li className="nav__submenu-item ">
+                          <a>Our Portfolio</a>
+                        </li>
+                      </ul>
+                      {/* <Popover
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "center",
+                        }}
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "center",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            b: 0.5,
+                            borderRadius: 3,
+                            p: 1,
+                            bgcolor: "background.paper",
+                          }}
+                        >
+                          <List disablePadding={true}>
+                            {resources?.map((elem, index) => (
+                              <ListItem
+                                key={index}
+                                divider={
+                                  index === resources.length - 1 ? false : true
+                                }
+                                disablePadding={true}
+                                disableGutters={true}
+                              >
+                                <ListItemButton
+                                  onClick={(e) => {
+                                    // handleClick(e);
+                                    history.push(elem.to);
+                                  }}
+                                >
+                                  {elem.title}
+                                </ListItemButton>
+                              </ListItem>
+                            ))}
+                          </List>
+                        </Box>
+                      </Popover> */}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      // aria-describedby={id}
+                      key={page.title}
+                      endIcon={
+                        page.title === "About" || page.title === "Resources" ? (
+                          <ArrowDropDown />
+                        ) : null
+                      }
+                      onClick={
+                        page.title === "Resources"
+                          ? null
+                          : () => history.push(page.to)
+                      }
+                      sx={{
+                        my: 2,
+                        color: navColor,
+                        // display: "block",
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {page.title}
+                    </Button>
+                  </>
+                )}
+
+                {/* <Popover
+                  id="mouse-over-popover"
                   sx={{
-                    my: 2,
-                    color: navColor,
-                    display: "block",
-                    textTransform: "capitalize",
+                    pointerEvents: "none",
+                  }}
+                  open={open}
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  onClose={handlePopoverClose}
+                  disableRestoreFocus
+                >
+                  <Box
+                    sx={{
+                      b: 0.5,
+                      borderRadius: 3,
+                      p: 1,
+                      bgcolor: "background.paper",
+                    }}
+                  >
+                    <List disablePadding={true}>
+                      {resources?.map((elem, index) => (
+                        <ListItem
+                          key={index}
+                          divider={true}
+                          disablePadding={true}
+                          disableGutters={true}
+                        >
+                          <ListItemButton
+                            onClick={(e) => {
+                              // handleClick(e);
+                              history.push(elem.to);
+                            }}
+                          >
+                            {elem.title}
+                          </ListItemButton>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Box>
+                </Popover> */}
+
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  {page.title}
-                </Button>
+                  <div
+                    hidden={location.pathname !== page.to}
+                    style={{
+                      height: 6,
+                      width: 6,
+                      backgroundColor: theme.palette.primary.main,
+                      borderRadius: 3,
+                      marginTop: -40,
+                    }}
+                  />
+                </div>
               </div>
             ))}
           </Box>

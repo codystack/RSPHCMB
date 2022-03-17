@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#00B0EF",
   },
   header: {
-    height: "96vh",
+    height: "86vh",
     backgroundImage: "url(" + image + ")",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -53,7 +53,7 @@ const About = () => {
     mt = 400;
     // deviceType = "tablet";
   } else {
-    mt = 165;
+    mt = 150;
     fontSize = 48;
   }
 

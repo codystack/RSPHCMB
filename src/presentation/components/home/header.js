@@ -39,7 +39,7 @@ const Header = () => {
     <div
       style={{
         position: "relative",
-        height: 610,
+        height: 625,
       }}
     >
       <Grid
@@ -50,13 +50,13 @@ const Header = () => {
           bottom: 0,
           left: 0,
           right: 0,
-          height: 610,
+          height: 625,
         }}
       >
         <Grid
           xs={12}
           sm={6}
-          md={8}
+          md={7}
           sx={{
             backgroundColor: "white",
           }}
@@ -101,7 +101,7 @@ const Header = () => {
         <Grid
           xs={12}
           sm={6}
-          md={4}
+          md={5}
           sx={{
             backgroundColor: "#00B0EF",
           }}
@@ -212,7 +212,7 @@ const Header = () => {
                     display="flex"
                     flexDirection={"row"}
                     justifyContent="start"
-                    alignItems={"center"}
+                    alignItems={"stretch"}
                   >
                     <TextField
                       // variant="filled"
@@ -236,13 +236,17 @@ const Header = () => {
                       sx={{
                         backgroundColor: "#FF0000",
                         color: "white",
-                        paddingX: 4,
+                        paddingX: 5,
                         maxLines: 1,
-                        height: "100%",
+                        ":hover": {
+                          bgcolor: "#d32f2f", // theme.palette.primary.main
+                          color: "white",
+                        },
+                        alignSelf: "stretch",
                         textTransform: "capitalize",
                       }}
                     >
-                      Search Now
+                      Search
                     </Button>
                   </Box>
                 </Card>
