@@ -12,7 +12,6 @@ const DepartmentInfo = (props) => {
 
   React.useEffect(() => {
     onSnapshot(doc(db, "departments", "" + location?.state?.id), (doc) => {
-      // console.log("Current data: ", doc.data());
       setFunctions(doc.data()?.functions);
     });
   }, [location?.state?.id]);

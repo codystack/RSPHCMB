@@ -49,7 +49,6 @@ const RichText = (props) => {
 
   const save = (data) => {
     // save this data somewhere
-    // console.log(data);
   };
 
   return (

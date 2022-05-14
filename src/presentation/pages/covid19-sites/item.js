@@ -20,7 +20,6 @@ const Covid19LGAItem = (props) => {
   const [sites, setSites] = React.useState([]);
 
   React.useEffect(() => {
-    // console.log("STA", location?.state.lga);
     const usersRef = collection(db, "vaccination-sites");
     const q = query(usersRef, where("lga", "==", location.state?.lga));
 
@@ -32,8 +31,6 @@ const Covid19LGAItem = (props) => {
       setSites(vsites);
     });
   });
-
-  //   console.log("SITES", sites);
 
   return (
     <div>

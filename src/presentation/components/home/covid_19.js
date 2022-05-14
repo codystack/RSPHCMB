@@ -34,12 +34,10 @@ const Covid19Section = () => {
   );
 
   React.useEffect(() => {
-    // console.log("STATES::: ", data?.data?.states);
     if (data) {
       let rivers = data?.data?.states?.filter(
         (elem) => elem.state === "Rivers"
       );
-      // console.log("RIVW::", rivers);
       setRiversData(rivers[0]);
     }
   }, [data]);

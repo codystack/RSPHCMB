@@ -127,7 +127,6 @@ function App() {
     });
 
     onSnapshot(doc(db, "perm-sec", "info"), (doc) => {
-      // console.log("Current data: ", doc.data());
       dispatch(setPermSecData(doc.data()));
     });
 
@@ -140,28 +139,23 @@ function App() {
     });
 
     onSnapshot(doc(db, "contact", "data"), (doc) => {
-      // console.log("Current data: ", doc.data());
       dispatch(setContactData(doc.data()));
     });
 
     onSnapshot(doc(db, "contents", "wdc"), (doc) => {
-      // console.log("Current data: ", doc.data());
       dispatch(setWDCData(doc.data()));
     });
 
     onSnapshot(doc(db, "home", "misc"), (doc) => {
-      // console.log("Current data: ", doc.data());
       dispatch(setMisc(doc.data()));
       setCrash(doc?.data()?.crash);
     });
 
     onSnapshot(doc(db, "resources", "research"), (doc) => {
-      // console.log("Current data: ", doc.data());
       dispatch(setResearchData(doc.data()));
     });
 
     onSnapshot(doc(db, "featured", "service"), (doc) => {
-      // console.log("Current data: ", doc.data());
       dispatch(setFeaturedServiceData(doc.data()));
     });
 
@@ -193,12 +187,10 @@ function App() {
     });
 
     onSnapshot(doc(db, "home", "building-culture"), (doc) => {
-      // console.log("Current data: ", doc.data());
       dispatch(setBuildingCultureData(doc.data()));
     });
 
     onSnapshot(doc(db, "home", "health-access"), (doc) => {
-      // console.log("Current data: ", doc.data());
       dispatch(setHealthAccessData(doc.data()));
     });
 

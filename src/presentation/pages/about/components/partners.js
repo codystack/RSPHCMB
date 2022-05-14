@@ -10,7 +10,7 @@ import tciLogo from "../../../../assets/images/tci_logo.svg";
 import nphcdaLogo from "../../../../assets/images/nphcda_logo.svg";
 import clintonHealthLogo from "../../../../assets/images/clinton_health_logo.svg";
 import viralogyLogo from "../../../../assets/images/inst_human_viralogy_logo.svg";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Partners = () => {
   let unicef = React.useRef({});
@@ -19,10 +19,6 @@ const Partners = () => {
   let nphcda = React.useRef({});
   let tci = React.useRef({});
   let ihv = React.useRef({});
-
-  const { partnersData } = useSelector((state) => state.partners);
-
-  console.log("PARTNERS: ", partnersData);
 
   let deviceType;
   const theme = useTheme();

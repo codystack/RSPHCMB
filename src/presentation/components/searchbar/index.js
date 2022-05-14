@@ -13,7 +13,6 @@ export default function Searchbar(props) {
     // } else {
     //   setError(true);
     // }
-    // console.log("VALX: ", value);
   };
 
   return (
@@ -38,7 +37,6 @@ export default function Searchbar(props) {
         options={lgas}
         onChange={(event, searchKey) => {
           setSearchKey(searchKey?.label);
-          console.log("KLK: ", searchKey?.label);
         }}
         renderInput={(params) => (
           <TextField

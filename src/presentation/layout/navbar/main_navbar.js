@@ -158,8 +158,6 @@ const MainNavbar = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  // console.log("KEY:", location.pathname);
-
   React.useEffect(() => {
     if (
       location.pathname === "/about" ||

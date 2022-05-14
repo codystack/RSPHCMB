@@ -96,8 +96,7 @@ const Item = (props) => {
     const xhr = new XMLHttpRequest();
     xhr.responseType = "blob";
     xhr.onload = (event) => {
-      const blob = xhr.response;
-      console.log("BLOBE", blob);
+      // const blob = xhr.response;
     };
     xhr.open("GET", item?.res);
     xhr.send();

@@ -43,10 +43,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function CommitteeTable(props) {
   let { list } = props;
 
-  React.useEffect(() => {
-    console.log("HJ", list);
-  });
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">

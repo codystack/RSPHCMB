@@ -65,7 +65,6 @@ const LGAItem = (props) => {
     let faci = LGAsData?.filter((it) => it?.lga === location.state?.title);
     setLGAFacilities(faci[0]?.facilities);
     setLGAItem(faci[0]);
-    console.log("Facility: ", faci);
   }, [LGAsData, location.state?.title]);
 
   return (

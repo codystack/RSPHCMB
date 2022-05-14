@@ -12,12 +12,6 @@ import AccordionSection from "./components/accordion_section";
 const FAQs = (props) => {
   const { faqData } = useSelector((state) => state.faqs);
 
-  // React.useEffect(() => {
-  //   if (faqData) {
-  //     console.log("FAQ DATA", faqData);
-  //   }
-  // }, [faqData]);
-
   return (
     <div>
       <Header image={image} title={"Frequently Asked Questions"} />
