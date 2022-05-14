@@ -9,6 +9,9 @@ import VisionMission from "./components/vision_mission";
 import ManagementTeam from "./components/team";
 import Careers from "./components/careers";
 import Partners from "./components/partners";
+import Governor from "./components/governor";
+// import { Box } from "@mui/system";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,15 +41,17 @@ const useStyles = makeStyles((theme) => ({
 
 const About = () => {
   const classes = useStyles();
+  const { rsphcmbData } = useSelector((state) => state.about);
 
   let fontSize, mt;
+  // let deviceType;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   const sm = useMediaQuery(theme.breakpoints.only("sm"));
 
   if (xs) {
     fontSize = 32;
-    mt = 150;
+    mt = 200;
     // deviceType = "phone";
   } else if (sm) {
     fontSize = 42;
@@ -69,8 +74,55 @@ const About = () => {
           </Typography>
         </div>
       </div>
-      <WhoWeAre />
-      <VisionMission />
+      <WhoWeAre data={rsphcmbData} />
+      <VisionMission data={rsphcmbData} />
+      <Governor data={rsphcmbData} />
+      {/* <Container
+        sx={{
+          marginTop: deviceType === "phone" ? 4 : -10,
+          marginBottom: 5,
+          display: "flex",
+          paddingY: 5,
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          display="flex"
+          flexDirection={"row"}
+          justifyContent="left"
+          alignItems={"stretch"}
+          width={deviceType === "phone" ? "90%" : "75%"}
+        >
+          <div
+            style={{
+              backgroundColor: "#C0D4F3",
+              padding: 24,
+              flex: 1,
+            }}
+          >
+            <Typography
+              fontSize={deviceType === "phone" ? 16 : 21}
+              color={"#012F74"}
+            >
+              Speech by the Deputy Governor of Rivers State
+            </Typography>
+          </div>
+          <Button
+            variant="contained"
+            disableElevation={true}
+            sx={{
+              textTransform: "capitalize",
+              paddingX: 4,
+              cursor: "pointer",
+              color: "white",
+            }}
+          >
+            Learn More
+          </Button>
+        </Box>
+      </Container> */}
       <ManagementTeam />
       <Careers />
       <Partners />

@@ -2,7 +2,8 @@
 import { Container } from "@mui/material";
 import React from "react";
 
-const Map = () => {
+const Map = (props) => {
+  let { address } = props;
   const embedUrlLeft = "https://maps.google.com/maps?q=";
   const embedUrlRight = "&t=&z=13&ie=UTF8&iwloc=&output=embed";
 
@@ -16,9 +17,7 @@ const Map = () => {
           id="gmap_canvas"
           frameBorder="0"
           scrolling="no"
-          src={
-            embedUrlLeft + "No 2 Olu-Obasanjo Road, Waterlines" + embedUrlRight
-          }
+          src={embedUrlLeft + address + embedUrlRight}
         />
       </div>
     </Container>

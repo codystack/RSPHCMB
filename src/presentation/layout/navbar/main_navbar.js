@@ -11,19 +11,9 @@ import whiteSiteLogo from "../../../assets/images/logo_white.svg";
 import { makeStyles } from "@mui/styles";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { ArrowDropDown } from "@mui/icons-material";
-import {
-  Avatar,
-  Hidden,
-  List,
-  ListItem,
-  ListItemButton,
-  Popover,
-  Typography,
-} from "@mui/material";
+import { Menu, MenuItem } from "@mui/material";
 import { useTheme } from "@mui/styles";
 import "./navbar.css";
-
-// import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 
 const pages = [
   {
@@ -54,10 +44,19 @@ const pages = [
 
 const resources = [
   { title: "Publications", to: "/resources/publications" },
-  { title: "Fact Sheets", to: "/resources/fact_sheets" },
   { title: "Downloads", to: "/resources/downloads" },
   { title: "Reports", to: "/resources/reports" },
   { title: "Gallery", to: "/resources/gallery" },
+  { title: "Research", to: "/resources/research" },
+];
+
+const abouts = [
+  { title: "About RSPHCMB", to: "/about" },
+  { title: "Board of Trustees", to: "/about/bot" },
+  { title: "Departments", to: "/about/departments" },
+  { title: "Health Authority", to: "/about/lga" },
+  { title: "Health Centres", to: "/about/health-centres" },
+  { title: "Ward Committees", to: "/about/wdc" },
 ];
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -85,43 +84,72 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainNavbar = () => {
-  // const [anchorElNav, setAnchorElNav] = React.useState(null);
-  //   const [anchorElUser, setAnchorElUser] = React.useState(null);
+// const mTheme = createMuiTheme({});
 
+const MainNavbar = () => {
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
   const theme = useTheme();
-  //   const [isOpen, setIsOpen] = React.useState(false);
-  //   const [isSolidAppBar, setSolidAppBar] = React.useState(true);
+
   const [navBackground, setNavBackground] = React.useState("appBarTransparent");
   const [colorSwitch, setColorSwtch] = React.useState("white");
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [logo, setLogo] = React.useState(siteLogo);
   const [navColor, setNavColor] = React.useState("black");
   const [blue, setBlue] = React.useState(false);
-  // const [open, setOpen] = React.useState(false);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
-  const handlePopoverOpen = (event) => {
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const open2 = Boolean(anchorEl2);
+
+  // const [anchorElDrop, setAnchorElDrop] = React.useState(null);
+  // const [openDrop, setOpenDrop] = React.useState(false);
+
+  // const handleOpenDrop = (event) => {
+  //   setAnchorElDrop(event.currentTarget);
+  //   setOpenDrop(true);
+  // };
+
+  // const handleCloseDrop = (e) => {
+  //   if (e.currentTarget.localName !== "ul") {
+  //     const menu = document.getElementById("simple-menu").children[4];
+  //     const menuBoundary = {
+  //       left: menu.offsetLeft,
+  //       top: e.currentTarget.offsetTop + e.currentTarget.offsetHeight,
+  //       right: menu.offsetLeft + menu.offsetHeight,
+  //       bottom: menu.offsetTop + menu.offsetHeight,
+  //     };
+  //     if (
+  //       e.clientX >= menuBoundary.left &&
+  //       e.clientX <= menuBoundary.right &&
+  //       e.clientY <= menuBoundary.bottom &&
+  //       e.clientY >= menuBoundary.top
+  //     ) {
+  //       return;
+  //     }
+  //   }
+
+  //   setOpenDrop(false);
+  // };
+
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handlePopoverClose = () => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl);
+  const handleClick2 = (event) => {
+    setAnchorEl2(event.currentTarget);
+  };
 
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  //   setOpen((previousOpen) => !previousOpen);
-  // };
-
-  // const canBeOpen = open && Boolean(anchorEl);
-  // const id = canBeOpen ? "transition-popper" : undefined;
+  const handleClose2 = () => {
+    setAnchorEl2(null);
+  };
 
   const navRef = React.useRef();
   navRef.current = navBackground;
@@ -130,12 +158,25 @@ const MainNavbar = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  // console.log("KEY:", location.pathname);
+
   React.useEffect(() => {
-    if (location.pathname === "/about") {
+    if (
+      location.pathname === "/about" ||
+      location.pathname === "/about/lga" ||
+      location.pathname.startsWith("/about/team/") ||
+      location.pathname === "/about/wdc" ||
+      location.pathname === "/about/bot" ||
+      location.pathname === "/about/health-centres"
+    ) {
       setBlue(true);
       setLogo(siteLogo);
       setNavColor("black");
-    } else if (location.pathname === "/contact") {
+    } else if (
+      location.pathname === "/contact" ||
+      location.pathname === "/about/departments" ||
+      location.pathname.startsWith("/about/departments")
+    ) {
       setBlue(true);
       setLogo(siteLogo);
       setNavColor("black");
@@ -147,7 +188,23 @@ const MainNavbar = () => {
       setBlue(true);
       setLogo(siteLogo);
       setNavColor("black");
-    } else if (location.pathname === "/lga") {
+    } else if (
+      location.pathname.endsWith("LGA") ||
+      location.pathname.startsWith("/resources/gallery") ||
+      location.pathname === "/faqs" ||
+      location.pathname.startsWith("/covid19-vaccin") ||
+      location.pathname.startsWith("/about/team/") ||
+      location.pathname.startsWith("/about/lga/") ||
+      location.pathname === "/about/wdc" ||
+      location.pathname.startsWith("/partner") ||
+      location.pathname === "/resources/research" ||
+      location.pathname.startsWith("/resources/reports") ||
+      location.pathname === "/resources/downloads" ||
+      location.pathname === "/resources/publications" ||
+      location.pathname === "/message-from-perm-sec" ||
+      location.pathname.startsWith("/services/")
+    ) {
+      setBlue(true);
       setLogo(whiteSiteLogo);
       setNavColor("white");
     } else {
@@ -160,7 +217,22 @@ const MainNavbar = () => {
   React.useEffect(() => {
     const handleScroll = () => {
       const show = window.scrollY > 150;
-      if (location.pathname === "/lga") {
+      if (
+        location.pathname.endsWith("LGA") ||
+        location.pathname.startsWith("/resources/gallery") ||
+        location.pathname === "/faqs" ||
+        location.pathname.startsWith("/covid19-vaccin") ||
+        location.pathname.startsWith("/about/lga/") ||
+        location.pathname.startsWith("/about/team/") ||
+        location.pathname === "/about/wdc" ||
+        location.pathname.startsWith("/partner") ||
+        location.pathname === "/resources/research" ||
+        location.pathname.startsWith("/resources/reports") ||
+        location.pathname === "/resources/downloads" ||
+        location.pathname === "/resources/publications" ||
+        location.pathname === "/message-from-perm-sec" ||
+        location.pathname.startsWith("/services/")
+      ) {
         if (show) {
           setNavBackground("appBarSolid");
           setColorSwtch(blue ? "#00B0EF" : "black");
@@ -199,62 +271,194 @@ const MainNavbar = () => {
   });
 
   return (
-    <AppBar
-      color={navBackground === "appBarTransparent" ? "transparent" : "inherit"}
-      id="appbar-id"
-      elevation={0}
-      position="fixed"
-      className={classes[navRef.current]}
-    >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              onClick={handleDrawerToggle}
-              color="primary"
-              aria-label="open drawer"
+    <div>
+      <AppBar
+        color={
+          navBackground === "appBarTransparent" ? "transparent" : "inherit"
+        }
+        id="appbar-id"
+        elevation={0}
+        sx={{ paddingY: 1 }}
+        position="fixed"
+        className={classes[navRef.current]}
+      >
+        <Container sx={{ paddingX: 2 }}>
+          <Toolbar disableGutters>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                edge="start"
+                className={classes.menuButton}
+                onClick={handleDrawerToggle}
+                color="primary"
+                aria-label="open drawer"
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+
+            <Link to={"/"}>
+              <img src={logo} alt="" width="75%" />
+            </Link>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                marginLeft: 10,
+              }}
             >
-              <MenuIcon />
-            </IconButton>
-          </Box>
-          <nav className={classes.drawer} aria-label="mailbox folders">
-            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-            <Hidden mdUp implementation="css">
-              {/* <ResponsiveDrawer /> */}
-              {/* <MobileDrawer
-            setMobileOpen={setMobileOpen}
-            drawerVariant="temporary"
-            anchor="left"
-            mobileOpen={mobileOpen}
-            handleDrawerToggle={handleDrawerToggle}
-            window={window}
-          /> */}
-            </Hidden>
-          </nav>
-          <Link to={"/"}>
-            <img src={logo} alt="" width="75%" />
-          </Link>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              marginLeft: 10,
-            }}
-          >
-            {pages.map((page) => (
-              <div>
-                {page.title === "Resources" ? (
-                  <>
-                    <div>
+              {/* <ThemeProvider theme={mTheme}> */}
+              {pages.map((page) => (
+                <div key={page.to}>
+                  {page.title === "Resources" ? (
+                    <>
                       <Button
-                        className="nav__menu-item"
+                        endIcon={
+                          page.title === "About" ||
+                          page.title === "Resources" ? (
+                            <ArrowDropDown sx={{ ml: -1 }} />
+                          ) : null
+                        }
+                        sx={{
+                          my: 2,
+                          color: navColor,
+                          textTransform: "capitalize",
+                        }}
+                        // aria-controls={open2 ? "basic-men" : undefined}
+                        // aria-expanded={open2 ? "true" : undefined}
+                        // onClick={handleClick2}
+                        // onMouseEnter={handleClick2}
+                        id="menubutton1"
+                        // aria-owns={openDrop ? "simple-menu" : null}
+                        aria-haspopup="true"
+                        // onMouseOver={handleOpenDrop}
+                        // onMouseLeave={handleCloseDrop}
+                        style={{ zIndex: 1301 }}
+                        aria-controls={open2 ? "simple-menu" : undefined}
+                        aria-expanded={open2 ? "true" : undefined}
+                        onClick={handleClick2}
+                        onMouseEnter={handleClick2}
+                        onMouseExit={handleClose2}
+                      >
+                        {page.title}
+                      </Button>
+                      <Menu
+                        // id="simple-menu"
+                        // anchorEl={anchorElDrop}
+                        // open={openDrop}
+                        id="simple-menu"
+                        anchorEl={anchorEl2}
+                        open={open2}
+                        onClose={handleClose2}
+                        MenuListProps={{
+                          "aria-labelledby": "menubutton1",
+                        }}
+                      >
+                        {resources?.map((elem, index) => (
+                          <MenuItem
+                            key={index}
+                            divider={
+                              index === resources.length - 1 ? false : true
+                            }
+                            onClick={(e) => {
+                              handleClose2();
+                              history.push(elem.to);
+                            }}
+                          >
+                            {elem.title}
+                          </MenuItem>
+                        ))}
+                      </Menu>
+                    </>
+                  ) : page.title === "About" ? (
+                    <>
+                      <Button
+                        endIcon={
+                          page.title === "About" ||
+                          page.title === "Resources" ? (
+                            <ArrowDropDown sx={{ ml: -1 }} />
+                          ) : null
+                        }
+                        sx={{
+                          my: 2,
+                          color: navColor,
+                          // display: "block",
+                          textTransform: "capitalize",
+                        }}
+                        id="basic-button"
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        onClick={handleClick}
+                        onMouseEnter={handleClick}
+                        onMouseExit={handleClose}
+                      >
+                        {page.title}
+                      </Button>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                      >
+                        {abouts?.map((elem, index) => (
+                          <MenuItem
+                            key={index}
+                            divider={index === abouts.length - 1 ? false : true}
+                            onClick={(e) => {
+                              handleClose();
+                              history.push(elem.to);
+                            }}
+                          >
+                            {elem.title}
+                          </MenuItem>
+                        ))}
+                      </Menu>
+                    </>
+                  ) : page.title === "Blog" ? (
+                    <>
+                      <Button
+                        key={page.title}
+                        sx={{
+                          my: 2,
+                          color: navColor,
+                          textTransform: "capitalize",
+                        }}
+                        style={{
+                          textDecoration: "none",
+                        }}
+                      >
+                        <a
+                          href="http://rsphcmb.xyz/blog"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            textDecoration: "none",
+                            textTransform: "capitalize",
+                            color: navColor,
+                          }}
+                        >
+                          {page.title}
+                        </a>
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button
+                        // aria-describedby={id}
+                        key={page.title}
                         endIcon={
                           page.title === "About" ||
                           page.title === "Resources" ? (
                             <ArrowDropDown />
                           ) : null
+                        }
+                        onClick={
+                          page.title === "Resources" || page.title === "About"
+                            ? null
+                            : () => history.push(page.to)
                         }
                         sx={{
                           my: 2,
@@ -265,242 +469,85 @@ const MainNavbar = () => {
                       >
                         {page.title}
                       </Button>
-                      <ul className="nav__submenu">
-                        <li className="nav__submenu-item ">
-                          <a>Our Company</a>
-                        </li>
-                        <li className="nav__submenu-item ">
-                          <a>Our Team</a>
-                        </li>
-                        <li className="nav__submenu-item ">
-                          <a>Our Portfolio</a>
-                        </li>
-                      </ul>
-                      {/* <Popover
-                        anchorOrigin={{
-                          vertical: "bottom",
-                          horizontal: "center",
-                        }}
-                        transformOrigin={{
-                          vertical: "top",
-                          horizontal: "center",
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            b: 0.5,
-                            borderRadius: 3,
-                            p: 1,
-                            bgcolor: "background.paper",
-                          }}
-                        >
-                          <List disablePadding={true}>
-                            {resources?.map((elem, index) => (
-                              <ListItem
-                                key={index}
-                                divider={
-                                  index === resources.length - 1 ? false : true
-                                }
-                                disablePadding={true}
-                                disableGutters={true}
-                              >
-                                <ListItemButton
-                                  onClick={(e) => {
-                                    // handleClick(e);
-                                    history.push(elem.to);
-                                  }}
-                                >
-                                  {elem.title}
-                                </ListItemButton>
-                              </ListItem>
-                            ))}
-                          </List>
-                        </Box>
-                      </Popover> */}
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <Button
-                      // aria-describedby={id}
-                      key={page.title}
-                      endIcon={
-                        page.title === "About" || page.title === "Resources" ? (
-                          <ArrowDropDown />
-                        ) : null
-                      }
-                      onClick={
-                        page.title === "Resources"
-                          ? null
-                          : () => history.push(page.to)
-                      }
-                      sx={{
-                        my: 2,
-                        color: navColor,
-                        // display: "block",
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      {page.title}
-                    </Button>
-                  </>
-                )}
+                    </>
+                  )}
 
-                {/* <Popover
-                  id="mouse-over-popover"
-                  sx={{
-                    pointerEvents: "none",
-                  }}
-                  open={open}
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "left",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "left",
-                  }}
-                  onClose={handlePopoverClose}
-                  disableRestoreFocus
-                >
-                  <Box
-                    sx={{
-                      b: 0.5,
-                      borderRadius: 3,
-                      p: 1,
-                      bgcolor: "background.paper",
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
                   >
-                    <List disablePadding={true}>
-                      {resources?.map((elem, index) => (
-                        <ListItem
-                          key={index}
-                          divider={true}
-                          disablePadding={true}
-                          disableGutters={true}
-                        >
-                          <ListItemButton
-                            onClick={(e) => {
-                              // handleClick(e);
-                              history.push(elem.to);
-                            }}
-                          >
-                            {elem.title}
-                          </ListItemButton>
-                        </ListItem>
-                      ))}
-                    </List>
-                  </Box>
-                </Popover> */}
-
-                <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    hidden={location.pathname !== page.to}
-                    style={{
-                      height: 6,
-                      width: 6,
-                      backgroundColor: theme.palette.primary.main,
-                      borderRadius: 3,
-                      marginTop: -40,
-                    }}
-                  />
+                    <div
+                      hidden={location.pathname !== page.to}
+                      style={{
+                        height: 6,
+                        width: 6,
+                        backgroundColor: theme.palette.primary.main,
+                        borderRadius: 3,
+                        marginTop: -40,
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Box>
+              ))}
+              {/* </ThemeProvider> */}
+            </Box>
 
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-            }}
-          >
-            <Button
-              variant="outlined"
+            <Box
               sx={{
-                backgroundColor: "transparent",
-                color: colorSwitch,
-                borderColor: colorSwitch,
-                textTransform: "capitalize",
-                marginX: 2,
-                fontSize: 12,
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
               }}
-              // onClick={() => {
-              //   window.location.href = "";
-              // }}
             >
-              <a
-                href="https://myhealth.ng"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  textDecoration: "none",
-                  textTransform: "lowercase",
+              <Button
+                variant="outlined"
+                sx={{
+                  backgroundColor: "transparent",
                   color: colorSwitch,
+                  borderColor: colorSwitch,
+                  textTransform: "capitalize",
+                  marginX: 2,
+                  fontSize: 12,
                 }}
               >
-                myhealth.ng
-              </a>
-            </Button>
+                <a
+                  href="https://myhealth.ng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    textDecoration: "none",
+                    textTransform: "lowercase",
+                    color: colorSwitch,
+                  }}
+                >
+                  myhealth.ng
+                </a>
+              </Button>
 
-            <Button
-              variant="contained"
-              disableElevation={true}
-              endIcon={<ArrowDropDown />}
-              sx={{
-                backgroundColor: blue ? "#00B0EF" : "white",
-                color: blue ? "white" : "#0D2344",
-                textTransform: "capitalize",
-                fontSize: 12,
-              }}
-              // onClick={() => history.push("/lga")}
-            >
-              Covid-19 Vaccination Info
-            </Button>
-            {/* <Link to={"/lga"}>LGA</Link> */}
-          </Box>
-
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
-        </Toolbar>
-      </Container>
-    </AppBar>
+              <Button
+                variant="contained"
+                disableElevation={true}
+                // endIcon={<ArrowDropDown />}
+                sx={{
+                  backgroundColor: blue ? "#00B0EF" : "white",
+                  color: blue ? "white" : "#0D2344",
+                  textTransform: "capitalize",
+                  fontSize: 12,
+                }}
+                onClick={() => history.push("/covid19-vaccination-sites")}
+              >
+                Covid-19 Vaccination Info
+              </Button>
+              {/* <Link to={"/lga"}>LGA</Link> */}
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </div>
   );
 };
 export default MainNavbar;

@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import React from "react";
-import image from "../../../assets/images/checked_blue_line.svg";
 
 const BlueSection = () => {
   return (
@@ -8,7 +7,9 @@ const BlueSection = () => {
       marginY={4}
       display="flex"
       flexDirection="row"
-      width="100%"
+      justifyContent={"stretch"}
+      alignItems="stretch"
+      // width="100%"
       backgroundColor="#acdde4"
       padding={3}
       //   sx={{
@@ -16,7 +17,7 @@ const BlueSection = () => {
       //     backgroundRepeat: "no-repeat",
       //     backgroundSize: "cover",
       //   }}
-    ></Box>
+    />
   );
 };
 

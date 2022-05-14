@@ -8,7 +8,9 @@ import { Call, Email, LocationOn } from "@mui/icons-material";
 import Map from "../../contact/components/map";
 
 const ContactDetails = (props) => {
-  let wdt, align, align2;
+  let { lga } = props;
+
+  let align;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
 
@@ -16,12 +18,12 @@ const ContactDetails = (props) => {
     // hideImage = true;
     align = "center";
     // width = "96%";
-    wdt = "25%";
+    // wdt = "25%";
   } else {
     // hideImage = false;
     align = "start";
     // width = "70%";
-    wdt = "40%";
+    // wdt = "40%";
   }
 
   return (
@@ -139,7 +141,7 @@ const ContactDetails = (props) => {
           </Grid>
           <Grid item xs={12} sm={7} md={6}>
             <Box paddingX={1}>
-              <Map />
+              <Map address={lga} />
             </Box>
           </Grid>
         </Grid>

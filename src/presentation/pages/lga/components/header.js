@@ -2,14 +2,14 @@ import { Typography } from "@mui/material";
 import React from "react";
 
 const Header = (props) => {
-  let { image } = props;
+  let { image, title, deviceType } = props;
   return (
     <div
       style={{
         backgroundImage: "url(" + image + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        height: "60vh",
+        height: deviceType === "pc" ? "60vh" : "98vh",
       }}
     >
       <div /> {/* Overlay here... */}
@@ -24,12 +24,12 @@ const Header = (props) => {
         }}
       >
         <Typography
-          variant="h3"
+          variant={deviceType === "pc" ? "h3" : "h5"}
           fontWeight={"700"}
           color={"white"}
           textAlign="center"
         >
-          Obio Akpor LGA
+          {title}
         </Typography>
       </div>
     </div>

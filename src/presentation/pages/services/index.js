@@ -8,10 +8,9 @@ import Section1 from "./components/section1";
 import Section2 from "./components/section2";
 import Section3 from "./components/section3";
 import Section4 from "./components/section4";
-import Section5 from "./components/section5";
-import Section6 from "./components/section6";
-import Section7 from "./components/section7";
-import Section8 from "./components/section8";
+import MobileSection from "./components/mobile_section";
+
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,8 +40,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Services = () => {
   const classes = useStyles();
+  const { serviceData } = useSelector((state) => state.service);
 
-  let fontSize, mt;
+  let fontSize, mt, deviceType;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   const sm = useMediaQuery(theme.breakpoints.only("sm"));
@@ -50,11 +50,11 @@ const Services = () => {
   if (xs) {
     fontSize = 32;
     mt = 150;
-    // deviceType = "phone";
+    deviceType = "phone";
   } else if (sm) {
     fontSize = 42;
     mt = 400;
-    // deviceType = "tablet";
+    deviceType = "tablet";
   } else {
     mt = 150;
     fontSize = 48;
@@ -69,18 +69,43 @@ const Services = () => {
           </Typography>
           <Typography textAlign={"center"} maxWidth={365} gutterBottom={true}>
             In pursuance of our overall mission, the RSPHCMB strives to fulfil
-            these seven corporate goals
+            it's corporate goal.
           </Typography>
         </div>
       </div>
-      <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 />
-      <Section5 />
-      <Section6 />
-      <Section7 />
-      <Section8 />
+      <Section1 fontSize={fontSize} deviceType={deviceType} />
+      <Section2 fontSize={fontSize} deviceType={deviceType} />
+      {serviceData &&
+        serviceData?.map((item, index) => (
+          <>
+            {deviceType === "phone" ? (
+              <MobileSection
+                image={item?.image}
+                title={item?.title}
+                summary={item?.summary}
+                body={item?.body}
+              />
+            ) : index % 2 === 0 ? (
+              <Section3
+                title={item?.title}
+                summary={item?.summary}
+                body={item?.body}
+                image={item?.image}
+                fontSize={fontSize}
+                deviceType={deviceType}
+              />
+            ) : (
+              <Section4
+                title={item?.title}
+                summary={item?.summary}
+                body={item?.body}
+                image={item?.image}
+                fontSize={fontSize}
+                deviceType={deviceType}
+              />
+            )}
+          </>
+        ))}
     </div>
   );
 };

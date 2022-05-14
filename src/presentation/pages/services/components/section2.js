@@ -6,19 +6,19 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import image from "../../../../assets/images/service_bg.png";
 
 const Section2 = () => {
-  let align, deviceType;
+  let deviceType;
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   const sm = useMediaQuery(theme.breakpoints.only("sm"));
 
   if (xs) {
     deviceType = "phone";
-    align = "center";
+    // align = "center";
   } else if (sm) {
     deviceType = "tablet";
   } else {
     deviceType = "big";
-    align = "left";
+    // align = "left";
   }
 
   return (
@@ -39,7 +39,7 @@ const Section2 = () => {
         }}
       >
         <Box
-          width={deviceType === "phone" ? "94%" : "60%"}
+          width={deviceType === "phone" ? "100%" : "70%"}
           justifyContent={"center"}
           paddingY={5}
         >
@@ -49,10 +49,8 @@ const Section2 = () => {
             fontSize={deviceType === "phone" ? 18 : 24}
             fontWeight="500"
           >
-            We aim ​to improve the effectiveness and efficiency of primary
-            health care delivery in Nigeria and promote inclusive access to
-            quality healthcare for all Nigerians regardless of who or where they
-            are.
+            We aim ​to improve the health status of the population, satisfy our
+            client and reduce financial catastrophic effect
           </Typography>
         </Box>
       </Container>

@@ -1,17 +1,17 @@
 import React from "react";
 // import { Nav, NavItem, NavLink } from "reactstrap";
 // import "bootstrap/dist/css/bootstrap.css";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import {
-  NavLink as NavClick,
+  // NavLink as NavClick,
   withRouter,
-  useLocation,
-  useHistory,
+  // useLocation,
+  // useHistory,
 } from "react-router-dom";
 
 const NavbarActions = (props) => {
-  const location = useLocation();
-  const history = useHistory();
+  // const location = useLocation();
+  // const history = useHistory();
 
   return (
     <div>Hello World...</div>

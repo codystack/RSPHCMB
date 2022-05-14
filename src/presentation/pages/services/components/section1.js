@@ -1,14 +1,18 @@
 import { Container, Typography } from "@mui/material";
 import React from "react";
 import { Grid } from "@mui/material";
-import image from "../../../../assets/images/service_img1.png";
+// import image from "../../../../assets/images/service_img1.png";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import pattern from "../../../../assets/images/pattern_dot.svg";
+import { useSelector } from "react-redux";
+import MUIRichTextEditor from "mui-rte";
 
-const Section1 = () => {
+const Section1 = (props) => {
+  let { fontSize, deviceType } = props;
   let hideImage, align;
   const theme = useTheme();
+  const { featuredServiceData } = useSelector((state) => state.service);
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   //   const sm = useMediaQuery(theme.breakpoints.only("sm"));
 
@@ -21,39 +25,37 @@ const Section1 = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "white", marginTop: -75 }}>
+    <div
+      style={{
+        backgroundColor: "white",
+        marginTop:
+          deviceType === "phone" ? -150 : deviceType === "tablet" ? -100 : -75,
+      }}
+    >
       <Container sx={{ paddingY: 8 }}>
         <Grid container>
           <Grid item sm={6} xs={12}>
             <div>
               <Typography
-                fontSize={46}
+                fontSize={fontSize - 4}
                 fontWeight="600"
                 gutterBottom
+                lineHeight={1.35}
                 textAlign={align}
               >
-                Provide Best Health Care Treatments
-              </Typography>
-              <Typography textAlign="justify" gutterBottom={true}>
-                With some 150 Model Primary Health Centres built and over 200
-                standard Primary Health Centres across the state, the RSPHCMB is
-                saddled with the management of these Primary Health Facilities.
-                RSPHCMB is jointly funded by the Local Government Councils,
-                Rivers State Government with technical support from the National
-                Primary Health Care Development Agency (NPHCDA).
+                {featuredServiceData?.title}
               </Typography>
 
-              <Typography textAlign={"justify"} gutterBottom>
-                With some 150 Model Primary Health Centres built and over 200
-                standard Primary Health Centres across the state, the RSPHCMB is
-                saddled with the management of these Primary Health Facilities.
-                RSPHCMB is jointly funded by the Local Government Councils,
-                Rivers State Government with technical support from the National
-                Primary Health Care Development Agency (NPHCDA).
-              </Typography>
+              <MUIRichTextEditor
+                readOnly
+                inlineToolbar={false}
+                style={{ width: "100%", textAlign: "center" }}
+                defaultValue={featuredServiceData?.body}
+                toolbar={false}
+              />
             </div>
           </Grid>
-          <Grid>
+          <Grid item sm={6} xs={12}>
             <div
               style={{
                 display: "flex",
@@ -66,9 +68,9 @@ const Section1 = () => {
             >
               <img
                 hidden={hideImage}
-                src={image}
+                src={featuredServiceData?.image}
                 alt="who_we-are_img"
-                width={"70%"}
+                width={"80%"}
                 style={{ zIndex: 100 }}
               />
               <img
@@ -76,8 +78,8 @@ const Section1 = () => {
                 alt=""
                 width="36%"
                 style={{
-                  marginTop: -50,
-                  marginRight: -75,
+                  marginTop: -128,
+                  marginRight: -50,
                 }}
               />
             </div>

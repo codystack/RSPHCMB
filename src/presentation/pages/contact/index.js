@@ -54,7 +54,7 @@ const Contact = () => {
     mt = 400;
     deviceType = "tablet";
   } else {
-    mt = 165;
+    mt = 150;
     fontSize = 48;
     deviceType = "pc";
   }
@@ -73,14 +73,14 @@ const Contact = () => {
       </div>
       <div
         style={{
-          marginTop: -64,
+          marginTop: -75,
         }}
       >
         <ContactDetails />
       </div>
       <Decorator deviceType={deviceType} />
       <Box paddingY={4}>
-        <Map />
+        <Map address={"No 2 Olu-Obasanjo Road, Waterlines"} />
       </Box>
     </div>
   );

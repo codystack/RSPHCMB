@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "@mui/material/Container";
 import { Box } from "@mui/material";
 
 const CustomFeaturedImage = (props) => {
@@ -17,8 +16,8 @@ const CustomFeaturedImage = (props) => {
       <img
         src={image}
         alt=""
-        width={deviceType === "phone" ? "68%" : "52%"}
-        style={{ zIndex: 100 }}
+        width={deviceType === "phone" ? "70%" : "56%"}
+        style={{ zIndex: 100, borderRadius: 4 }}
       />
       <img
         src={bg}

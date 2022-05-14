@@ -10,33 +10,35 @@ import BlueSection from "../components/home/blue_section";
 import EverythingYouNeed from "../components/home/everything";
 import Subscription from "../components/home/subscription";
 import Covid19Section from "../components/home/covid_19";
+// import image from "../../assets/images/home_img_featured.png";
+
+// import LatestNews from "./blog/components/latest_news";
+import MobileHeader from "../components/home/header_mobile";
 
 const Home = () => {
-  let hideImage;
+  let hideImage, deviceType;
   const theme = useTheme();
-  const xs = useMediaQuery(theme.breakpoints.only("xs"));
+  const sm = useMediaQuery(theme.breakpoints.down("sm"));
 
-  if (xs) {
+  if (sm) {
     hideImage = true;
-    // align = "center";
-    // width = "96%";
-    // wdt = "25%";
+    deviceType = "phone";
   } else {
     hideImage = false;
-    // align = "start";
-    // width = "70%";
-    // wdt = "40%";
+    deviceType = "big";
   }
 
   return (
     <div>
-      <Header />
+      {deviceType === "phone" ? <MobileHeader /> : <Header />}
       <div hidden={hideImage}>
         <Sigma />
       </div>
+
       <MessageFromSec />
       <HealthCare />
       <BuildingSection />
+      {/* <LatestNews /> */}
       <BlueSection />
       <EverythingYouNeed />
       <Subscription />

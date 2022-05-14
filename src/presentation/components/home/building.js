@@ -1,25 +1,20 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import imageSigma from "../../../assets/images/decorator.svg";
-import ImageMasonry from "../misc/masonry";
 
-import image1 from "../../../assets/images/home_masonry1.png";
-import image2 from "../../../assets/images/home_masonry2.png";
-import image3 from "../../../assets/images/home_masonry3.png";
-import image4 from "../../../assets/images/home_masonry4.png";
-
-const tempList = [
-  { image: image1 },
-  { image: image2 },
-  { image: image3 },
-  { image: image4 },
-];
+// import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import MUIRichTextEditor from "mui-rte";
 
 const BuildingSection = () => {
+  // const [element, controls] = useScroll();
+  const { buildingCultureData } = useSelector((state) => state.home);
+
   let align, deviceType;
   const theme = useTheme();
+  // const history = useHistory();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   const sm = useMediaQuery(theme.breakpoints.only("sm"));
 
@@ -41,35 +36,57 @@ const BuildingSection = () => {
           flexDirection: "row",
           justifyContent: "end",
           alignItems: "end",
-          marginTop: 48,
+          marginTop: 15,
         }}
       >
-        <img src={imageSigma} alt="" width={"7%"} style={{ marginLeft: -2 }} />
+        <img src={imageSigma} alt="" width={"6%"} style={{ marginLeft: 0 }} />
       </div>
-      <Container sx={{ paddingTop: -16, paddingBottom: 2 }}>
-        <Grid container>
+      <Container sx={{ paddingTop: -16, paddingBottom: 8 }}>
+        <Grid container spacing={2}>
           <Grid item sm={6} xs={12}>
-            <ImageMasonry list={tempList} factor={"1.45x"} width="" />
+            <img
+              // variants={variantImg}
+              // initial="hidden"
+              // animate="visible"
+              src={buildingCultureData?.image}
+              alt=""
+              width={"75%"}
+            />
           </Grid>
-          <Grid item sm={6} xs={12}>
-            <div>
+          <Grid
+            item
+            sm={6}
+            xs={12}
+            // component={motion.div}
+            // variants={variantImg}
+            // initial="hidden"
+            // animate="visible"
+          >
+            <div
+            // animate={controls}
+            // variants={reveal}
+            // transition={{ delay: 0.1, stiffness: 300 }}
+            >
               <Typography
                 fontSize={deviceType === "phone" ? 24 : 36}
                 fontWeight="600"
                 gutterBottom
                 textAlign={align}
               >
-                Building a culture of health and well-being in Rivers State.
+                {buildingCultureData?.title}
               </Typography>
-              <Typography textAlign="justify" gutterBottom={true}>
-                On July 11th 2011, the government of Rivers State inaugurated
-                the Rivers State Primary Health Care Management Board (RSPHCMB)
-                to actualize its laudable efforts in the promotion of health
-                care delivery in the State in a bid to meet with the Millennium
-                Development Goals (MDGs).
-              </Typography>
+              <MUIRichTextEditor
+                readOnly
+                inlineToolbar={false}
+                defaultValue={buildingCultureData?.summary}
+                toolbar={false}
+              />
+
               <br />
-              <Button
+              {/* <Button
+                // component={motion.button}
+                // variants={variantButton}
+                // whileHover="hover"
                 variant="outlined"
                 sx={{
                   backgroundColor: "transparent",
@@ -78,9 +95,10 @@ const BuildingSection = () => {
                   textTransform: "capitalize",
                   borderRadius: 0,
                 }}
+                onClick={() => history.push("/about")}
               >
                 Learn More
-              </Button>
+              </Button> */}
             </div>
           </Grid>
         </Grid>

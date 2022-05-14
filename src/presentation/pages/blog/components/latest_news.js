@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import image1 from "../../../../assets/images/news1.png";
@@ -35,14 +35,19 @@ const LatestNews = () => {
 
   return (
     <div>
-      <Container>
-        <Box paddingY={4}>
-          <Typography fontSize={24} fontWeight="600" gutterBottom={true}>
+      <Container sx={{ paddingY: 8 }}>
+        <Box>
+          <Typography
+            textAlign="center"
+            fontSize={32}
+            fontWeight="600"
+            gutterBottom={true}
+          >
             Latest News & Update
           </Typography>
           <Grid
             container
-            spacing={{ xs: 2, md: 4 }}
+            spacing={{ xs: 4, md: 4 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             {latestNews?.map((elem, index) => (
@@ -59,6 +64,7 @@ const LatestNews = () => {
           </Grid>
         </Box>
       </Container>
+      <br />
     </div>
   );
 };

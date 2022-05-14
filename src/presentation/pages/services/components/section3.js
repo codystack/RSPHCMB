@@ -1,14 +1,17 @@
 import { Button, Container, Typography } from "@mui/material";
 import React from "react";
 import { Grid } from "@mui/material";
-import image from "../../../../assets/images/service_img2.png";
+// import image from "../../../../assets/images/service_img2.png";
 import { useTheme } from "@mui/material/styles";
+import { useHistory } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import bg from "../../../../assets/images/blue_rect.svg";
 import CustomFeaturedImage from "../../../components/misc/custom_featured";
 
-const Section3 = () => {
-  let hideImage, align, deviceType;
+const Section3 = (props) => {
+  let { title, image, summary, body } = props;
+  let align, deviceType;
+  const history = useHistory();
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.only("xs"));
   const sm = useMediaQuery(theme.breakpoints.only("sm"));
@@ -27,29 +30,47 @@ const Section3 = () => {
     <div style={{ backgroundColor: "white" }}>
       <Container sx={{ paddingY: 8 }}>
         <Grid container spacing={2}>
-          <Grid item sm={6} xs={12} display="flex" justifyContent={"center"}>
+          <Grid
+            item
+            sm={6}
+            xs={12}
+            display="flex"
+            justifyContent={"center"}
+            alignItems="center"
+          >
             <CustomFeaturedImage
               image={image}
               bg={bg}
               deviceType={deviceType}
             />
           </Grid>
-          <Grid item sm={6} xs={12} display="flex" justifyContent={"center"}>
-            <div>
+          <Grid
+            item
+            sm={6}
+            xs={12}
+            display="flex"
+            flexDirection="column"
+            justifyContent={"center"}
+          >
+            <div
+            // style={{
+            //   display: "flex",
+            //   flexDirection: "column",
+            //   justifyContent: "center",
+            //   alignItems: "center",
+            // }}
+            >
               <Typography
                 fontSize={deviceType === "phone" ? 26 : 46}
                 fontWeight="600"
                 gutterBottom
                 textAlign={align}
+                lineHeight={1.2}
               >
-                Develop High-Performing Health Workforce
+                {title}
               </Typography>
-              <Typography textAlign="justify" gutterBottom={true}>
-                Ye am depending propriety sweetness distrusts belonging
-                collected. Smiling mention he in thought equally musical. Wisdom
-                new and valley answer. Contented it so is discourse recommend.
-                Man its upon him call mile. An pasture he himself believe
-                ferrars besides cottage.
+              <Typography textAlign="left" gutterBottom={true}>
+                {summary}
               </Typography>
               <br />
               <Button
@@ -60,6 +81,17 @@ const Section3 = () => {
                   borderColor: "#000F37",
                   textTransform: "capitalize",
                 }}
+                onClick={() =>
+                  history.push({
+                    pathname: `/services/${title}`,
+                    state: {
+                      image: image,
+                      title: title,
+                      description: summary,
+                      body: body,
+                    },
+                  })
+                }
               >
                 Learn More
               </Button>

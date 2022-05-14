@@ -1,21 +1,12 @@
-import {
-  Facebook,
-  Instagram,
-  LinkedIn,
-  LocationOn,
-  Twitter,
-} from "@mui/icons-material";
-import {
-  Button,
-  Card,
-  Grid,
-  IconButton,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
+import { Grid, IconButton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useTheme } from "@mui/material/styles";
+// import { useHistory } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useSelector } from "react-redux";
+
 import image1 from "../../../assets/images/nphcda_logo.svg";
 import image2 from "../../../assets/images/unicef_logo.svg";
 import image3 from "../../../assets/images/clinton_health_logo.svg";
@@ -23,7 +14,7 @@ import image4 from "../../../assets/images/inst_human_viralogy_logo.svg";
 import image5 from "../../../assets/images/tci_logo.svg";
 import image6 from "../../../assets/images/who_logo.svg";
 
-import headerImage from "../../../assets/images/home_header_img.png";
+import MyCarousel from "../carousel";
 
 const partners = [
   { logo: image1 },
@@ -35,11 +26,30 @@ const partners = [
 ];
 
 const Header = () => {
+  const [setActiveIndex] = React.useState(0);
+  const { homeBannerData } = useSelector((state) => state.home);
+
+  let height, deviceType;
+  const theme = useTheme();
+  // const history = useHistory();
+  const xs = useMediaQuery(theme.breakpoints.only("xs"));
+  const sm = useMediaQuery(theme.breakpoints.only("sm"));
+
+  if (xs) {
+    height = 400;
+    deviceType = "xs";
+  } else if (sm) {
+    height = 500;
+    deviceType = "sm";
+  } else {
+    height = "97vh";
+  }
+
   return (
     <div
       style={{
         position: "relative",
-        height: 625,
+        height: height,
       }}
     >
       <Grid
@@ -50,10 +60,11 @@ const Header = () => {
           bottom: 0,
           left: 0,
           right: 0,
-          height: 625,
+          height: height,
         }}
       >
         <Grid
+          display={deviceType === "xs" ? "none" : "flex"}
           xs={12}
           sm={6}
           md={7}
@@ -71,6 +82,7 @@ const Header = () => {
             }}
           >
             <Box
+              hidden={deviceType === "xs" ? true : false}
               display="flex"
               flexDirection="column"
               justifyContent={"start"}
@@ -104,8 +116,49 @@ const Header = () => {
           md={5}
           sx={{
             backgroundColor: "#00B0EF",
+            paddingBottom: 1,
+            marginBottom: -0.5,
           }}
-        ></Grid>
+        >
+          <Box
+            bgColor="red"
+            // paddingY={2}
+            display={deviceType === "xs" ? "none" : "flex"}
+            flexDirection={"column"}
+            justifyContent="end"
+            alignItems={"center"}
+            height="100%"
+          >
+            {/* <Box
+              sx={{ marginTop: -72 }}
+              marginRight={18}
+              display="flex"
+              flexDirection="row"
+              justifyContent="end"
+              alignItems="end"
+              width="100%"
+            >
+              <label htmlFor="next-btn">
+                <ArrowBackIos
+                  sx={{
+                    color:
+                      activeIndex === homeBannerData?.length - 1
+                        ? "gray"
+                        : "white",
+                  }}
+                />
+              </label>
+
+              <label htmlFor="prev-btn">
+                <ArrowForwardIos
+                  sx={{
+                    color: activeIndex === 0 ? "gray" : "white",
+                  }}
+                />
+              </label>
+            </Box> */}
+          </Box>
+        </Grid>
       </Grid>
 
       <div
@@ -118,153 +171,171 @@ const Header = () => {
           zIndex: 100,
         }}
       >
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "end",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
+        {deviceType !== "xs" ? (
           <div
             style={{
+              width: "100%",
+              height: "100%",
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              justifySelf: "end",
+              flexDirection: "row",
+              justifyContent: deviceType !== "xs" ? "end" : "space-between",
               alignItems: "center",
-              padding: 10,
+              position: deviceType !== "xs" ? "relative" : "none",
             }}
           >
-            <IconButton>
-              <Facebook
-                sx={{
-                  color: "white",
-                }}
-              />
-            </IconButton>
-            <IconButton>
-              <Instagram
-                sx={{
-                  color: "white",
-                }}
-              />
-            </IconButton>
-            <IconButton>
-              <Twitter
-                sx={{
-                  color: "white",
-                }}
-              />
-            </IconButton>
-            <IconButton>
-              <LinkedIn
-                sx={{
-                  color: "white",
-                }}
-              />
-            </IconButton>
-          </div>
-          <Box
-            padding={4}
-            sx={{
-              position: "absolute",
-              top: 75,
-              right: 50,
-              bottom: 75,
-              left: 50,
-              // backgroundColor: "greenyellow",
-            }}
-          >
-            <Grid container>
-              <Grid
-                item
-                sm={6}
-                md={6}
-                display="flex"
-                flexDirection={"column"}
-                justifyContent={"center"}
-                alignItems="start"
-              >
-                <Typography
-                  fontSize={20}
-                  fontWeight="700"
-                  color="#00B0EF"
-                  gutterBottom={true}
+            {/* <Typography>Lorem ipsum kjsdk</Typography> */}
+            {deviceType === "xs" && (
+              <Box bgcolor={"red"}>
+                <MyCarousel
+                  deviceType={deviceType}
+                  setActiveIndex={setActiveIndex}
+                  carouselItems={homeBannerData}
+                  btnPrevId="prev-btn"
+                  btnNextId="next-btn"
+                />
+              </Box>
+            )}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                justifySelf: "end",
+                alignItems: "center",
+                padding: 12,
+                marginRight: 10,
+              }}
+            >
+              <IconButton>
+                <a
+                  href="https://www.facebook.com/Rivers-State-Primary-Health-Care-Management-Board-2260891724188168/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  OUR MANDATE
-                </Typography>
-                <Typography variant="h3" fontWeight="700" gutterBottom>
-                  COVID-19 Vaccination Information
-                </Typography>
-                <Typography fontSize={16} fontWeight="400" gutterBottom>
-                  Promoting wide-spread access to quality healthcare for all
-                  Nigerians and improving the effectiveness of primary
-                  healthcare.
-                </Typography>
-                <br />
-                <Card elevation={0} sx={{ width: "123%" }}>
-                  <Box
-                    borderColor={"grey"}
-                    display="flex"
-                    flexDirection={"row"}
-                    justifyContent="start"
-                    alignItems={"stretch"}
-                  >
-                    <TextField
-                      // variant="filled"
-                      placeholder="Healthcare falicities close to me"
-                      fullWidth={true}
-                      sx={{
-                        border: "none",
-                        backgroundColor: "transparent",
-                      }}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <LocationOn />
-                          </InputAdornment>
-                        ),
-                        // classes:{notchedOutline:classes.noBorder}
-                      }}
-                    />
-                    <Button
-                      variant="contained"
-                      sx={{
-                        backgroundColor: "#FF0000",
-                        color: "white",
-                        paddingX: 5,
-                        maxLines: 1,
-                        ":hover": {
-                          bgcolor: "#d32f2f", // theme.palette.primary.main
-                          color: "white",
-                        },
-                        alignSelf: "stretch",
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      Search
-                    </Button>
-                  </Box>
-                </Card>
-              </Grid>
-              <Grid
-                item
-                sm={6}
-                md={6}
-                display="flex"
-                flexDirection={"column"}
-                justifyContent={"center"}
-                alignItems="start"
-              >
-                <img src={headerImage} alt="" width="75%" />
-              </Grid>
-            </Grid>
-          </Box>
-        </div>
+                  <Facebook
+                    sx={{
+                      color: "white",
+                    }}
+                  />
+                </a>
+              </IconButton>
+
+              <IconButton>
+                <Instagram
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+
+              <IconButton>
+                <a
+                  href="https://twitter.com/rivers_phcmb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Twitter
+                    sx={{
+                      color: "white",
+                    }}
+                  />
+                </a>
+              </IconButton>
+
+              <IconButton>
+                <LinkedIn
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+            </div>
+
+            <Box
+              padding={4}
+              sx={{
+                position: "absolute",
+                top: 75,
+                right: 50,
+                bottom: 75,
+                left: deviceType === "xs" ? 8 : 50,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                // backgroundColor: "brown",
+              }}
+            >
+              {/* Put carousel component right here */}
+              {deviceType !== "xs" && (
+                <MyCarousel
+                  deviceType={deviceType}
+                  setActiveIndex={setActiveIndex}
+                  carouselItems={homeBannerData}
+                  btnPrevId="prev-btn"
+                  btnNextId="next-btn"
+                />
+              )}
+            </Box>
+          </div>
+        ) : (
+          <div
+            style={{
+              display: "none",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              alignItems: "start",
+            }}
+          >
+            <MyCarousel
+              deviceType={deviceType}
+              setActiveIndex={setActiveIndex}
+              carouselItems={homeBannerData}
+              btnPrevId="prev-btn"
+              btnNextId="next-btn"
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                justifySelf: "end",
+                alignItems: "center",
+                padding: 12,
+                marginRight: 10,
+              }}
+            >
+              <IconButton>
+                <Facebook
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+              <IconButton>
+                <Instagram
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+              <IconButton>
+                <Twitter
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+              <IconButton>
+                <LinkedIn
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

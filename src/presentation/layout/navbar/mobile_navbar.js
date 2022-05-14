@@ -1,20 +1,16 @@
 import React from "react";
-import { makeStyles, useTheme } from "@mui/material/styles";
-// import { makeStyles } from "@mui/styles"
+import { makeStyles, useTheme } from "@mui/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-// import MenuItem from "@mui/material/MenuItem";
-// import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import fullLogo from "../../../assets/images/logo.svg";
-import mobileLogo from "../../../assets/images/logo.svg";
+import siteLogo from "../../../assets/images/logo.svg";
+// import whiteSiteLogo from "../../../assets/images/logo_white.svg";
+
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useLocation, withRouter, useHistory } from "react-router-dom";
-// import MobileDrawer from "../../components/drawer/mobile_drawer";
+import { useHistory, withRouter } from "react-router-dom";
 import Hidden from "@mui/material/Hidden";
-import ResponsiveDrawer from "./index2";
-// import Button from "@mui/material/Button";
+import MobileDrawer from "../../components/drawer/mobile_drawer";
 
 const drawerWidth = 270;
 const useStyles = makeStyles((theme) => ({
@@ -30,54 +26,26 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
+  abRoot: {
+    background: "transparent",
+    boxShadow: "none",
+    color: "white",
   },
-  search: {
-    position: "relative",
-    display: "flex",
-    flexDirection: "row",
-    borderRadius: theme.shape.borderRadius,
-    // backgroundColor: fade(theme.palette.common.black, 0.15),
-    // "&:hover": {
-    // //   backgroundColor: fade(theme.palette.common.black, 0.25),
-    // },
-    marginRight: theme.spacing(2),
-    marginLeft: theme.spacing(1),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+  abScroll: {
+    background: "primary",
     color: "black",
+    boxShadow: "none",
   },
-  inputRoot: {
-    color: "#000",
+  appBarTransparent: {
+    backgroundColor: "rgba(255, 255, 255, 0.01)",
+    boxShadow: "none",
   },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(3)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "13ch",
-      // '&:focus': {
-      //     width: '14ch',
-      // },
-    },
+  appBarSolid: {
+    backgroundColor: "rgba(255, 255, 255)",
+  },
+  solidAppBar: {
+    background: "white",
+    color: "black",
   },
   sectionDesktop: {
     display: "none",
@@ -95,122 +63,64 @@ const useStyles = makeStyles((theme) => ({
 
 const MobileNavbar = (props) => {
   const classes = useStyles();
-  //   const { window } = props;
-  //   let history = useHistory();
-  //   const location = useLocation();
-  //   const [anchorEl, setAnchorEl] = React.useState(null);
-  //   const [openModal, setOpenModal] = React.useState(false);
+  const history = useHistory();
+  // let { window } = props;
+
+  // const [navBackground, setNavBackground] = React.useState("appBarTransparent");
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  //   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  //   const [anchorEl2, setAnchorEl2] = React.useState(null);
-  //   const [openSignoutBackDrop, setOpenSignoutBackDrop] = React.useState(false);
 
-  //   const isMenuOpen = Boolean(anchorEl);
-  //   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  let //   respMargin,
-    //   elevation,
-    deviceType;
-  //   logo;
+  // let deviceType;
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.only("xs"));
   const tabletMini = useMediaQuery(theme.breakpoints.only("sm"));
 
-  //   const openPopper2 = Boolean(anchorEl2);
-  // //   const popperId2 = openPopper2 ? "simple-popper2" : undefined;
-
-  //   const handleProfileMenuOpen = (event) => {
-  //     setAnchorEl(event.currentTarget);
-  //   };
-
-  //   const handleMobileMenuClose = () => {
-  //     setMobileMoreAnchorEl(null);
-  //   };
-
-  //   const handleBackdrop = (value) => {
-  //     setOpenSignoutBackDrop(value);
-  //   };
-
-  //   const handleMenuClose = () => {
-  //     setAnchorEl(null);
-  //     handleMobileMenuClose();
-  //   };
-
-  //   const handleMobileMenuOpen = (event) => {
-  //     setMobileMoreAnchorEl(event.currentTarget);
-  //   };
+  const navRef = React.useRef();
+  // navRef.current = navBackground;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  //   const mobileMenuId = "primary-search-account-menu-mobile";
-  //   const renderMobileMenu = (
-  //     <Menu
-  //       anchorEl={mobileMoreAnchorEl}
-  //       anchorOrigin={{ vertical: "top", horizontal: "right" }}
-  //       id={mobileMenuId}
-  //       keepMounted
-  //       transformOrigin={{ vertical: "top", horizontal: "right" }}
-  //       open={isMobileMenuOpen}
-  //       onClose={handleMobileMenuClose}
-  //     >
-  //       {/* <MenuItem>
-  //         <Typography style={{ textTransform: "capitalize" }}>
-  //           {fullname}
-  //         </Typography>
-  //       </MenuItem> */}
-  //       {/* <MenuItem>
-  //         <Button
-  //           variant="text"
-  //           style={{ color: theme.palette.secondary.main }}
-  //           onClick={gotoDashboard}
-  //         >
-  //           Go to dashboard
-  //         </Button>
-  //       </MenuItem> */}
-  //     </Menu>
-  //   );
-
   if (smallScreen) {
-    // elevation = 0;
-    // respMargin = 0;
-    deviceType = "mobile";
-    // logo = mobileLogo;
+    // deviceType = "mobile";
   } else if (tabletMini) {
-    // elevation = 0;
-    // respMargin = 0;
-    deviceType = "tablet";
-    // logo = fullLogo;
+    // deviceType = "tablet";
   } else {
-    // elevation = 1;
-    // respMargin = "auto";
-    deviceType = "big";
-    // logo = fullLogo;
+    // deviceType = "big";
   }
 
   return (
     <div className={classes.grow}>
-      <AppBar position="fixed" classes={{ root: classes.appBarRoot }}>
-        <Toolbar className="container">
-          {deviceType !== "big" ? (
+      <AppBar
+        position="fixed"
+        elevation={0}
+        sx={{ backgroundColor: "#ffffffe8" }}
+        className={classes[navRef.current]}
+      >
+        <Toolbar>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <img
+              src={siteLogo}
+              alt=""
+              width="40%"
+              onClick={() => history.push("/")}
+            />
             <IconButton
               edge="start"
-              className={classes.menuButton}
               onClick={handleDrawerToggle}
-              color="primary"
               aria-label="open drawer"
             >
               <MenuIcon />
             </IconButton>
-          ) : null}
-          {deviceType === "mobile" ? (
-            <img src={mobileLogo} alt="" width={36} height={36} />
-          ) : (
-            <img src={fullLogo} className="site__logo" alt="" />
-          )}
-
-          <div className={classes.grow} />
+          </div>
         </Toolbar>
       </AppBar>
       {/* {renderMobileMenu} */}
@@ -218,15 +128,15 @@ const MobileNavbar = (props) => {
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden mdUp implementation="css">
-          {/* <ResponsiveDrawer /> */}
-          {/* <MobileDrawer
+          <MobileDrawer
             setMobileOpen={setMobileOpen}
             drawerVariant="temporary"
             anchor="left"
             mobileOpen={mobileOpen}
+            // handleBackdrop={handleBackdrop}
             handleDrawerToggle={handleDrawerToggle}
-            window={window}
-          /> */}
+            // window={window}
+          />
         </Hidden>
       </nav>
     </div>

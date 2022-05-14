@@ -2,6 +2,9 @@ import React from "react";
 // import { makeStyles } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { Grid, TextField } from "@mui/material";
+import { useSnackbar } from "notistack";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { db, setDoc, doc } from "../../../data/firebase";
 
 // const useStyles = makeStyles((theme) => ({
 //   root: {
@@ -42,62 +45,74 @@ import { Grid, TextField } from "@mui/material";
 // }));
 
 const ContactForm = () => {
-  const submitForm = async (e) => {
-    // // e.preventDefault();
-    // setIsSubmitting(true);
-    // try {
-    //   const resp = await APIService.contactUs(
-    //     formValues.Surname,
-    //     formValues.First_Name,
-    //     formValues.Email_Address,
-    //     formValues.Phone_Number,
-    //     formValues.Subject
-    //   );
-    //   if (resp.status === 200) {
-    //     clearForm();
-    //     setIsSubmitting(false);
-    //     enqueueSnackbar(`Message sent successfully`, { variant: "success" });
-    //   } else {
-    //     setIsSubmitting(false);
-    //   }
-    // } catch (err) {
-    //   enqueueSnackbar(
-    //     `${
-    //       err?.response?.data?.error ||
-    //       err?.response?.statusText ||
-    //       "Check your internet connection."
-    //     }`,
-    //     { variant: "error" }
-    //   );
-    //   setIsSubmitting(false);
-    // }
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [formValues, setFormValues] = React.useState({
+    fullname: "",
+    email: "",
+    phone: "",
+    subject: "",
+    request: "",
+  });
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const addContact = async (e) => {
+    setIsLoading(true);
+    const timeNow = new Date();
+
+    // const mRef = doc(db, "enquiries", "" + timeNow.getTime());
+
+    try {
+      setDoc(doc(db, "enquiries", "" + timeNow.getTime()), {
+        id: timeNow.getTime(),
+        fullname: formValues.fullname,
+        phone: formValues.phone,
+        email: formValues.email,
+        subject: formValues.subject,
+        request: formValues.request,
+        createdAt: timeNow,
+        updatedAt: timeNow,
+      })
+        .then(async (result) => {
+          setIsLoading(false);
+          enqueueSnackbar(`Request submitted successfully`, {
+            variant: "success",
+          });
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          enqueueSnackbar(
+            `${err?.message || "Check your internet connection"}`,
+            {
+              variant: "error",
+            }
+          );
+        });
+    } catch (error) {
+      setIsLoading(false);
+      enqueueSnackbar(`${error?.message || "Check your internet!"}`, {
+        variant: "error",
+      });
+    }
   };
 
   return (
     <div>
-      {/* <Backdrop
-        style={{ zIndex: 1200 }}
-        //   open={isSubmitting}
-      >
-        <CircularProgress
-          size={90}
-          thickness={3.0}
-          style={{ color: "white" }}
-        />
-      </Backdrop> */}
-
-      <form
-        onSubmit={submitForm}
-        // className={classes.formRoot}
-        // ref={formRef}
-      >
-        <TextField
+      <ValidatorForm onSubmit={addContact}>
+        <TextValidator
           required
           fullWidth
           margin="dense"
           placeholder="Full Name"
-          name="Surname"
+          name="fullname"
           label="Full Name"
+          value={formValues.fullname}
+          onChange={handleChange}
           variant="outlined"
           validators={["required"]}
           errorMessages={["Full name is required"]}
@@ -105,15 +120,16 @@ const ContactForm = () => {
 
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6} md={6}>
-            <TextField
+            <TextValidator
               required
-              id="Email_Address"
               label="Email"
               variant="outlined"
-              name="Email_Address"
+              name="email"
               type="email"
               margin="dense"
               fullWidth
+              onChange={handleChange}
+              value={formValues.email}
               validators={["required", "isEmail"]}
               errorMessages={[
                 "Email address field is required",
@@ -123,13 +139,15 @@ const ContactForm = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} md={6}>
-            <TextField
+            <TextValidator
               required
-              name="Phone_Number"
+              name="phone"
               label="Phone Number"
               variant="outlined"
               fullWidth
+              value={formValues.phone}
               margin="dense"
+              onChange={handleChange}
               validators={["required", "isNumber"]}
               errorMessages={[
                 "Phone Number is required",
@@ -139,14 +157,16 @@ const ContactForm = () => {
           </Grid>
         </Grid>
 
-        <TextField
+        <TextValidator
           required
           fullWidth
+          value={formValues.subject}
           margin="dense"
           placeholder="Subject"
-          name="Subject"
+          name="subject"
           label="Subject"
           variant="outlined"
+          onChange={handleChange}
           validators={["required"]}
           errorMessages={["Subject is required"]}
         />
@@ -159,37 +179,41 @@ const ContactForm = () => {
           rows={6}
           rowsMax={10}
           placeholder="Type message"
-          name="Request"
+          name="request"
           label="Request"
-          value=""
+          onChange={handleChange}
+          value={formValues.request}
           variant="outlined"
           validators={["required"]}
           errorMessages={["Message is required"]}
         />
-      </form>
-      <div
-        style={{
-          margin: "auto",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "#012F74",
-            color: "white",
-            paddingX: 4,
-            marginY: 2,
-            textTransform: "capitalize",
+
+        <div
+          style={{
+            margin: "auto",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          // onClick={}
         >
-          Send Request
-        </Button>
-      </div>
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={isLoading}
+            sx={{
+              backgroundColor: "#012F74",
+              color: "white",
+              paddingX: 4,
+              marginY: 2,
+              textTransform: "capitalize",
+            }}
+            // onClick={}
+          >
+            Send Request
+          </Button>
+        </div>
+      </ValidatorForm>
     </div>
   );
 };

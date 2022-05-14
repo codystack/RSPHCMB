@@ -11,9 +11,9 @@ const Sigma = () => {
         justifyContent: "end",
         alignItems: "end",
       }}
-      paddingY={4}
+      // paddingY={4}
     >
-      <img src={image} alt="" width="8%" />
+      <img src={image} alt="" width="9%" />
     </Box>
   );
 };

@@ -1,5 +1,5 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import { Button, MobileStepper, Paper, Typography } from "@mui/material";
+import { Button, MobileStepper } from "@mui/material";
 import React from "react";
 import SwipeableViews from "react-swipeable-views/lib/SwipeableViews";
 import { useTheme } from "@mui/material/styles";
@@ -72,10 +72,10 @@ const Header2 = () => {
     setActiveStep(activeStep - 1);
   };
 
-  const handleStepChange = (e) => {
-    setActiveStep(e);
-    // this.setState({ activeStep });
-  };
+  // const handleStepChange = (e) => {
+  //   setActiveStep(e);
+  //   // this.setState({ activeStep });
+  // };
 
   const maxSteps = tutorialSteps.length;
 

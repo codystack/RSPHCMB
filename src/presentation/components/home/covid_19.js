@@ -7,12 +7,55 @@ import imageArc from "../../../assets/images/decorator_home.svg";
 import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import useSWR from "swr";
+import axios from "axios";
+
+const fetcher = (url) => {
+  axios.defaults.headers.post["Content-Type"] =
+    "application/json;charset=utf-8";
+  axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+  return axios.get(url).then((r) => r.data);
+};
+
 const Covid19Section = () => {
-  const covidData = [
-    { title: "Confirmed Cases", cases: "16,592" },
-    { title: "Discharged Cases", cases: "16,394" },
-    { title: "Deaths", cases: "154" },
-  ];
+  const [riversData, setRiversData] = React.useState(null);
+
+  const configSWR = {
+    revalidateOnFocus: false,
+    refreshInterval: 1000 * 60 * 30,
+  };
+
+  const { data } = useSWR(
+    "https://covidnigeria.herokuapp.com/api",
+    fetcher,
+    configSWR
+  );
+
+  React.useEffect(() => {
+    // console.log("STATES::: ", data?.data?.states);
+    if (data) {
+      let rivers = data?.data?.states?.filter(
+        (elem) => elem.state === "Rivers"
+      );
+      // console.log("RIVW::", rivers);
+      setRiversData(rivers[0]);
+    }
+  }, [data]);
+
+  let deviceType;
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.only("xs"));
+  const sm = useMediaQuery(theme.breakpoints.only("sm"));
+
+  if (xs) {
+    deviceType = "phone";
+  } else if (sm) {
+    deviceType = "tablet";
+  } else {
+    deviceType = "big";
+  }
 
   return (
     <div
@@ -21,6 +64,9 @@ const Covid19Section = () => {
       }}
     >
       <div
+        hidden={
+          deviceType === "phone" || deviceType === "tablet" ? true : false
+        }
         style={{
           width: "100%",
           display: "flex",
@@ -32,11 +78,14 @@ const Covid19Section = () => {
       </div>
       <div
         style={{
-          position: "absolute",
+          position:
+            deviceType === "phone" || deviceType === "tablet"
+              ? "relative"
+              : "absolute",
           top: 0,
           left: 0,
-          right: 0,
           bottom: 0,
+          right: 0,
           padding: 30,
           zIndex: 100,
         }}
@@ -46,11 +95,13 @@ const Covid19Section = () => {
             width: "100%",
           }}
         >
-          <img src={imageArc} alt="" width={"7%"} style={{ marginLeft: -1 }} />
+          <img src={imageArc} alt="" width={"7%"} style={{ marginLeft: -30 }} />
           <Container
             sx={{
-              marginTop: -21,
-              marginBottom: 100,
+              marginTop:
+                deviceType === "phone" || deviceType === "tablet" ? -16 : -21,
+              marginBottom:
+                deviceType === "phone" || deviceType === "tablet" ? 0 : 100,
             }}
           >
             <Box
@@ -60,7 +111,13 @@ const Covid19Section = () => {
               alignItems={"center"}
             >
               <Typography
-                fontSize={56}
+                fontSize={
+                  deviceType === "phone"
+                    ? 26
+                    : deviceType === "tablet"
+                    ? 36
+                    : 48
+                }
                 fontWeight="700"
                 textAlign="center"
                 gutterBottom
@@ -73,7 +130,12 @@ const Covid19Section = () => {
                 textAlign="center"
                 gutterBottom
                 style={{
-                  width: "60%",
+                  width:
+                    deviceType === "phone"
+                      ? "100%"
+                      : deviceType === "tablet"
+                      ? "86"
+                      : "60%",
                 }}
               >
                 Since the outbreak of the deadly virus COVID-19, the Rivers
@@ -87,28 +149,38 @@ const Covid19Section = () => {
               container
               spacing={{ xs: 2, md: 4 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
-              paddingBottom={12}
-              marginY={15}
+              paddingBottom={
+                deviceType === "phone" ? 2 : deviceType === "tablet" ? 4 : 12
+              }
+              marginY={
+                deviceType === "phone" ? 2 : deviceType === "tablet" ? 6 : 12
+              }
             >
-              {covidData?.map((elem, index) => (
+              {[1, 2, 3]?.map((elem, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
                   <CasesItem
-                    title={elem.title}
-                    cases={elem.cases}
+                    title={
+                      index === 0
+                        ? "Confirmed Cases"
+                        : index === 1
+                        ? "Discharged Cases"
+                        : "Deaths"
+                    }
+                    cases={
+                      index === 0
+                        ? riversData?.confirmedCases
+                        : index === 1
+                        ? riversData?.discharged
+                        : riversData?.death
+                    }
                     bgColor={
-                      elem.title === "Confirmed Cases"
+                      index === 0
                         ? "#0592C2"
-                        : elem.title === "Discharged Cases"
+                        : index === 1
                         ? "#128750"
                         : "#FF0000"
                     }
-                    icon={
-                      elem.title === "Confirmed Cases"
-                        ? image1
-                        : elem.title === "Discharged Cases"
-                        ? image2
-                        : image3
-                    }
+                    icon={index === 0 ? image1 : index === 1 ? image2 : image3}
                   />
                 </Grid>
               ))}

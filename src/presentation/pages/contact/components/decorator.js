@@ -21,10 +21,10 @@ const Decorator = (props) => {
         alt=""
         width={
           deviceType === "phone"
-            ? "15%"
+            ? "11%"
             : deviceType === "tablet"
-            ? "18%"
-            : "24%"
+            ? "10%"
+            : "8%"
         }
       />
     </div>

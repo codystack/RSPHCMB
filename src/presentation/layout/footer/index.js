@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import logo from "../../../assets/images/logo_footer.svg";
 import curvedBg from "../../../assets/images/curved_pattern_white.svg";
 import { Box } from "@mui/system";
@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
     // position: "absolute",
     // background: "#00B0EF",
 
-    left: 0,
-    right: 0,
-    zIndex: 10,
+    // left: 0,
+    // right: 0,
+    // zIndex: 10,
   },
   rowEnd: {
     display: "flex",
@@ -43,9 +43,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Footer = () => {
   const classes = useStyles();
+  const history = useHistory();
 
-  const [hover1, setHover1] = React.useState("outlined");
-  const [hover2, setHover2] = React.useState("contained");
+  // const [hover1, setHover1] = React.useState("outlined");
+  // const [hover2, setHover2] = React.useState("contained");
 
   let alignment, alignLeft, deviceType;
   const theme = useTheme();
@@ -95,33 +96,48 @@ const Footer = () => {
               }}
             >
               <Button
-                variant={hover1}
-                onMouseEnter={() => {
-                  setHover1("contained");
-                }}
-                disableElevation={true}
-                onMouseLeave={() => {
-                  setHover1("outlined");
-                }}
-                size="large"
+                variant="outlined"
+                // variant={hover1}
+                // onMouseEnter={() => {
+                //   setHover1("contained");
+                // }}
                 sx={{
-                  color: "#FFF",
+                  backgroundColor: "transparent",
+                  color: "white",
+                  borderColor: "white",
                   textTransform: "capitalize",
-                  paddingY: 1,
                   paddingX: 4,
-                  borderColor: "#fff",
-                  borderRadius: 0,
+                  paddingY: 1,
                   ":hover": {
                     backgroundColor: "white",
                     color: "#00B0EF",
                     borderColor: "#fff",
                   },
                 }}
+                disableElevation={true}
+                // onMouseLeave={() => {
+                //   setHover1("outlined");
+                // }}
+                onClick={() => history.push("/covid19-vaccination-sites")}
+                size="large"
+                // sx={{
+                //   color: "#FFF",
+                //   textTransform: "capitalize",
+                //   paddingY: 1,
+                //   paddingX: 4,
+                //   borderColor: "#fff",
+                //   borderRadius: 0,
+                //   ":hover": {
+                //     backgroundColor: "white",
+                //     color: "#00B0EF",
+                //     borderColor: "#fff",
+                //   },
+                // }}
               >
-                Register Here
+                View Sites
               </Button>
               <div style={{ margin: 10 }} />
-              <Button
+              {/* <Button
                 variant={hover2}
                 onMouseEnter={() => {
                   setHover2("outlined");
@@ -147,7 +163,7 @@ const Footer = () => {
                 }}
               >
                 View Sites
-              </Button>
+              </Button> */}
             </Grid>
           </Grid>
           <br />
@@ -173,10 +189,10 @@ const Footer = () => {
                     fontSize={15}
                     gutterBottom
                     lineHeight={1.35}
-                    textAlign={"justify"}
+                    textAlign={"left"}
                   >
-                    We provide a network of services, benefits, and resources to
-                    empower the healthcare community in Nigeria to improve the
+                    We provide a network of services, benefits, and resources
+                    for the healthcare community in Rivers State to improve the
                     effectiveness and efficiency of primary health care
                     delivery.
                   </Typography>
@@ -187,19 +203,31 @@ const Footer = () => {
                     alignItems="center"
                   >
                     <IconButton>
-                      <Facebook
-                        sx={{
-                          color: "white",
-                        }}
-                      />
+                      <a
+                        href="https://www.facebook.com/Rivers-State-Primary-Health-Care-Management-Board-2260891724188168/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Facebook
+                          sx={{
+                            color: "white",
+                          }}
+                        />
+                      </a>
                     </IconButton>
 
                     <IconButton>
-                      <Twitter
-                        sx={{
-                          color: "white",
-                        }}
-                      />
+                      <a
+                        href="https://twitter.com/rivers_phcmb"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Twitter
+                          sx={{
+                            color: "white",
+                          }}
+                        />
+                      </a>
                     </IconButton>
                     <IconButton>
                       <LinkedIn
@@ -230,61 +258,67 @@ const Footer = () => {
                             gutterBottom={true}
                             color="white"
                           >
-                            Service
+                            Free Services
                           </Typography>
-                          <Box paddingY={2}>
-                            <Link
-                              style={{
-                                color: "white",
-                                fontSize: 15,
-                                textDecoration: "none",
-                              }}
-                              to="/"
-                            >
-                              Control Diseases
-                            </Link>
-                          </Box>
                           <Link
-                            to="/"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
-                              marginTop: 10,
-                              marginBottom: 10,
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
+                            to="/services"
                           >
-                            Health Access
+                            Immunization
                           </Link>
                           <Link
-                            to="/"
+                            to="/services"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
-                            Quality Health
+                            Family Planning
                           </Link>
                           <Link
-                            to="/"
+                            to="/services"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
-                            Health Workforce
+                            Tuberculosis & Leprosy Treatment
                           </Link>
                           <Link
-                            to="/"
+                            to="/services"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
-                            Community Engagement
+                            HIV & AIDS Testing & Treatment
+                          </Link>
+                          <Link
+                            to="/services"
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
+                            }}
+                          >
+                            Cervical Cancer Screening
                           </Link>
                         </div>
                       </Grid>
@@ -298,27 +332,8 @@ const Footer = () => {
                           >
                             Useful Links
                           </Typography>
-                          <Link
-                            style={{
-                              color: "white",
-                              fontSize: 15,
-                              textDecoration: "none",
-                            }}
-                            to="/"
-                          >
-                            Knowledge Base
-                          </Link>
-                          <Link
-                            to="/"
-                            style={{
-                              color: "white",
-                              fontSize: 15,
-                              textDecoration: "none",
-                            }}
-                          >
-                            Terms of Service
-                          </Link>
-                          <Link
+
+                          {/* <Link
                             to="/"
                             style={{
                               color: "white",
@@ -327,7 +342,7 @@ const Footer = () => {
                             }}
                           >
                             Privacy Policy
-                          </Link>
+                          </Link> *
                           <Link
                             to="/about"
                             style={{
@@ -339,17 +354,47 @@ const Footer = () => {
                             About Us
                           </Link>
                           <Link
-                            to="/blog"
+                            to="/about/lga"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
                             }}
                           >
-                            Blog
+                            LGPHCA's
                           </Link>
+                          <Link
+                            to="/about/wdc"
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                            }}
+                          >
+                            WDC
+                          </Link>
+                          <div
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                            }}
+                          >
+                            <a
+                              href="http://rsphcmb.xyz/blog"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                textDecoration: "none",
+                                textTransform: "capitalize",
+                                color: "white",
+                              }}
+                            >
+                              Blog
+                            </a>
+                          </div>
                         </div>
-                      </Grid>
+                      </Grid> 
                     </Grid>
                     <br />
 
@@ -377,12 +422,12 @@ const Footer = () => {
                               fontSize: 15,
                               textDecoration: "none",
                             }}
-                            to="/"
+                            to="/faqs"
                           >
                             FAQ’s
                           </Link>
                           <Link
-                            to="/"
+                            to="/resources/gallery"
                             style={{
                               color: "white",
                               fontSize: 15,
@@ -402,14 +447,14 @@ const Footer = () => {
                             Publications
                           </Link>
                           <Link
-                            to="/"
+                            to="/resources/research"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
                             }}
                           >
-                            COVID-19 FAQ's
+                            Research
                           </Link>
                         </div>
                       </Grid>
@@ -452,16 +497,6 @@ const Footer = () => {
                             }}
                           >
                             Chat Us
-                          </Link>
-                          <Link
-                            to="/"
-                            style={{
-                              color: "white",
-                              fontSize: 15,
-                              textDecoration: "none",
-                            }}
-                          >
-                            Consultation
                           </Link>
                         </div>
                       </Grid>
@@ -556,28 +591,8 @@ const Footer = () => {
                           >
                             Useful Links
                           </Typography>
-                          <Link
-                            color=""
-                            to="/"
-                            style={{
-                              color: "white",
-                              fontSize: 15,
-                              textDecoration: "none",
-                            }}
-                          >
-                            Knowledge Base
-                          </Link>
-                          <Link
-                            to="/"
-                            style={{
-                              color: "white",
-                              fontSize: 15,
-                              textDecoration: "none",
-                            }}
-                          >
-                            Terms of Service
-                          </Link>
-                          <Link
+
+                          {/* <Link
                             to="/"
                             style={{
                               color: "white",
@@ -586,27 +601,63 @@ const Footer = () => {
                             }}
                           >
                             Privacy Policy
-                          </Link>
+                          </Link> */}
                           <Link
                             to="/about"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
                             About Us
                           </Link>
                           <Link
-                            to="/blog"
+                            to="/about/lga"
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
+                            }}
+                          >
+                            Health Authority
+                          </Link>
+                          <Link
+                            to="/about/wdc"
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
+                            }}
+                          >
+                            Ward Committees
+                          </Link>
+                          <div
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
                             }}
                           >
-                            Blog
-                          </Link>
+                            <a
+                              href="http://rsphcmb.xyz/blog"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                textDecoration: "none",
+                                textTransform: "capitalize",
+                                color: "white",
+                              }}
+                            >
+                              Blog
+                            </a>
+                          </div>
                         </div>
                       </Grid>
                     </Grid>
@@ -619,13 +670,13 @@ const Footer = () => {
                         marginTop: 4,
                       }}
                     >
-                      <Grid sm={6}>
+                      <Grid sm={6} xs={6}>
                         <div
                           style={{
                             display: "flex",
                             flexDirection: "column",
-                            justifyContent: "center",
-                            alignItems: "center",
+                            justifyContent: "start",
+                            alignItems: "start",
                           }}
                         >
                           <Typography
@@ -640,17 +691,21 @@ const Footer = () => {
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
-                            to="/"
+                            to="/faqs"
                           >
                             FAQ’s
                           </Link>
                           <Link
-                            to="/"
+                            to="/resources/gallery"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
                             Gallery
@@ -661,30 +716,34 @@ const Footer = () => {
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
                             Publications
                           </Link>
                           <Link
-                            to="/"
+                            to="/resources/research"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
-                            COVID-19 FAQ's
+                            Research
                           </Link>
                         </div>
                       </Grid>
 
-                      <Grid item sm={6}>
+                      <Grid item sm={6} xs={6}>
                         <div
                           style={{
                             display: "flex",
                             flexDirection: "column",
-                            justifyContent: "center",
-                            alignItems: "center",
+                            justifyContent: "end",
+                            alignItems: "end",
                           }}
                         >
                           <Typography
@@ -696,11 +755,13 @@ const Footer = () => {
                           </Typography>
                           <Link
                             color=""
-                            to="/"
+                            to="/contact"
                             style={{
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
                             Contact Us
@@ -711,6 +772,8 @@ const Footer = () => {
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
                             Sitemap
@@ -721,19 +784,11 @@ const Footer = () => {
                               color: "white",
                               fontSize: 15,
                               textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
                             }}
                           >
                             Chat Us
-                          </Link>
-                          <Link
-                            to="/"
-                            style={{
-                              color: "white",
-                              fontSize: 15,
-                              textDecoration: "none",
-                            }}
-                          >
-                            Consultation
                           </Link>
                         </div>
                       </Grid>
@@ -754,69 +809,68 @@ const Footer = () => {
                             gutterBottom={true}
                             color="white"
                           >
-                            Service
+                            Free Service
                           </Typography>
-                          <Box paddingY={1}>
-                            <Link
-                              color=""
-                              to="/"
-                              style={{
-                                color: "white",
-                                fontSize: 15,
-                                textDecoration: "none",
-                              }}
-                            >
-                              Control Diseases
-                            </Link>
-                          </Box>
-                          <Box paddingY={1}>
-                            <Link
-                              to="/"
-                              style={{
-                                color: "white",
-                                fontSize: 15,
-                                textDecoration: "none",
-                              }}
-                            >
-                              Health Access
-                            </Link>
-                          </Box>
-                          <Box paddingY={1}>
-                            <Link
-                              to="/"
-                              style={{
-                                color: "white",
-                                fontSize: 15,
-                                textDecoration: "none",
-                              }}
-                            >
-                              Quality Health
-                            </Link>
-                          </Box>
-                          <Box paddingY={1}>
-                            <Link
-                              to="/"
-                              style={{
-                                color: "white",
-                                fontSize: 15,
-                                textDecoration: "none",
-                              }}
-                            >
-                              Health Workforce
-                            </Link>
-                          </Box>
-                          <Box paddingY={1}>
-                            <Link
-                              to="/"
-                              style={{
-                                color: "white",
-                                fontSize: 15,
-                                textDecoration: "none",
-                              }}
-                            >
-                              Community Engagement
-                            </Link>
-                          </Box>
+                          <Link
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
+                            }}
+                            to="/services"
+                          >
+                            Immunization
+                          </Link>
+                          <Link
+                            to="/services"
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
+                            }}
+                          >
+                            Family Planning
+                          </Link>
+                          <Link
+                            to="/services"
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
+                            }}
+                          >
+                            Tuberculosis & Leprosy Treatment
+                          </Link>
+                          <Link
+                            to="/services"
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
+                            }}
+                          >
+                            HIV & AIDS Testing & Treatment
+                          </Link>
+                          <Link
+                            to="/services"
+                            style={{
+                              color: "white",
+                              fontSize: 15,
+                              textDecoration: "none",
+                              marginTop: 2,
+                              marginBottom: 2,
+                            }}
+                          >
+                            Cervical Cancer Screening
+                          </Link>
                         </div>
                       </Grid>
 
@@ -834,32 +888,8 @@ const Footer = () => {
                           >
                             Useful Links
                           </Typography>
-                          <Box paddingY={1}>
-                            <Link
-                              color=""
-                              to="/"
-                              style={{
-                                color: "white",
-                                fontSize: 15,
-                                textDecoration: "none",
-                              }}
-                            >
-                              Knowledge Base
-                            </Link>
-                          </Box>
-                          <Box paddingY={1}>
-                            <Link
-                              to="/"
-                              style={{
-                                color: "white",
-                                fontSize: 15,
-                                textDecoration: "none",
-                              }}
-                            >
-                              Terms of Service
-                            </Link>
-                          </Box>
-                          <Box paddingY={1}>
+
+                          {/* <Box paddingY={1}>
                             <Link
                               to="/"
                               style={{
@@ -870,7 +900,7 @@ const Footer = () => {
                             >
                               Privacy Policy
                             </Link>
-                          </Box>
+                          </Box> */}
                           <Box paddingY={1}>
                             <Link
                               to="/about"
@@ -878,6 +908,8 @@ const Footer = () => {
                                 color: "white",
                                 fontSize: 15,
                                 textDecoration: "none",
+                                marginTop: 2,
+                                marginBottom: 2,
                               }}
                             >
                               About Us
@@ -885,15 +917,49 @@ const Footer = () => {
                           </Box>
                           <Box paddingY={1}>
                             <Link
-                              to="/blog"
+                              to="/about/lga"
                               style={{
                                 color: "white",
                                 fontSize: 15,
                                 textDecoration: "none",
                               }}
                             >
-                              Blog
+                              Health Authority
                             </Link>
+                          </Box>
+                          <Box paddingY={1}>
+                            <Link
+                              to="/about/wdc"
+                              style={{
+                                color: "white",
+                                fontSize: 15,
+                                textDecoration: "none",
+                              }}
+                            >
+                              Ward Committees
+                            </Link>
+                          </Box>
+                          <Box paddingY={1}>
+                            <div
+                              style={{
+                                color: "white",
+                                fontSize: 15,
+                                textDecoration: "none",
+                              }}
+                            >
+                              <a
+                                href="http://rsphcmb.xyz/blog"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                  textDecoration: "none",
+                                  textTransform: "capitalize",
+                                  color: "white",
+                                }}
+                              >
+                                Blog
+                              </a>
+                            </div>
                           </Box>
                         </div>
                       </Grid>
@@ -914,7 +980,7 @@ const Footer = () => {
                           </Typography>
                           <Box paddingY={1}>
                             <Link
-                              to="/"
+                              to="/faqs"
                               style={{
                                 color: "white",
                                 fontSize: 15,
@@ -926,7 +992,7 @@ const Footer = () => {
                           </Box>
                           <Box paddingY={1}>
                             <Link
-                              to="/"
+                              to="/resources/gallery"
                               style={{
                                 color: "white",
                                 fontSize: 15,
@@ -948,16 +1014,17 @@ const Footer = () => {
                               Publications
                             </Link>
                           </Box>
+
                           <Box paddingY={1}>
                             <Link
-                              to="/"
+                              to="/resources/research"
                               style={{
                                 color: "white",
                                 fontSize: 15,
                                 textDecoration: "none",
                               }}
                             >
-                              COVID-19 FAQ's
+                              Research
                             </Link>
                           </Box>
                         </div>
@@ -1012,18 +1079,6 @@ const Footer = () => {
                               }}
                             >
                               Chat Us
-                            </Link>
-                          </Box>
-                          <Box paddingY={1}>
-                            <Link
-                              to="/"
-                              style={{
-                                color: "white",
-                                fontSize: 15,
-                                textDecoration: "none",
-                              }}
-                            >
-                              Consultation
                             </Link>
                           </Box>
                         </div>
