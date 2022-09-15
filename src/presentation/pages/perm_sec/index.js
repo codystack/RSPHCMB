@@ -1,8 +1,10 @@
 import React from "react";
 import Header from "../faqs/components/header";
 import image from "../../../assets/images/banner1.png";
-import { Container, Typography } from "@mui/material";
-// import MUIRichTextEditor from "mui-rte";
+import Container from "@mui/material/Container";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import MUIRichTextEditor from "mui-rte";
 import { useSelector } from "react-redux";
 
 const PermSecPage = () => {
@@ -28,14 +30,15 @@ const PermSecPage = () => {
           <Typography textAlign={"left"} padding={2}>
             {permSecData?.summary}
           </Typography>
-          <Typography pb={21}></Typography>
-          {/* <MUIRichTextEditor
+          <Toolbar />
+          {/* <Typography pb={21}></Typography> */}
+          <MUIRichTextEditor
             readOnly
             inlineToolbar={false}
             style={{ width: "100%", textAlign: "center" }}
             defaultValue={permSecData?.message}
             toolbar={false}
-          /> */}
+          />
           {/* </p> */}
         </div>
       </Container>
