@@ -84,8 +84,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const mTheme = createMuiTheme({});
-
 const MainNavbar = () => {
   const classes = useStyles();
   const history = useHistory();
@@ -104,36 +102,6 @@ const MainNavbar = () => {
 
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const open2 = Boolean(anchorEl2);
-
-  // const [anchorElDrop, setAnchorElDrop] = React.useState(null);
-  // const [openDrop, setOpenDrop] = React.useState(false);
-
-  // const handleOpenDrop = (event) => {
-  //   setAnchorElDrop(event.currentTarget);
-  //   setOpenDrop(true);
-  // };
-
-  // const handleCloseDrop = (e) => {
-  //   if (e.currentTarget.localName !== "ul") {
-  //     const menu = document.getElementById("simple-menu").children[4];
-  //     const menuBoundary = {
-  //       left: menu.offsetLeft,
-  //       top: e.currentTarget.offsetTop + e.currentTarget.offsetHeight,
-  //       right: menu.offsetLeft + menu.offsetHeight,
-  //       bottom: menu.offsetTop + menu.offsetHeight,
-  //     };
-  //     if (
-  //       e.clientX >= menuBoundary.left &&
-  //       e.clientX <= menuBoundary.right &&
-  //       e.clientY <= menuBoundary.bottom &&
-  //       e.clientY >= menuBoundary.top
-  //     ) {
-  //       return;
-  //     }
-  //   }
-
-  //   setOpenDrop(false);
-  // };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -321,15 +289,8 @@ const MainNavbar = () => {
                           color: navColor,
                           textTransform: "capitalize",
                         }}
-                        // aria-controls={open2 ? "basic-men" : undefined}
-                        // aria-expanded={open2 ? "true" : undefined}
-                        // onClick={handleClick2}
-                        // onMouseEnter={handleClick2}
                         id="menubutton1"
-                        // aria-owns={openDrop ? "simple-menu" : null}
                         aria-haspopup="true"
-                        // onMouseOver={handleOpenDrop}
-                        // onMouseLeave={handleCloseDrop}
                         style={{ zIndex: 1301 }}
                         aria-controls={open2 ? "simple-menu" : undefined}
                         aria-expanded={open2 ? "true" : undefined}
@@ -340,9 +301,6 @@ const MainNavbar = () => {
                         {page.title}
                       </Button>
                       <Menu
-                        // id="simple-menu"
-                        // anchorEl={anchorElDrop}
-                        // open={openDrop}
                         id="simple-menu"
                         anchorEl={anchorEl2}
                         open={open2}
@@ -429,7 +387,7 @@ const MainNavbar = () => {
                         }}
                       >
                         <a
-                          href="http://rsphcmb.xyz/blog"
+                          href="https://blog.rsphcmb.org.ng/"
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{
@@ -492,7 +450,6 @@ const MainNavbar = () => {
                   </div>
                 </div>
               ))}
-              {/* </ThemeProvider> */}
             </Box>
 
             <Box
@@ -529,7 +486,6 @@ const MainNavbar = () => {
               <Button
                 variant="contained"
                 disableElevation={true}
-                // endIcon={<ArrowDropDown />}
                 sx={{
                   backgroundColor: blue ? "#00B0EF" : "white",
                   color: blue ? "white" : "#0D2344",
@@ -540,7 +496,6 @@ const MainNavbar = () => {
               >
                 Covid-19 Vaccination Info
               </Button>
-              {/* <Link to={"/lga"}>LGA</Link> */}
             </Box>
           </Toolbar>
         </Container>

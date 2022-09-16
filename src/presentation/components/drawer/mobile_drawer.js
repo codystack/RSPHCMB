@@ -191,7 +191,7 @@ const MobileDrawer = (props) => {
                 onClick={() => handleListItemClick(to, index)}
               >
                 <a
-                  href="http://rsphcmb.xyz/blog"
+                  href="https://blog.rsphcmb.org.ng"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
