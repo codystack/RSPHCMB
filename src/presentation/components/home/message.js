@@ -7,12 +7,9 @@ import imageSigma from "../../../assets/images/decorator_home.svg";
 import CustomFeaturedImage from "../misc/custom_featured";
 
 import bg from "../../../assets/images/blue_rect.svg";
-import image from "../../../assets/images/dg.png";
 import { useSelector } from "react-redux";
-// import { useScroll } from "../../hooks/use_scroll";
 
 const MessageFromSec = () => {
-  // const [element, controls] = useScroll();
   const { permSecData } = useSelector((state) => state.permSec);
 
   let align, deviceType;
@@ -32,28 +29,16 @@ const MessageFromSec = () => {
   }
 
   return (
-    <div
-    // ref={element}
-    >
+    <div>
       <img src={imageSigma} alt="" width={"7%"} style={{ marginLeft: -5 }} />
       <Container
         sx={{ paddingBottom: 5, marginTop: deviceType === "phone" ? 0 : -36 }}
       >
         <Grid container>
-          <Grid
-            item
-            sm={6}
-            xs={12}
-            // component={motion.div}
-            // variants={variantImg}
-          >
-            <div
-            // animate={controls}
-            // variants={reveal}
-            // transition={{ delay: 0.1, stiffness: 300 }}
-            >
+          <Grid item sm={6} xs={12}>
+            <div>
               <CustomFeaturedImage
-                image={image}
+                image={permSecData?.image}
                 bg={bg}
                 deviceType={deviceType}
               />

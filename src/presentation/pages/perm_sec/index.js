@@ -23,15 +23,11 @@ const PermSecPage = () => {
               style={{ float: "left", margin: 8 }}
             />
           </div>
-          {/* <p> */}
-          {/* <Typography fontStyle={"italic"} textAlign={"left"} padding={2}>
-            {permSecData?.summary}
-          </Typography> */}
+
           <Typography textAlign={"left"} padding={2}>
             {permSecData?.summary}
           </Typography>
           <Toolbar />
-          {/* <Typography pb={21}></Typography> */}
           <MUIRichTextEditor
             readOnly
             inlineToolbar={false}
@@ -39,7 +35,6 @@ const PermSecPage = () => {
             defaultValue={permSecData?.message}
             toolbar={false}
           />
-          {/* </p> */}
         </div>
       </Container>
     </div>
