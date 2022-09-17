@@ -2,16 +2,12 @@ import { Container } from "@mui/material";
 import React from "react";
 import image from "../../../assets/images/gallery_collage.jpeg";
 import dots from "../../../assets/images/lga_dots.svg";
-// import AboutLGA from "./components/about_lga";
 import Header from "./components/header";
-// import linePattern from "../../../assets/images/line_pattern.svg";
 
 import { withRouter } from "react-router-dom";
 import Album from "./components/album";
 
 const Gallery = (props) => {
-  // let { location } = props;
-
   return (
     <div>
       <Header image={image} title={"Gallery"} />

@@ -12,7 +12,7 @@ import image from "../../../assets/images/lga_demo_img.png";
 import dots from "../../../assets/images/lga_dots.svg";
 import AboutLGA from "./components/about_lga";
 import Header from "./components/header";
-import linePattern from "../../../assets/images/line_pattern.svg";
+// import linePattern from "../../../assets/images/line_pattern.svg";
 
 import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -275,7 +275,8 @@ const LGAItem = (props) => {
         style={{
           width: "100%",
           height: 56,
-          backgroundImage: "url(" + linePattern + ")",
+          backgroundColor: "primary.main",
+          // backgroundImage: "url(" + linePattern + ")",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}

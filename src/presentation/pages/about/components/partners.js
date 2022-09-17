@@ -4,7 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Box } from "@mui/system";
 import { useHistory } from "react-router-dom";
-import whoLogo from "../../../../assets/images/who_logo.svg";
+import whoLogo from "../../../../assets/images/who_logo.png";
 import unicefLogo from "../../../../assets/images/unicef_logo.svg";
 import tciLogo from "../../../../assets/images/tci_logo.svg";
 import nphcdaLogo from "../../../../assets/images/nphcda_logo.svg";

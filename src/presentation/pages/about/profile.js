@@ -2,11 +2,8 @@ import { Container } from "@mui/material";
 import React from "react";
 import image from "../../../assets/images/img-gallery8.jpeg";
 import dots from "../../../assets/images/lga_dots.svg";
-// import AboutLGA from "./components/about_lga";
 import Header from "../faqs/components/header";
-// import linePattern from "../../../assets/images/line_pattern.svg";
 
-// import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import MembersProfileSection from "./components/member_profile_section";
 

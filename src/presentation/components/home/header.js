@@ -12,7 +12,7 @@ import image2 from "../../../assets/images/unicef_logo.svg";
 import image3 from "../../../assets/images/clinton_health_logo.svg";
 import image4 from "../../../assets/images/inst_human_viralogy_logo.svg";
 import image5 from "../../../assets/images/tci_logo.svg";
-import image6 from "../../../assets/images/who_logo.svg";
+import image6 from "../../../assets/images/who_logo.png";
 
 import MyCarousel from "../carousel";
 
