@@ -10,7 +10,6 @@ import tciLogo from "../../../../assets/images/tci_logo.svg";
 import nphcdaLogo from "../../../../assets/images/nphcda_logo.svg";
 import clintonHealthLogo from "../../../../assets/images/clinton_health_logo.svg";
 import viralogyLogo from "../../../../assets/images/inst_human_viralogy_logo.svg";
-// import { useSelector } from "react-redux";
 
 const Partners = () => {
   let unicef = React.useRef({});
