@@ -53,20 +53,8 @@ const BuildingSection = () => {
               width={"75%"}
             />
           </Grid>
-          <Grid
-            item
-            sm={6}
-            xs={12}
-            // component={motion.div}
-            // variants={variantImg}
-            // initial="hidden"
-            // animate="visible"
-          >
-            <div
-            // animate={controls}
-            // variants={reveal}
-            // transition={{ delay: 0.1, stiffness: 300 }}
-            >
+          <Grid item sm={6} xs={12}>
+            <div>
               <Typography
                 fontSize={deviceType === "phone" ? 24 : 36}
                 fontWeight="600"
@@ -83,22 +71,6 @@ const BuildingSection = () => {
               />
 
               <br />
-              {/* <Button
-                // component={motion.button}
-                // variants={variantButton}
-                // whileHover="hover"
-                variant="outlined"
-                sx={{
-                  backgroundColor: "transparent",
-                  color: "#000F37",
-                  borderColor: "#000F37",
-                  textTransform: "capitalize",
-                  borderRadius: 0,
-                }}
-                onClick={() => history.push("/about")}
-              >
-                Learn More
-              </Button> */}
             </div>
           </Grid>
         </Grid>

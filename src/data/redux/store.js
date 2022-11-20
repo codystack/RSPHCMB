@@ -12,6 +12,7 @@ import contactReducer from "./slice/contact";
 import serviceReducer from "./slice/service";
 import departmentReducer from "./slice/department";
 import miscReducer from "./slice/misc";
+import postReducer from "./slice/post";
 
 export default configureStore({
   reducer: {
@@ -28,5 +29,6 @@ export default configureStore({
     service: serviceReducer,
     department: departmentReducer,
     misc: miscReducer,
+    post: postReducer,
   },
 });

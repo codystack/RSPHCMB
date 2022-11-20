@@ -64,6 +64,7 @@ const Header = () => {
         }}
       >
         <Grid
+          item
           display={deviceType === "xs" ? "none" : "flex"}
           xs={12}
           sm={6}
@@ -111,6 +112,7 @@ const Header = () => {
           </div>
         </Grid>
         <Grid
+          item
           xs={12}
           sm={6}
           md={5}

@@ -11,9 +11,10 @@ import whiteSiteLogo from "../../../assets/images/logo_white.svg";
 import { makeStyles } from "@mui/styles";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { ArrowDropDown } from "@mui/icons-material";
-import { Menu, MenuItem } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import { useTheme } from "@mui/styles";
-import "./navbar.css";
+// import "./navbar.css";
+import "./nav.css";
 
 const pages = [
   {
@@ -72,8 +73,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
   },
   appBarTransparent: {
-    backgroundColor: "rgba(255, 255, 255, 0.01)",
-    boxShadow: "none",
+    background: "rgba(255, 255, 255, 0.01)",
   },
   appBarSolid: {
     backgroundColor: "rgba(255, 255, 255)",
@@ -83,6 +83,8 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
 }));
+
+// const mTheme = createMuiTheme({});
 
 const MainNavbar = () => {
   const classes = useStyles();
@@ -100,24 +102,54 @@ const MainNavbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const [anchorEl2, setAnchorEl2] = React.useState(null);
-  const open2 = Boolean(anchorEl2);
+  // const [anchorEl2, setAnchorEl2] = React.useState(null);
+  // const open2 = Boolean(anchorEl2);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const [anchorElDrop, setAnchorElDrop] = React.useState(null);
+  // const [openDrop, setOpenDrop] = React.useState(false);
+
+  // const handleOpenDrop = (event) => {
+  //   setAnchorElDrop(event.currentTarget);
+  //   setOpenDrop(true);
+  // };
+
+  // const handleCloseDrop = (e) => {
+  //   if (e.currentTarget.localName !== "ul") {
+  //     const menu = document.getElementById("simple-menu").children[4];
+  //     const menuBoundary = {
+  //       left: menu.offsetLeft,
+  //       top: e.currentTarget.offsetTop + e.currentTarget.offsetHeight,
+  //       right: menu.offsetLeft + menu.offsetHeight,
+  //       bottom: menu.offsetTop + menu.offsetHeight,
+  //     };
+  //     if (
+  //       e.clientX >= menuBoundary.left &&
+  //       e.clientX <= menuBoundary.right &&
+  //       e.clientY <= menuBoundary.bottom &&
+  //       e.clientY >= menuBoundary.top
+  //     ) {
+  //       return;
+  //     }
+  //   }
+
+  //   setOpenDrop(false);
+  // };
+
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const handleClick2 = (event) => {
-    setAnchorEl2(event.currentTarget);
-  };
+  // const handleClick2 = (event) => {
+  //   setAnchorEl2(event.currentTarget);
+  // };
 
-  const handleClose2 = () => {
-    setAnchorEl2(null);
-  };
+  // const handleClose2 = () => {
+  //   setAnchorEl2(null);
+  // };
 
   const navRef = React.useRef();
   navRef.current = navBackground;
@@ -249,7 +281,15 @@ const MainNavbar = () => {
         className={classes[navRef.current]}
       >
         <Container sx={{ paddingX: 2 }}>
-          <Toolbar disableGutters>
+          <Toolbar
+            disableGutters
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "start",
+              alignItems: "center",
+            }}
+          >
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 edge="start"
@@ -269,6 +309,9 @@ const MainNavbar = () => {
               sx={{
                 flexGrow: 1,
                 display: { xs: "none", md: "flex" },
+                flexDirection: "row",
+                justifyContent: "space-evenly",
+                alignItems: "center",
                 marginLeft: 10,
               }}
             >
@@ -276,8 +319,9 @@ const MainNavbar = () => {
               {pages.map((page) => (
                 <div key={page.to}>
                   {page.title === "Resources" ? (
-                    <>
+                    <div class="dropdown">
                       <Button
+                        class="dropbtn"
                         endIcon={
                           page.title === "About" ||
                           page.title === "Resources" ? (
@@ -285,49 +329,36 @@ const MainNavbar = () => {
                           ) : null
                         }
                         sx={{
-                          my: 2,
+                          display: "flex",
+                          flexDirection: "row",
                           color: navColor,
                           textTransform: "capitalize",
                         }}
-                        id="menubutton1"
-                        aria-haspopup="true"
-                        style={{ zIndex: 1301 }}
-                        aria-controls={open2 ? "simple-menu" : undefined}
-                        aria-expanded={open2 ? "true" : undefined}
-                        onClick={handleClick2}
-                        onMouseEnter={handleClick2}
-                        onMouseExit={handleClose2}
+                        id="basic-button"
+                        aria-controls={open ? "basic-menu" : undefined}
+                        // aria-haspopup="true"
                       >
                         {page.title}
                       </Button>
-                      <Menu
-                        id="simple-menu"
-                        anchorEl={anchorEl2}
-                        open={open2}
-                        onClose={handleClose2}
-                        MenuListProps={{
-                          "aria-labelledby": "menubutton1",
-                        }}
-                      >
+                      <div class="dropdown-content">
                         {resources?.map((elem, index) => (
                           <MenuItem
                             key={index}
-                            divider={
-                              index === resources.length - 1 ? false : true
-                            }
+                            divider={index === abouts.length - 1 ? false : true}
                             onClick={(e) => {
-                              handleClose2();
+                              handleClose();
                               history.push(elem.to);
                             }}
                           >
                             {elem.title}
                           </MenuItem>
                         ))}
-                      </Menu>
-                    </>
+                      </div>
+                    </div>
                   ) : page.title === "About" ? (
-                    <>
+                    <div class="dropdown">
                       <Button
+                        class="dropbtn"
                         endIcon={
                           page.title === "About" ||
                           page.title === "Resources" ? (
@@ -335,30 +366,16 @@ const MainNavbar = () => {
                           ) : null
                         }
                         sx={{
-                          my: 2,
                           color: navColor,
-                          // display: "block",
                           textTransform: "capitalize",
                         }}
                         id="basic-button"
                         aria-controls={open ? "basic-menu" : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        onClick={handleClick}
-                        onMouseEnter={handleClick}
-                        onMouseExit={handleClose}
+                        // aria-haspopup="true"
                       >
                         {page.title}
                       </Button>
-                      <Menu
-                        id="basic-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        MenuListProps={{
-                          "aria-labelledby": "basic-button",
-                        }}
-                      >
+                      <div class="dropdown-content">
                         {abouts?.map((elem, index) => (
                           <MenuItem
                             key={index}
@@ -371,14 +388,13 @@ const MainNavbar = () => {
                             {elem.title}
                           </MenuItem>
                         ))}
-                      </Menu>
-                    </>
+                      </div>
+                    </div>
                   ) : page.title === "Blog" ? (
                     <>
                       <Button
                         key={page.title}
                         sx={{
-                          my: 2,
                           color: navColor,
                           textTransform: "capitalize",
                         }}
@@ -417,7 +433,6 @@ const MainNavbar = () => {
                             : () => history.push(page.to)
                         }
                         sx={{
-                          my: 2,
                           color: navColor,
                           // display: "block",
                           textTransform: "capitalize",
@@ -450,6 +465,7 @@ const MainNavbar = () => {
                   </div>
                 </div>
               ))}
+              {/* </ThemeProvider> */}
             </Box>
 
             <Box
@@ -486,6 +502,7 @@ const MainNavbar = () => {
               <Button
                 variant="contained"
                 disableElevation={true}
+                // endIcon={<ArrowDropDown />}
                 sx={{
                   backgroundColor: blue ? "#00B0EF" : "white",
                   color: blue ? "white" : "#0D2344",

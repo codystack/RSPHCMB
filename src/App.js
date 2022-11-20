@@ -76,6 +76,16 @@ import HealthCentres from "./presentation/pages/health-centres";
 import Crasher from "./presentation/components/misc/crasher";
 import NotFound from "./presentation/pages/notfound";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
+import useSWR from "swr";
+import { setPostData } from "./data/redux/slice/post";
+
+const fetcher = (url) => {
+  axios.defaults.headers.post["Content-Type"] =
+    "application/json;charset=utf-8";
+  axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+  return axios.get(url).then((r) => r.data);
+};
 
 function App() {
   // const [faqsData, setFAQsData] = React.useState(null);
@@ -96,6 +106,17 @@ function App() {
     >
       <img src={image} alt="" height={"75%"} />
     </div>
+  );
+
+  const configSWR = {
+    revalidateOnFocus: false,
+    refreshInterval: 1000 * 60 * 30,
+  };
+
+  const { data } = useSWR(
+    "https://blog.rsphcmb.org.ng/wp-json/wp/v2/posts/?_embed&per_page=3&author=1",
+    fetcher,
+    configSWR
   );
 
   React.useEffect(() => {
@@ -238,7 +259,14 @@ function App() {
       });
       dispatch(setLGAsData(lgas));
     });
-  });
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    //Use aaxios here
+    if (data) {
+      dispatch(setPostData([data]));
+    }
+  }, [data, dispatch]);
 
   // let deviceType = useRef();
   const theme = useTheme();

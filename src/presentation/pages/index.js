@@ -14,6 +14,7 @@ import Covid19Section from "../components/home/covid_19";
 
 // import LatestNews from "./blog/components/latest_news";
 import MobileHeader from "../components/home/header_mobile";
+import LatestNews from "./blog/components/latest_news";
 
 const Home = () => {
   let hideImage, deviceType;
@@ -38,7 +39,7 @@ const Home = () => {
       <MessageFromSec />
       <HealthCare />
       <BuildingSection />
-      {/* <LatestNews /> */}
+      <LatestNews />
       <BlueSection />
       <EverythingYouNeed />
       <Subscription />

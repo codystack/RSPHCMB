@@ -43,6 +43,7 @@ const Governor = (props) => {
           }
         >
           <Grid
+            item
             xs={12}
             sm={12}
             md={12}
@@ -99,6 +100,7 @@ const Governor = (props) => {
             </Box>
           </Grid>
           <Grid
+            item
             xs={12}
             sm={12}
             md={12}
