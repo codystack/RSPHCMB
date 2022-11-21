@@ -6,6 +6,10 @@ import { useSelector } from "react-redux";
 const LatestNews = () => {
   const { postData } = useSelector((state) => state.post);
 
+  React.useEffect(() => {
+    console.log(postData);
+  }, [postData]);
+
   return (
     <div>
       <Container sx={{ paddingY: 8 }}>
@@ -73,8 +77,10 @@ const ItemCard = (props) => {
       >
         {`${new Date(elem?.date).toDateString()} `}
       </Typography>
-      <Typography fontWeight={"600"} fontSize={16}>
-        {elem?.title?.rendered}
+      <Typography fontWeight={"600"} fontSize={15}>
+        {`${elem?.title?.rendered}`.length > 50
+          ? `${elem?.title?.rendered}`.substring(0, 48) + "..."
+          : elem?.title?.rendered}
       </Typography>
       {elem?.excerpt.rendered ? (
         <div

@@ -333,6 +333,8 @@ const MainNavbar = () => {
                           flexDirection: "row",
                           color: navColor,
                           textTransform: "capitalize",
+                          fontSize: 15,
+                          fontWeight: 600,
                         }}
                         id="basic-button"
                         aria-controls={open ? "basic-menu" : undefined}
@@ -397,6 +399,8 @@ const MainNavbar = () => {
                         sx={{
                           color: navColor,
                           textTransform: "capitalize",
+                          fontSize: 15,
+                          fontWeight: 600,
                         }}
                         style={{
                           textDecoration: "none",
@@ -436,6 +440,8 @@ const MainNavbar = () => {
                           color: navColor,
                           // display: "block",
                           textTransform: "capitalize",
+                          fontSize: 15,
+                          fontWeight: 600,
                         }}
                       >
                         {page.title}
