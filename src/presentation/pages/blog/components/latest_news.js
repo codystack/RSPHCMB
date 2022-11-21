@@ -3,7 +3,8 @@ import { Box } from "@mui/system";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const LatestNews = () => {
+const LatestNews = (props) => {
+  let { deviceType } = props;
   const { postData } = useSelector((state) => state.post);
 
   React.useEffect(() => {
@@ -16,7 +17,7 @@ const LatestNews = () => {
         <Box>
           <Typography
             textAlign="center"
-            fontSize={32}
+            fontSize={deviceType === "phone" ? 24 : 36}
             fontWeight="600"
             gutterBottom={true}
           >
@@ -55,7 +56,7 @@ const ItemCard = (props) => {
       alignItems="start"
     >
       {elem.featured_media ? (
-        <a href={elem.link}>
+        <a href={elem.link} style={{ height: 200, width: "100%" }}>
           <img
             src={
               elem?._embedded["wp:featuredmedia"][0]?.media_details["sizes"][
@@ -63,7 +64,7 @@ const ItemCard = (props) => {
               ]?.source_url
             }
             alt=""
-            style={{ width: "100%" }}
+            style={{ height: "100%" }}
             width={"100%"}
           />
         </a>

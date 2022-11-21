@@ -39,7 +39,7 @@ const Home = () => {
       <MessageFromSec />
       <HealthCare />
       <BuildingSection />
-      <LatestNews />
+      <LatestNews deviceType={deviceType} />
       <BlueSection />
       <EverythingYouNeed />
       <Subscription />
