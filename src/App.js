@@ -105,7 +105,7 @@ function App() {
         alignItems: "center",
       }}
     >
-      <img src={image} alt="" height={"75%"} />
+//       <img src={image} alt="" height={"75%"} />
     </div>
   );
 
