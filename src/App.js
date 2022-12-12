@@ -276,8 +276,8 @@ function App() {
   React.useLayoutEffect(() => {
     setTimeout(() => {
 //       if (crash || miscData?.crash) {
-        setContent(<div style={{height: "100vh", width: "100vw", display: "flex", flexDirection: "column", justifyContent: "spaceBetween"}} >
-               <div  style={{flex:1, width: "100%", display: "flex", flexDirection: "row", justifyContent: "start", alignItems: "center"}}> 
+        setContent(<div style={{height: "100vh", width: "100vw", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}} >
+               <div  style={{flex:1, width: "100%", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}> 
                 <img src={suspendedImage} width={144}  />
                 <h1 style={{color: "grey"}} >Account Suspended</h1>
                </div>
