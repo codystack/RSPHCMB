@@ -278,9 +278,7 @@ function App() {
 //       if (crash || miscData?.crash) {
         setContent(<div style={{height: "100vh", width: "100vw"}} >
                <br/>
-               <br/>
-               <br/>
-               <img src={suspendedImage} alt="" width={"100%"} height={"96%"} />
+               <img src={suspendedImage} alt="" width={"100%"} height={"99%"} />
                    </div>);
 //       }
 //       setContent(
