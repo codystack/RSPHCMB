@@ -284,7 +284,7 @@ function App() {
 
               <div  style={{padding: 32, backgroundColor: "#2b3b4b", flex:2, width: "100%", display: "flex", flexDirection: "row", justifyContent: "start", alignItems: "center"}}> 
                 <h5 style={{color: "white"}} >This Account has been suspended.</h5>
-                <h5 style={{color: "white"}} >{´${Contact your hosting provider for more information}´}</h5>
+                <h5 style={{color: "white"}} >Contact your hosting provider for more information</h5>
                </div>
               </div>);
 //       }
