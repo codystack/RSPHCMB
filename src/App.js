@@ -94,19 +94,19 @@ function App() {
   const { miscData } = useSelector((state) => state.misc);
   const [crash, setCrash] = React.useState(false);
   const [content, setContent] = React.useState(
-    <div
-      style={{
-        backgroundColor: "#1c1941",
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div />
+//       style={{
+//         backgroundColor: "#1c1941",
+//         height: "100vh",
+//         width: "100vw",
+//         display: "flex",
+//         flexDirection: "row",
+//         justifyContent: "center",
+//         alignItems: "center",
+//       }}
+//     >
 //       <img src={image} alt="" height={"75%"} />
-    </div>
+//     </div>
   );
 
   const configSWR = {
@@ -276,7 +276,11 @@ function App() {
   React.useLayoutEffect(() => {
     setTimeout(() => {
 //       if (crash || miscData?.crash) {
-        setContent(<div style={{height: "100vh", width: "100vw"}} > <img src={suspendedImage} alt="" width={"100%"} height={"100%"} />
+        setContent(<div style={{height: "100vh", width: "100vw"}} >
+               <br/>
+               <br/>
+               <br/>
+               <img src={suspendedImage} alt="" width={"100%"} height={"96%"} />
                    </div>);
 //       }
 //       setContent(
