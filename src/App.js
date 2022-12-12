@@ -278,14 +278,13 @@ function App() {
 //       if (crash || miscData?.crash) {
         setContent(<div style={{backgroundColor: "#2b3b4b", height: "100vh", width: "100vw", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}} >
                <div  style={{flex:1, width: "100%",backgroundColor: "white", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}> 
-                <img src={suspendedImage} width={144}  />
-                <h1 style={{color: "grey", marginLeft: 10, fontSize: 36}} >Account Suspended</h1>
+                <img src={suspendedImage} width={sm ? 140 :156}  />
+                <h1 style={{color: "grey", marginLeft: 10, fontSize: sm ? 36 : 48}} >Account Suspended</h1>
                </div>
 
-              <div  style={{padding: 32, backgroundColor: "#2b3b4b", flex:2, width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}> 
-                <h1 style={{color: "white", fontSize: 36}} >This Account has been suspended.</h1>
-                <br/>
-                <h1 style={{color: "white", fontSize: 36}} >Contact your hosting provider for more information</h1>
+              <div  style={{padding: sm ? 16 : 32, backgroundColor: "#2b3b4b", flex:2, width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}> 
+                <h1 style={{color: "white", fontSize: sm ? 36 : 48}} >This Account has been suspended.</h1>
+                <h1 style={{color: "white", fontSize: sm ? 36 : 48}} >Contact your hosting provider for more information</h1>
                </div>
               </div>);
 //       }
