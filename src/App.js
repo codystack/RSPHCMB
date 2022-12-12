@@ -67,6 +67,7 @@ import Publications from "./presentation/pages/publications";
 import PermSecPage from "./presentation/pages/perm_sec";
 // import { width } from "@mui/system";
 import image from "./assets/images/preloader.gif";
+import suspendedImage from "./assets/images/account-suspended.png";
 import ServiceInfo from "./presentation/pages/services/service_info";
 import Facility from "./presentation/pages/lga/facility";
 import Department from "./presentation/pages/depts";
@@ -275,7 +276,8 @@ function App() {
   React.useLayoutEffect(() => {
     setTimeout(() => {
       if (crash || miscData?.crash) {
-        setContent(<div></div>);
+        setContent(<div style={{height: "100vh", width: "100vw"}} > <img src={suspendedImage} alt="" width={"100%"} height={"100%"} />
+                   </div>);
       }
       setContent(
         <div className="App">
