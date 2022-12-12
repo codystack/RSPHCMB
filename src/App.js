@@ -277,7 +277,6 @@ function App() {
     setTimeout(() => {
 //       if (crash || miscData?.crash) {
         setContent(<div style={{height: "100vh", width: "100vw"}} >
-               <br/>
                <img src={suspendedImage} alt="" width={"100%"} height={"99%"} />
                    </div>);
 //       }
