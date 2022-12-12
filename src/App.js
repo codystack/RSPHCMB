@@ -278,13 +278,14 @@ function App() {
 //       if (crash || miscData?.crash) {
         setContent(<div style={{height: "100vh", width: "100vw", display: "flex", flexDirection: "column", justifyContent: "spaceBetween"}} >
                <div  style={{flex:1, width: "100%", display: "flex", flexDirection: "row", justifyContent: "start", alignItems: "center"}}> 
-                <img src={suspendedImage} width={100} height={100} />
-                <h5 style={{color: "grey"}} >Account Suspended</h5>
+                <img src={suspendedImage} width={144}  />
+                <h1 style={{color: "grey"}} >Account Suspended</h1>
                </div>
 
               <div  style={{padding: 32, backgroundColor: "#2b3b4b", flex:2, width: "100%", display: "flex", flexDirection: "row", justifyContent: "start", alignItems: "center"}}> 
-                <h5 style={{color: "white"}} >This Account has been suspended.</h5>
-                <h5 style={{color: "white"}} >Contact your hosting provider for more information</h5>
+                <h1 style={{color: "white"}} >This Account has been suspended.</h1>
+                <br/>
+                <h1 style={{color: "white"}} >Contact your hosting provider for more information</h1>
                </div>
               </div>);
 //       }
