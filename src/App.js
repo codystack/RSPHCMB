@@ -276,15 +276,15 @@ function App() {
   React.useLayoutEffect(() => {
     setTimeout(() => {
 //       if (crash || miscData?.crash) {
-        setContent(<div style={{backgroundColor: "#2b3b4b", height: "100vh", width: "100vw", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}} >
-               <div  style={{flex:1, width: "100%",backgroundColor: "white", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}> 
+        setContent(<div style={{backgroundColor: "#2b3b4b", height: "100vh", width: "100vw", display: "flex", flexDirection: "column", justifyContent: "start", alignItems: "start"}} >
+               <div  style={{flex:1, width: "100%",backgroundColor: "white", display: "flex", flexDirection: "row", justifyContent: "start", alignItems: "center"}}> 
                 <img src={suspendedImage} width={sm ? 140 :156}  />
-                <h1 style={{color: "grey", marginLeft: 10, fontSize: sm ? 36 : 48}} >Account Suspended</h1>
+                <h1 style={{color: "grey", marginLeft: 10, fontSize: sm ? 36 : 56}} >Account Suspended</h1>
                </div>
 
-              <div  style={{padding: sm ? 16 : 32, backgroundColor: "#2b3b4b", flex:2, width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}> 
-                <h1 style={{color: "white", fontSize: sm ? 36 : 48}} >This Account has been suspended.</h1>
-                <h1 style={{color: "white", fontSize: sm ? 36 : 48}} >Contact your hosting provider for more information</h1>
+              <div  style={{padding: sm ? 16 : 32, backgroundColor: "#2b3b4b", flex:2, width: "100%", display: "flex", flexDirection: "column", justifyContent: "start", alignItems: "start"}}> 
+                <h1 style={{color: "white", fontSize: sm ? 32 : 48}} >This Account has been suspended.</h1>
+                <h1 style={{color: "white", fontSize: sm ? 24 : 32}} >Contact your hosting provider for more information</h1>
                </div>
               </div>);
 //       }
