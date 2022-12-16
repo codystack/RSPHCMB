@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "end",
   },
 }));
-
+ 
 const Services = () => {
   const classes = useStyles();
   const { serviceData } = useSelector((state) => state.service);

@@ -11,10 +11,13 @@ import whiteSiteLogo from "../../../assets/images/logo_white.svg";
 import { makeStyles } from "@mui/styles";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { ArrowDropDown } from "@mui/icons-material";
-import { MenuItem } from "@mui/material";
+import { Grid, MenuItem } from "@mui/material";
 import { useTheme } from "@mui/styles";
 // import "./navbar.css";
 import "./nav.css";
+import { useSelector } from 'react-redux';
+
+import demoImage from "../../../assets/images/header_background.png";
 
 const pages = [
   {
@@ -59,6 +62,11 @@ const abouts = [
   { title: "Health Centres", to: "/about/health-centres" },
   { title: "Ward Committees", to: "/about/wdc" },
 ];
+const demo = [
+  { title: "About RSPHCMB", items:[ "hje", "nd"] },
+  { title: "Board of Trustees", items: ["/about/bot", "hj jhjh"] },
+  { title: "Board of Trustees", items: [], },
+];
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const useStyles = makeStyles((theme) => ({
@@ -91,6 +99,8 @@ const MainNavbar = () => {
   const history = useHistory();
   const location = useLocation();
   const theme = useTheme();
+
+  const { newServiceData } = useSelector((state) => state.service);
 
   const [navBackground, setNavBackground] = React.useState("appBarTransparent");
   const [colorSwitch, setColorSwtch] = React.useState("white");
@@ -268,6 +278,46 @@ const MainNavbar = () => {
     };
   });
 
+  const shortener = ( title) => {
+    let result = "";
+
+    switch (title) {
+      case title?.includes("Antenatal Care Service"):
+        result = "ANC & Free Delivery";
+        break;
+      case title?.includes("Family Plannin"):
+        result = "Family Planning";
+        break;
+      case title?.includes("Nutrition & Vitamin "):
+        result = "Nutrition";
+        break;
+      case title?.includes("Immunization "):
+        result = "Immunization";
+        break;
+      case title?.includes("Health Education "):
+        result = "Health Education";
+        break;
+      case title?.includes("School & Adol "):
+        result = "School Health";
+        break;
+      case title?.includes("Environmental & Occupational Heealth "):
+        result = "Environmental Health";
+        break;
+      case title?.includes("Tuberclosis & Lepro"):
+        result = "Tuberclosis";
+        break;
+      case title?.includes("Community-Based Health Insurance"):
+        result = "Health Insurance";
+        break;
+      case title?.includes("HIV & AIDS Control"):
+        result = "HIV/AIDS";
+        break;
+      default:
+    }
+
+    return  result;
+  }
+
   return (
     <div>
       <AppBar
@@ -392,7 +442,113 @@ const MainNavbar = () => {
                         ))}
                       </div>
                     </div>
-                  ) : page.title === "Blog" ? (
+                  ) : page.title === "Services" ? (
+                    <div class="dropdown">
+                      <Button
+                        class="dropbtn"
+                        endIcon={
+                          page.title === "Services" ||
+                          page.title === "Resources" ? (
+                            <ArrowDropDown sx={{ ml: -1 }} />
+                          ) : null
+                        }
+                        sx={{
+                          color: navColor,
+                          textTransform: "capitalize",
+                        }}
+                        id="basic-button"
+                        aria-controls={open ? "basic-menu" : undefined}
+                        // aria-haspopup="true"
+                      >
+                        {page.title}
+                      </Button>
+                      <div class="dropdown-content">
+                        {/* <Grid> */}
+                          {newServiceData?.map((elem, index) => (
+                            
+                            // <Grid item sm={6} md={6} >
+                            <Box display="flex" flexDirection="row"
+                              // key={index}
+                              // divider={index === abouts.length - 1 ? false : true}
+                              
+                            >
+                              <Button
+                               variant="text"
+                                class="dropbtn"
+                                endIcon={
+                                  elem.items.length > 0 ?(
+                                    <ArrowDropDown sx={{ ml: -1 }} />
+                                  ) : null
+                                }
+                                sx={{
+                                  color: navColor,
+                                  textTransform: "capitalize",
+                                }}
+                                id="basic-button2"
+                                aria-controls={open ? "basic-menu2" : undefined}
+                                onClick={elem?.items?.length < 1 ? (e) => {
+                                  handleClose();
+                                  history.push({
+                                    pathname: "/services/"+elem.title,
+                                    state: {
+                                      title: elem.title,
+                                      image: demoImage
+                                    }
+                                  });
+                                } : null}
+                                // aria-haspopup="true"
+                              >
+                                {elem.title}
+                              </Button>
+                              <div class="dropdown-content2">
+                                {elem.items?.map((el, i) => (
+                                  <MenuItem
+                                    key={i}
+                                    divider={true}
+                                    onClick={elem?.items?.length > 0 ? (e) => {
+                                      handleClose();
+                                      history.push({
+                                        pathname: "services/"+el,
+                                        state: {
+                                          title: el,
+                                          image: demoImage,
+                                        }
+                                      });
+                                    }: null}
+                                  >
+                                    {el}
+                                  </MenuItem>
+                                ))}
+                              </div>
+                              {/* <button type="button" aria-haspopup="menu">
+                                {elem.title}{' '}
+                              </button>
+                              <ul className="dropdown">
+                                {elem.items.map((submenu, index) => (
+                                  <li key={index} className="menu-items">
+                                    <a href={submenu.url}>{submenu}</a>
+                                  </li>
+                                ))}
+                              </ul> */}
+                            </Box>
+                            // </Grid>
+                            
+                          ))}
+                        {/* </Grid> */}
+                        
+                      {/* <Grid container spacing={2}  >
+                        {
+                          demo?.map((elem, index)  => (
+                            <Grid item sm={6} md={6} >
+                              {elem.title}
+                            </Grid>
+                          ))
+                        }
+                        </Grid> */}
+                      </div>
+                    </div>
+                  )
+                  : page.title === "Blog" ? (
                     <>
                       <Button
                         key={page.title}

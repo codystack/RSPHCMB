@@ -38,6 +38,7 @@ import {
 import {
   setServiceData,
   setFeaturedServiceData,
+  setNewServiceData,
 } from "./data/redux/slice/service";
 import {
   setHomeBannerData,
@@ -94,19 +95,19 @@ function App() {
   const { miscData } = useSelector((state) => state.misc);
   const [crash, setCrash] = React.useState(false);
   const [content, setContent] = React.useState(
-    <div />
-//       style={{
-//         backgroundColor: "#1c1941",
-//         height: "100vh",
-//         width: "100vw",
-//         display: "flex",
-//         flexDirection: "row",
-//         justifyContent: "center",
-//         alignItems: "center",
-//       }}
-//     >
-//       <img src={image} alt="" height={"75%"} />
-//     </div>
+    <div 
+      style={{
+        backgroundColor: "#1c1941",
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <img src={image} alt="" height={"75%"} />
+    </div>
   );
 
   const configSWR = {
@@ -188,6 +189,15 @@ function App() {
         services.push(doc.data());
       });
       dispatch(setServiceData(services));
+    });
+
+    const newserviceQuery = query(collection(db, "new_services"));
+    onSnapshot(newserviceQuery, (querySnapshot) => {
+      const services = [];
+      querySnapshot.forEach((doc) => {
+        services.push(doc.data());
+      });
+      dispatch(setNewServiceData(services));
     });
 
     const departmentQuery = query(collection(db, "departments"));
@@ -275,10 +285,10 @@ function App() {
 
   React.useLayoutEffect(() => {
     setTimeout(() => {
-//       if (crash || miscData?.crash) {
+      if (crash || miscData?.crash) {
         setContent(<div style={{backgroundColor: "#2b3b4b", height: "100vh", width: "100vw", display: "flex", flexDirection: "column", justifyContent: "start", alignItems: "start"}} >
                <div  style={{ padding: sm ? 8 : 32, flex:1, width: "100%",backgroundColor: "white", display: "flex", flexDirection: "row", justifyContent: "start", alignItems: "center"}}> 
-                <img src={suspendedImage} width={sm ? 140 :156}  />
+                <img src={suspendedImage} width={sm ? 140 :156} alt=""  />
                 <h1 style={{color: "grey", marginLeft: 10, fontSize: sm ? 36 : 56}} >Account Suspended</h1>
                </div>
 
@@ -287,161 +297,161 @@ function App() {
                 <h1 style={{color: "white", fontSize: sm ? 21 : 32}} >Contact your hosting provider for more information</h1>
                </div>
               </div>);
-//       }
-//       setContent(
-//         <div className="App">
-//           <Router>
-//             <div
-//             // style={{ display: "flex", flexDirection: "column" }}
-//             >
-//               {sm ? <MobileNavbar /> : <MyNavbar />}
+      }
+      setContent(
+        <div className="App">
+          <Router>
+            <div
+            // style={{ display: "flex", flexDirection: "column" }}
+            >
+              {sm ? <MobileNavbar /> : <MyNavbar />}
 
-//               <div style={{ zIndex: 100 }}>
-//                 <ScrollToTop />
-//                 <Switch>
-//                   <Route path="/about/lga" exact>
-//                     <LGAs />
-//                   </Route>
+              <div style={{ zIndex: 100 }}>
+                <ScrollToTop />
+                <Switch>
+                  <Route path="/about/lga" exact>
+                    <LGAs />
+                  </Route>
 
-//                   <Route path="/resources/gallery" exact>
-//                     <Gallery />
-//                   </Route>
+                  <Route path="/resources/gallery" exact>
+                    <Gallery />
+                  </Route>
 
-//                   <Route path="/resources/research" exact>
-//                     <Research />
-//                   </Route>
+                  <Route path="/resources/research" exact>
+                    <Research />
+                  </Route>
 
-//                   <Route path="/resources/reports" exact>
-//                     <Reports />
-//                   </Route>
+                  <Route path="/resources/reports" exact>
+                    <Reports />
+                  </Route>
 
-//                   <Route path="/resources/reports/:id" exact>
-//                     <ReportDetail />
-//                   </Route>
+                  <Route path="/resources/reports/:id" exact>
+                    <ReportDetail />
+                  </Route>
 
-//                   <Route path="/resources/publications" exact>
-//                     <Publications />
-//                   </Route>
+                  <Route path="/resources/publications" exact>
+                    <Publications />
+                  </Route>
 
-//                   <Route path="/resources/downloads" exact>
-//                     <Downloads />
-//                   </Route>
+                  <Route path="/resources/downloads" exact>
+                    <Downloads />
+                  </Route>
 
-//                   <Route path="/resources/gallery/:id" exact>
-//                     <GalleryItem />
-//                   </Route>
+                  <Route path="/resources/gallery/:id" exact>
+                    <GalleryItem />
+                  </Route>
 
-//                   <Route path="/message-from-perm-sec" exact>
-//                     <PermSecPage />
-//                   </Route>
+                  <Route path="/message-from-perm-sec" exact>
+                    <PermSecPage />
+                  </Route>
 
-//                   <Route path="/about/lga/:id" exact>
-//                     <LGAItem />
-//                   </Route>
+                  <Route path="/about/lga/:id" exact>
+                    <LGAItem />
+                  </Route>
 
-//                   <Route path="/about/bot" exact>
-//                     <BoT />
-//                   </Route>
-//                   <Route path="/about/health-centres" exact>
-//                     <HealthCentres />
-//                   </Route>
+                  <Route path="/about/bot" exact>
+                    <BoT />
+                  </Route>
+                  <Route path="/about/health-centres" exact>
+                    <HealthCentres />
+                  </Route>
 
-//                   <Route path="/about/departments" exact>
-//                     <Department />
-//                   </Route>
-//                   <Route path="/about/departments/:id" exact>
-//                     <DepartmentInfo />
-//                   </Route>
+                  <Route path="/about/departments" exact>
+                    <Department />
+                  </Route>
+                  <Route path="/about/departments/:id" exact>
+                    <DepartmentInfo />
+                  </Route>
 
-//                   <Route path="/about/lga/:id/facilities/:name" exact>
-//                     <Facility />
-//                   </Route>
+                  <Route path="/about/lga/:id/facilities/:name" exact>
+                    <Facility />
+                  </Route>
 
-//                   <Route path="/about" exact>
-//                     <About />
-//                   </Route>
-//                   <Route path="/about/team/:id" exact>
-//                     <MembersProfile />
-//                   </Route>
+                  <Route path="/about" exact>
+                    <About />
+                  </Route>
+                  <Route path="/about/team/:id" exact>
+                    <MembersProfile />
+                  </Route>
 
-//                   <Route path="/blog" exact>
-//                     <Blog />
-//                   </Route>
+                  <Route path="/blog" exact>
+                    <Blog />
+                  </Route>
 
-//                   <Route path="/about/wdc" exact>
-//                     <WDC />
-//                   </Route>
+                  <Route path="/about/wdc" exact>
+                    <WDC />
+                  </Route>
 
-//                   <Route path="/services" exact>
-//                     <Services />
-//                   </Route>
+                  <Route path="/services" exact>
+                    <Services />
+                  </Route>
 
-//                   <Route path="/services/:id" exact>
-//                     <ServiceInfo />
-//                   </Route>
+                  <Route path="/services/:id" exact>
+                    <ServiceInfo />
+                  </Route>
 
-//                   <Route path="/contact" exact>
-//                     <Contact />
-//                   </Route>
+                  <Route path="/contact" exact>
+                    <Contact />
+                  </Route>
 
-//                   <Route path="/faqs" exact>
-//                     <Faqs />
-//                   </Route>
+                  <Route path="/faqs" exact>
+                    <Faqs />
+                  </Route>
 
-//                   <Route path="/partners/:id" exact>
-//                     <Partner />
-//                   </Route>
+                  <Route path="/partners/:id" exact>
+                    <Partner />
+                  </Route>
 
-//                   <Route path="/covid19-vaccination-sites" exact>
-//                     <Covid19Sites />
-//                   </Route>
+                  <Route path="/covid19-vaccination-sites" exact>
+                    <Covid19Sites />
+                  </Route>
 
-//                   <Route path="/covid19-vaccination-sites/:item" exact>
-//                     <Covid19LGAItem />
-//                   </Route>
-//                   {/* 
-//                   <Route path={"/demofo"} exact>
-//                     <DemoForm />
-//                   </Route>
+                  <Route path="/covid19-vaccination-sites/:item" exact>
+                    <Covid19LGAItem />
+                  </Route>
+                  {/* 
+                  <Route path={"/demofo"} exact>
+                    <DemoForm />
+                  </Route>
 
-//                   <Route path={"/demopar"} exact>
-//                     <AddPartnerForm />
-//                   </Route>
+                  <Route path={"/demopar"} exact>
+                    <AddPartnerForm />
+                  </Route>
 
-//                   <Route path={"/reports"} exact>
-//                     <AddReportForm />
-//                   </Route>
+                  <Route path={"/reports"} exact>
+                    <AddReportForm />
+                  </Route>
 
-//                   <Route path={"/downloads"} exact>
-//                     <AddDownloadForm />
-//                   </Route> */}
-//                   {/* 
-//                   <Route path={"/upload-ps"} exact>
-//                     <UpdatePSForm />
-//                   </Route> */}
+                  <Route path={"/downloads"} exact>
+                    <AddDownloadForm />
+                  </Route> */}
+                  {/* 
+                  <Route path={"/upload-ps"} exact>
+                    <UpdatePSForm />
+                  </Route> */}
 
-//                   <Route path="/crash-now" exact>
-//                     <Crasher />
-//                   </Route>
+                  <Route path="/crash-now" exact>
+                    <Crasher />
+                  </Route>
 
-//                   <Redirect exact from="/home" to="/" />
-//                   <Route path="/home" exact={true}>
-//                     <Home />
-//                   </Route>
-//                   <Route exact path="/">
-//                     <Home />
-//                   </Route>
+                  <Redirect exact from="/home" to="/" />
+                  <Route path="/home" exact={true}>
+                    <Home />
+                  </Route>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
 
-//                   <Route path="*">
-//                     <NotFound />
-//                   </Route>
-//                 </Switch>
-//               </div>
-//               <Footer />
-//             </div>
-//           </Router>
-//         </div>
-//       );
+                  <Route path="*">
+                    <NotFound />
+                  </Route>
+                </Switch>
+              </div>
+              <Footer />
+            </div>
+          </Router>
+        </div>
+      );
     }, 2000);
   }, [crash, miscData?.crash, sm]);
 

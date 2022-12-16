@@ -28,15 +28,15 @@ const Covid19Section = () => {
   };
 
   const { data } = useSWR(
-    "https://covidnigeria.herokuapp.com/api",
+    "https://api.apify.com/v2/key-value-stores/Eb694wt67UxjdSGbc/records/LATEST?disableRedirect=true",
     fetcher,
     configSWR
   );
 
   React.useEffect(() => {
     if (data) {
-      let rivers = data?.data?.states?.filter(
-        (elem) => elem.state === "Rivers"
+      let rivers = data?.regions?.filter(
+        (elem) => elem.region === "Rivers"
       );
       setRiversData(rivers[0]);
     }
@@ -166,10 +166,10 @@ const Covid19Section = () => {
                     }
                     cases={
                       index === 0
-                        ? riversData?.confirmedCases
+                        ? riversData?.labConfirmedCases
                         : index === 1
                         ? riversData?.discharged
-                        : riversData?.death
+                        : riversData?.deaths
                     }
                     bgColor={
                       index === 0

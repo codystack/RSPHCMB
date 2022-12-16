@@ -27,13 +27,13 @@ const ServiceInfo = (props) => {
         <img src={dots} alt="" />
       </Container>
       <Container sx={{ paddingY: 8 }}>
-        <MUIRichTextEditor
+        {/* <MUIRichTextEditor
           readOnly
           inlineToolbar={false}
           style={{ width: "100%", textAlign: "center" }}
           defaultValue={location.state?.body}
           toolbar={false}
-        />
+        /> */}
       </Container>
     </div>
   );
