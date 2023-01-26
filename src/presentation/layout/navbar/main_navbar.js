@@ -1,6 +1,6 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+import Box from "@mui/system/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -11,13 +11,20 @@ import whiteSiteLogo from "../../../assets/images/logo_white.svg";
 import { makeStyles } from "@mui/styles";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { ArrowDropDown } from "@mui/icons-material";
-import { Grid, MenuItem } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Grid,
+  MenuItem,
+  Typography,
+} from "@mui/material";
 import { useTheme } from "@mui/styles";
 // import "./navbar.css";
 import "./nav.css";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import demoImage from "../../../assets/images/header_background.png";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 const pages = [
   {
@@ -62,11 +69,7 @@ const abouts = [
   { title: "Health Centres", to: "/about/health-centres" },
   { title: "Ward Committees", to: "/about/wdc" },
 ];
-const demo = [
-  { title: "About RSPHCMB", items:[ "hje", "nd"] },
-  { title: "Board of Trustees", items: ["/about/bot", "hj jhjh"] },
-  { title: "Board of Trustees", items: [], },
-];
+
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const useStyles = makeStyles((theme) => ({
@@ -112,54 +115,9 @@ const MainNavbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  // const [anchorEl2, setAnchorEl2] = React.useState(null);
-  // const open2 = Boolean(anchorEl2);
-
-  // const [anchorElDrop, setAnchorElDrop] = React.useState(null);
-  // const [openDrop, setOpenDrop] = React.useState(false);
-
-  // const handleOpenDrop = (event) => {
-  //   setAnchorElDrop(event.currentTarget);
-  //   setOpenDrop(true);
-  // };
-
-  // const handleCloseDrop = (e) => {
-  //   if (e.currentTarget.localName !== "ul") {
-  //     const menu = document.getElementById("simple-menu").children[4];
-  //     const menuBoundary = {
-  //       left: menu.offsetLeft,
-  //       top: e.currentTarget.offsetTop + e.currentTarget.offsetHeight,
-  //       right: menu.offsetLeft + menu.offsetHeight,
-  //       bottom: menu.offsetTop + menu.offsetHeight,
-  //     };
-  //     if (
-  //       e.clientX >= menuBoundary.left &&
-  //       e.clientX <= menuBoundary.right &&
-  //       e.clientY <= menuBoundary.bottom &&
-  //       e.clientY >= menuBoundary.top
-  //     ) {
-  //       return;
-  //     }
-  //   }
-
-  //   setOpenDrop(false);
-  // };
-
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  // const handleClick2 = (event) => {
-  //   setAnchorEl2(event.currentTarget);
-  // };
-
-  // const handleClose2 = () => {
-  //   setAnchorEl2(null);
-  // };
 
   const navRef = React.useRef();
   navRef.current = navBackground;
@@ -278,46 +236,6 @@ const MainNavbar = () => {
     };
   });
 
-  const shortener = ( title) => {
-    let result = "";
-
-    switch (title) {
-      case title?.includes("Antenatal Care Service"):
-        result = "ANC & Free Delivery";
-        break;
-      case title?.includes("Family Plannin"):
-        result = "Family Planning";
-        break;
-      case title?.includes("Nutrition & Vitamin "):
-        result = "Nutrition";
-        break;
-      case title?.includes("Immunization "):
-        result = "Immunization";
-        break;
-      case title?.includes("Health Education "):
-        result = "Health Education";
-        break;
-      case title?.includes("School & Adol "):
-        result = "School Health";
-        break;
-      case title?.includes("Environmental & Occupational Heealth "):
-        result = "Environmental Health";
-        break;
-      case title?.includes("Tuberclosis & Lepro"):
-        result = "Tuberclosis";
-        break;
-      case title?.includes("Community-Based Health Insurance"):
-        result = "Health Insurance";
-        break;
-      case title?.includes("HIV & AIDS Control"):
-        result = "HIV/AIDS";
-        break;
-      default:
-    }
-
-    return  result;
-  }
-
   return (
     <div>
       <AppBar
@@ -418,8 +336,12 @@ const MainNavbar = () => {
                           ) : null
                         }
                         sx={{
+                          display: "flex",
+                          flexDirection: "row",
                           color: navColor,
                           textTransform: "capitalize",
+                          fontSize: 15,
+                          fontWeight: 600,
                         }}
                         id="basic-button"
                         aria-controls={open ? "basic-menu" : undefined}
@@ -453,8 +375,12 @@ const MainNavbar = () => {
                           ) : null
                         }
                         sx={{
+                          display: "flex",
+                          flexDirection: "row",
                           color: navColor,
                           textTransform: "capitalize",
+                          fontSize: 15,
+                          fontWeight: 600,
                         }}
                         id="basic-button"
                         aria-controls={open ? "basic-menu" : undefined}
@@ -462,93 +388,52 @@ const MainNavbar = () => {
                       >
                         {page.title}
                       </Button>
-                      <div class="dropdown-content">
-                        {/* <Grid> */}
-                          {newServiceData?.map((elem, index) => (
-                            
-                            // <Grid item sm={6} md={6} >
-                            <Box display="flex" flexDirection="row"
-                              // key={index}
-                              // divider={index === abouts.length - 1 ? false : true}
-                              
-                            >
-                              <Button
-                               variant="text"
-                                class="dropbtn"
-                                endIcon={
-                                  elem.items.length > 0 ?(
-                                    <ArrowDropDown sx={{ ml: -1 }} />
-                                  ) : null
-                                }
-                                sx={{
-                                  color: navColor,
-                                  textTransform: "capitalize",
-                                }}
-                                id="basic-button2"
-                                aria-controls={open ? "basic-menu2" : undefined}
-                                onClick={elem?.items?.length < 1 ? (e) => {
-                                  handleClose();
-                                  history.push({
-                                    pathname: "/services/"+elem.title,
-                                    state: {
-                                      title: elem.title,
-                                      image: demoImage
+                      <div class="dropdown2-content">
+                        {newServiceData && (
+                          <Grid
+                            container
+                            spacing={{ xs: 0, md: 0 }}
+                            columns={{ xs: 4, sm: 8, md: 12 }}
+                          >
+                            {newServiceData?.map((item, index) => (
+                              <Grid item xs={12} sm={4} md={4} key={index}>
+                                {item.items?.length > 0 ? (
+                                  <AccordionSection item={item} index={index} />
+                                ) : (
+                                  <Button
+                                    key={index}
+                                    variant="text"
+                                    sx={{
+                                      textTransform: "capitalize",
+                                      textAlign: "start",
+                                      fontSize: 15,
+                                      fontWeight: 500,
+                                      color: "black",
+                                      marginLeft: 1,
+                                    }}
+                                    id="basic-button2"
+                                    aria-controls={
+                                      open ? "basic-menu2" : undefined
                                     }
-                                  });
-                                } : null}
-                                // aria-haspopup="true"
-                              >
-                                {elem.title}
-                              </Button>
-                              <div class="dropdown-content2">
-                                {elem.items?.map((el, i) => (
-                                  <MenuItem
-                                    key={i}
-                                    divider={true}
-                                    onClick={elem?.items?.length > 0 ? (e) => {
-                                      handleClose();
+                                    onClick={() =>
                                       history.push({
-                                        pathname: "services/"+el,
+                                        pathname: "/services/" + item.title,
                                         state: {
-                                          title: el,
-                                          image: demoImage,
-                                        }
-                                      });
-                                    }: null}
+                                          title: item.title,
+                                        },
+                                      })
+                                    }
                                   >
-                                    {el}
-                                  </MenuItem>
-                                ))}
-                              </div>
-                              {/* <button type="button" aria-haspopup="menu">
-                                {elem.title}{' '}
-                              </button>
-                              <ul className="dropdown">
-                                {elem.items.map((submenu, index) => (
-                                  <li key={index} className="menu-items">
-                                    <a href={submenu.url}>{submenu}</a>
-                                  </li>
-                                ))}
-                              </ul> */}
-                            </Box>
-                            // </Grid>
-                            
-                          ))}
-                        {/* </Grid> */}
-                        
-                      {/* <Grid container spacing={2}  >
-                        {
-                          demo?.map((elem, index)  => (
-                            <Grid item sm={6} md={6} >
-                              {elem.title}
-                            </Grid>
-                          ))
-                        }
-                        </Grid> */}
+                                    {item?.title}
+                                  </Button>
+                                )}
+                              </Grid>
+                            ))}
+                          </Grid>
+                        )}
                       </div>
                     </div>
-                  )
-                  : page.title === "Blog" ? (
+                  ) : page.title === "Blog" ? (
                     <>
                       <Button
                         key={page.title}
@@ -680,6 +565,104 @@ const MainNavbar = () => {
         </Container>
       </AppBar>
     </div>
+  );
+};
+
+const AccordionSection = (props) => {
+  let { item, index } = props;
+
+  const [expanded, setExpanded] = React.useState(false);
+  const [mItems, setMItems] = React.useState([]);
+
+  React.useEffect(() => {
+    if (item) {
+      let newArray = [];
+
+      // Declare an empty object
+      let uniqueObject = {};
+
+      // Loop for the array elements
+      for (let i in item?.items) {
+        // Extract the title
+        let objTitle = item?.items[i]?.title;
+
+        // Use the title as the index
+        uniqueObject[objTitle] = item?.items[i];
+      }
+
+      // Loop to push unique object into array
+      for (var i in uniqueObject) {
+        newArray.push(uniqueObject[i]);
+      }
+
+      let result = newArray.sort((a, b) => a.title.localeCompare(b.title));
+
+      setMItems(result);
+    }
+  }, [item]);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
+  return (
+    <Accordion
+      key={index}
+      disableGutters={true}
+      elevation={0}
+      sx={{
+        marginY: 0,
+        padding: 0,
+      }}
+      expanded={expanded === "panel" + index}
+      onChange={handleChange("panel" + index)}
+    >
+      <AccordionSummary
+        sx={{ backgroundColor: "transparent" }}
+        expandIcon={<ExpandMore />}
+        aria-controls="panel1bh-content"
+        id="panel1bh-header"
+      >
+        <Typography
+          fontSize={15}
+          fontWeight={"500"}
+          textAlign="start"
+          textTransform="capitalize"
+        >
+          {item.title}
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        {mItems && (
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="start"
+            alignItems="start"
+            padding={0}
+          >
+            {mItems?.map((elem, index) => (
+              <Link
+                style={{
+                  padding: 3,
+                  fontSize: 14,
+                  color: "#00B0EF",
+                }}
+                to={{
+                  pathname: "/services/" + elem?.title?.replaceAll("/", ""),
+                  state: {
+                    item: elem,
+                    image: item?.image,
+                  },
+                }}
+              >
+                {elem?.title}
+              </Link>
+            ))}
+          </Box>
+        )}
+      </AccordionDetails>
+    </Accordion>
   );
 };
 export default MainNavbar;

@@ -12,6 +12,7 @@ import Divider from "@mui/material/Divider";
 import { withRouter } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 const drawerWidth = 270;
 const useStyles = makeStyles((theme) => ({
@@ -32,8 +33,70 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const CollapseSection = (props) => {
+  let { item, index, history, setSelectedIndex, setMobileOpen, mobileOpen } =
+    props;
+
+  const [mItems, setMItems] = React.useState([]);
+
+  React.useEffect(() => {
+    if (item) {
+      let newArray = [];
+
+      // Declare an empty object
+      let uniqueObject = {};
+
+      // Loop for the array elements
+      for (let i in item?.items) {
+        // Extract the title
+        let objTitle = item?.items[i]?.title;
+
+        // Use the title as the index
+        uniqueObject[objTitle] = item?.items[i];
+      }
+
+      // Loop to push unique object into array
+      for (var i in uniqueObject) {
+        newArray.push(uniqueObject[i]);
+      }
+
+      let result = newArray.sort((a, b) => a.title.localeCompare(b.title));
+
+      setMItems(result);
+    }
+  }, [item, item?.items]);
+
+  const handleListItemClick2 = (elem, index) => {
+    history.push({
+      pathname: "/services/" + elem?.title?.replaceAll("/", ""),
+      state: { item: elem, image: item?.image },
+    });
+    setSelectedIndex(index);
+    setMobileOpen(!mobileOpen);
+  };
+
+  return (
+    <List>
+      {mItems &&
+        mItems?.map((elem, pos) => (
+          <ListItemButton
+            sx={{
+              pl: 4,
+              fontSize: 11,
+              color: "#00B0EF",
+            }}
+            onClick={() => handleListItemClick2(elem, index)}
+          >
+            <ListItemText primary={elem?.title} />
+          </ListItemButton>
+        ))}
+    </List>
+  );
+};
+
 const MobileDrawer = (props) => {
   const classes = useStyles();
+  const { newServiceData } = useSelector((state) => state.service);
 
   const drawerItems = [
     {
@@ -56,8 +119,9 @@ const MobileDrawer = (props) => {
     },
     {
       text: "Services",
-      to: "/services",
-      hasChildren: false,
+      hasChildren: true,
+      to: "",
+      children: newServiceData,
     },
     {
       text: "Resources",
@@ -87,7 +151,9 @@ const MobileDrawer = (props) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const [openAbout, setOpenAbout] = React.useState(false);
+  const [openServices, setOpenServices] = React.useState(false);
   const [openResources, setOpenResources] = React.useState(false);
+  const [openServicesItems, setOpenServicesItems] = React.useState(false);
 
   const handleClick1 = () => {
     setOpenAbout(!openAbout);
@@ -96,6 +162,27 @@ const MobileDrawer = (props) => {
   const handleClick2 = () => {
     setOpenResources(!openResources);
   };
+
+  const handleClick3 = () => {
+    setOpenServices(!openServices);
+  };
+
+  const handleClick4 = () => {
+    setOpenServicesItems(!openServicesItems);
+  };
+
+  const handleListItemClick2 = (elem, index) => {
+    history.push({
+      pathname: "/services/" + elem?.title?.replaceAll("/", ""),
+      state: { item: elem, image: elem?.image },
+    });
+    setSelectedIndex(index);
+    setMobileOpen(!mobileOpen);
+  };
+
+  // const handleClick4 = (panel) => (event, openServicesItems) => {
+  //   setOpenServicesItems(openServicesItems ? panel : false);
+  // };
 
   let container =
     props.window !== undefined ? () => window().document.body : undefined;
@@ -114,20 +201,6 @@ const MobileDrawer = (props) => {
         flexDirection: "column",
       }}
     >
-      {/* <div
-        className={classes.toolbar}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <a href="/">
-          <img src={logo} style={{ width: 100 }} alt="site logo" />
-        </a>
-      </div> */}
-
       <Divider />
       <br />
       <div
@@ -145,43 +218,108 @@ const MobileDrawer = (props) => {
         >
           {drawerItems?.map((item, index) => {
             const { text, to, children } = item;
-            return text === "About" || text === "Resources" ? (
+            return text === "About" ||
+              text === "Resources" ||
+              text === "Services" ? (
               <div key={index}>
-                <ListItem
-                  style={{ borderRadius: 6 }}
-                  button
-                  selected={selectedIndex === index}
-                  onClick={text === "About" ? handleClick1 : handleClick2}
-                  // onClick={() => handleListItemClick(to, index)}
-                >
-                  <ListItemText primary={text} />
-                  {(text === "About" ? openAbout : openResources) ? (
-                    <ExpandLess />
-                  ) : (
-                    <ExpandMore />
-                  )}
-                </ListItem>
-                <Collapse
-                  in={text === "About" ? openAbout : openResources}
-                  timeout="auto"
-                  unmountOnExit
-                >
-                  <List component="div" disablePadding>
-                    {children?.map((it, ke) => {
-                      const { title, to } = it;
-                      return (
-                        <ListItemButton
-                          key={ke}
-                          sx={{ pl: 4 }}
-                          selected={selectedIndex === index}
-                          onClick={() => handleListItemClick(to, index)}
-                        >
-                          <ListItemText primary={title} />
-                        </ListItemButton>
-                      );
-                    })}
-                  </List>
-                </Collapse>
+                {" "}
+                {text === "Services" ? (
+                  <>
+                    <ListItem
+                      style={{ borderRadius: 6 }}
+                      button
+                      selected={selectedIndex === index}
+                      onClick={handleClick3}
+                    >
+                      <ListItemText primary={text} />
+                      {openServices ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={openServices} timeout="auto" unmountOnExit>
+                      <List component="div">
+                        {children?.map((it, ke) => {
+                          const { title, items } = it;
+                          return items.length > 0 ? (
+                            <>
+                              <ListItem
+                                sx={{ pl: 3 }}
+                                button
+                                onClick={handleClick4}
+                                // selected={selectedIndex === index}
+                              >
+                                <ListItemText primary={title} />
+                                {openServicesItems ? (
+                                  <ExpandLess />
+                                ) : (
+                                  <ExpandMore />
+                                )}
+                              </ListItem>
+                              <Collapse
+                                in={openServicesItems}
+                                timeout="auto"
+                                unmountOnExit
+                              >
+                                <CollapseSection
+                                  item={it}
+                                  history={history}
+                                  setSelectedIndex={setSelectedIndex}
+                                  setMobileOpen={setMobileOpen}
+                                  mobileOpen={mobileOpen}
+                                />
+                              </Collapse>
+                            </>
+                          ) : (
+                            <ListItemButton
+                              key={ke}
+                              sx={{ pl: 3 }}
+                              // selected={selectedIndex === index}
+                              onClick={() => handleListItemClick2(it, index)}
+                            >
+                              <ListItemText primary={title} />
+                            </ListItemButton>
+                          );
+                        })}
+                      </List>
+                    </Collapse>
+                  </>
+                ) : (
+                  <>
+                    <ListItem
+                      style={{ borderRadius: 6 }}
+                      button
+                      selected={selectedIndex === index}
+                      onClick={text === "About" ? handleClick1 : handleClick2}
+                      // onClick={() => handleListItemClick(to, index)}
+                    >
+                      <ListItemText primary={text} />
+                      {(text === "About" ? openAbout : openResources) ? (
+                        <ExpandLess />
+                      ) : (
+                        <ExpandMore />
+                      )}
+                    </ListItem>
+                    <Collapse
+                      in={text === "About" ? openAbout : openResources}
+                      timeout="auto"
+                      unmountOnExit
+                    >
+                      <List component="div" disablePadding>
+                        {children?.map((it, ke) => {
+                          const { title, to } = it;
+                          return (
+                            <ListItemButton
+                              key={ke}
+                              sx={{ pl: 4 }}
+                              selected={selectedIndex === index}
+                              onClick={() => handleListItemClick(to, index)}
+                            >
+                              <ListItemText primary={title} />
+                            </ListItemButton>
+                          );
+                        })}
+                      </List>
+                    </Collapse>
+                  </>
+                )}
               </div>
             ) : text === "Blog" ? (
               <ListItem

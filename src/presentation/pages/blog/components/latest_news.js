@@ -54,6 +54,7 @@ const ItemCard = (props) => {
       flexDirection="column"
       justifyContent={"stretch"}
       alignItems="start"
+      height={550}
     >
       {elem.featured_media ? (
         <a href={elem.link} style={{ height: 200, width: "100%" }}>
@@ -70,25 +71,27 @@ const ItemCard = (props) => {
         </a>
       ) : null}
       <br />
-      <Typography
-        fontSize={11}
-        fontWeight="400"
-        // fontFamily={"inter"}
-        gutterBottom={false}
-      >
-        {`${new Date(elem?.date).toDateString()} `}
-      </Typography>
-      <Typography fontWeight={"600"} fontSize={15}>
-        {`${elem?.title?.rendered}`.length > 50
-          ? `${elem?.title?.rendered}`.substring(0, 48) + "..."
-          : elem?.title?.rendered}
-      </Typography>
-      {elem?.excerpt.rendered ? (
-        <div
-          className="excerpt"
-          dangerouslySetInnerHTML={{ __html: elem?.excerpt.rendered }}
-        />
-      ) : null}
+      <Box flex={1}>
+        <Typography
+          fontSize={11}
+          fontWeight="400"
+          // fontFamily={"inter"}
+          gutterBottom={false}
+        >
+          {`${new Date(elem?.date).toDateString()} `}
+        </Typography>
+        <Typography fontWeight={"600"} fontSize={15}>
+          {`${elem?.title?.rendered}`.length > 50
+            ? `${elem?.title?.rendered}`.substring(0, 48) + "..."
+            : elem?.title?.rendered}
+        </Typography>
+        {elem?.excerpt.rendered ? (
+          <div
+            className="excerpt"
+            dangerouslySetInnerHTML={{ __html: elem?.excerpt.rendered }}
+          />
+        ) : null}
+      </Box>
       <Box
         width={"100%"}
         display={"flex"}

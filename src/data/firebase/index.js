@@ -19,6 +19,7 @@ import {
   updateDoc,
   deleteDoc,
   arrayUnion,
+  orderBy,
 } from "firebase/firestore";
 import {
   getStorage,
@@ -62,6 +63,7 @@ export {
   storage,
   query,
   where,
+  orderBy,
   deleteDoc,
   updateDoc,
   onSnapshot,

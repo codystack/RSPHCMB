@@ -4,7 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { query, db, collection, onSnapshot, doc } from "./data/firebase/";
+import {
+  query,
+  db,
+  collection,
+  onSnapshot,
+  doc,
+  orderBy,
+} from "./data/firebase/";
 
 import About from "./presentation/pages/about";
 import Home from "./presentation/pages";
@@ -95,8 +102,19 @@ function App() {
   const { miscData } = useSelector((state) => state.misc);
   const [crash, setCrash] = React.useState(false);
   const [content, setContent] = React.useState(
-    <div />
-     
+    <div
+      style={{
+        backgroundColor: "#1c1941",
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <img src={image} alt="" height={"75%"} />
+    </div>
   );
 
   const configSWR = {
@@ -180,8 +198,12 @@ function App() {
       dispatch(setServiceData(services));
     });
 
-    const newserviceQuery = query(collection(db, "new_services"));
-    onSnapshot(newserviceQuery, (querySnapshot) => {
+    const newServicesQuery = query(
+      collection(db, "new_services"),
+      orderBy("orderNo", "asc")
+    );
+
+    onSnapshot(newServicesQuery, (querySnapshot) => {
       const services = [];
       querySnapshot.forEach((doc) => {
         services.push(doc.data());
@@ -274,20 +296,62 @@ function App() {
 
   React.useLayoutEffect(() => {
     setTimeout(() => {
-        {/* if (crash || miscData?.crash) { */}
-        setContent(<div style={{backgroundColor: "#2b3b4b", height: "100vh", width: "100vw", display: "flex", flexDirection: "column", justifyContent: "start", alignItems: "start"}} >
-               <div  style={{ padding: sm ? 8 : 32, flex:1, width: "100%",backgroundColor: "white", display: "flex", flexDirection: "row", justifyContent: "start", alignItems: "center"}}> 
-                <img src={suspendedImage} width={sm ? 140 :156} alt=""  />
-                <h1 style={{color: "grey", marginLeft: 10, fontSize: sm ? 36 : 56}} >Account Suspended</h1>
-               </div>
+      // {/* if (crash || miscData?.crash) { */}
+      setContent(
+        <div
+          style={{
+            backgroundColor: "#2b3b4b",
+            height: "100vh",
+            width: "100vw",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "start",
+            alignItems: "start",
+          }}
+        >
+          <div
+            style={{
+              padding: sm ? 8 : 32,
+              flex: 1,
+              width: "100%",
+              backgroundColor: "white",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "start",
+              alignItems: "center",
+            }}
+          >
+            <img src={suspendedImage} width={sm ? 140 : 156} alt="" />
+            <h1
+              style={{ color: "grey", marginLeft: 10, fontSize: sm ? 36 : 56 }}
+            >
+              Account Suspended
+            </h1>
+          </div>
 
-              <div  style={{padding: sm ? 8 : 32, backgroundColor: "#2b3b4b", flex:2, width: "100%", display: "flex", flexDirection: "column", justifyContent: "start", alignItems: "start"}}> 
-                <h1 style={{color: "white", fontSize: sm ? 32 : 48}} >This Account has been suspended.</h1>
-                <h1 style={{color: "white", fontSize: sm ? 21 : 32}} >Contact your hosting provider for more information</h1>
-               </div>
-           </div>);
-         {/* }
-  setContent(
+          <div
+            style={{
+              padding: sm ? 8 : 32,
+              backgroundColor: "#2b3b4b",
+              flex: 2,
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "start",
+              alignItems: "start",
+            }}
+          >
+            <h1 style={{ color: "white", fontSize: sm ? 32 : 48 }}>
+              This Account has been suspended.
+            </h1>
+            <h1 style={{ color: "white", fontSize: sm ? 21 : 32 }}>
+              Contact your hosting provider for more information
+            </h1>
+          </div>
+        </div>
+      );
+      //  {/* }
+      setContent(
         <div className="App">
           <Router>
             <div
@@ -398,8 +462,8 @@ function App() {
                   <Route path="/covid19-vaccination-sites/:item" exact>
                     <Covid19LGAItem />
                   </Route>
-                   
-                  <Route path={"/demofo"} exact>
+
+                  {/* <Route path={"/demofo"} exact>
                     <DemoForm />
                   </Route>
 
@@ -413,11 +477,11 @@ function App() {
 
                   <Route path={"/downloads"} exact>
                     <AddDownloadForm />
-                  </Route> */}
-                  {/* 
+                  </Route>
+
                   <Route path={"/upload-ps"} exact>
                     <UpdatePSForm />
-                  </Route> 
+                  </Route> */}
 
                   <Route path="/crash-now" exact>
                     <Crasher />
@@ -433,14 +497,14 @@ function App() {
 
                   <Route path="*">
                     <NotFound />
-                  </Route> 
+                  </Route>
                 </Switch>
               </div>
               <Footer />
             </div>
           </Router>
         </div>
-      ); */}
+      );
     }, 2000);
   }, [crash, miscData?.crash, sm]);
 
