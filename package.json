@@ -2,6 +2,10 @@
   "name": "rsphcmb",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Stanley Nyekpeye",
+    "email": "stanleynyekpeye@gmail.com"
+  },
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",

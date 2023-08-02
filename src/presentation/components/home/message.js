@@ -52,7 +52,7 @@ const MessageFromSec = () => {
                 gutterBottom
                 textAlign={align}
               >
-                Message from the Permanent Secretary
+                Message from the Executive Secretary
               </Typography>
               <Typography textAlign="left" gutterBottom={true}>
                 {permSecData?.summary}

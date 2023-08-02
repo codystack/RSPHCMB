@@ -12,7 +12,7 @@ const PermSecPage = () => {
 
   return (
     <div>
-      <Header image={image} title={"Message from the Parmanent Secretary"} />
+      <Header image={image} title={"Message from the Executive Secretary"} />
       <Container sx={{ paddingTop: 8, paddingBottom: 18 }}>
         <div>
           <div>

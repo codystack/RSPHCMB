@@ -453,7 +453,7 @@ function App() {
 
                   <Route path="/partners/:id" exact>
                     <Partner />
-                  </Route>
+                  </Route> 
 
                   <Route path="/covid19-vaccination-sites" exact>
                     <Covid19Sites />
