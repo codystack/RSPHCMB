@@ -96,26 +96,27 @@ const fetcher = (url) => {
   return axios.get(url).then((r) => r.data);
 };
 
+// Preloader content removed from initial value of content state
+ // <div
+ //      style={{
+ //        backgroundColor: "#1c1941",
+ //        height: "100vh",
+ //        width: "100vw",
+ //        display: "flex",
+ //        flexDirection: "row",
+ //        justifyContent: "center",
+ //        alignItems: "center",
+ //      }}
+ //    >
+ //      <img src={image} alt="" height={"75%"} />
+ //    </div>
+
 function App() {
   // const [faqsData, setFAQsData] = React.useState(null);
   const dispatch = useDispatch();
   const { miscData } = useSelector((state) => state.misc);
   const [crash, setCrash] = React.useState(false);
-  const [content, setContent] = React.useState(
-    <div
-      style={{
-        backgroundColor: "#1c1941",
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <img src={image} alt="" height={"75%"} />
-    </div>
-  );
+  const [content, setContent] = React.useState();
 
   const configSWR = {
     revalidateOnFocus: false,
@@ -351,7 +352,8 @@ function App() {
         </div>
       );
       //  {/* }
-      setContent(
+      if (2 > 3) {
+        setContent(
         <div className="App">
           <Router>
             <div
