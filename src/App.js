@@ -354,7 +354,7 @@ function App() {
       //  {/* }
       if (2 > 3) {
         setContent(
-        <div className="App">
+          <div className="App">
           <Router>
             <div
             // style={{ display: "flex", flexDirection: "column" }}
@@ -507,6 +507,7 @@ function App() {
           </Router>
         </div>
       );
+    }
     }, 2000);
   }, [crash, miscData?.crash, sm]);
 
