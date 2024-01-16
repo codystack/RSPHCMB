@@ -448,7 +448,7 @@ const MainNavbar = () => {
                         }}
                       >
                         <a
-                          href="https://blog.rsphcmb.org.ng/"
+                          href="https://blog.rsphcmb.rv.gov.ng/"
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{
